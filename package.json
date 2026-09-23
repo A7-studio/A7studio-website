@@ -1,13 +1,14 @@
 {
   "name": "agentic-web-template",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
+  "description": "Reusable foundation for building web applications with an agentic development workflow (JS Mastery skills).",
+  "private": true,
+  "type": "module",
+  "keywords": [
+    "template",
+    "agentic-workflow",
+    "ai-assisted-development"
+  ],
   "license": "ISC",
   "devEngines": {
     "packageManager": {
@@ -15,6 +16,5 @@
       "version": "^11.5.2",
       "onFail": "download"
     }
-  },
-  "type": "module"
+  }
 }
