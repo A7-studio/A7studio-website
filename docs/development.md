@@ -1,167 +1,458 @@
 # Development Workflow
 
-This project uses an agentic software development workflow based on the JS Mastery Skills.
+## Purpose
 
-The purpose of this workflow is to make development:
+This project uses an agentic development workflow built around the JS Mastery Skills.
 
-- structured
-- repeatable
-- traceable
-- testable
-- reviewable
-- progressively safer
+The workflow combines:
 
-Agents should not treat the conversation as the primary source of project knowledge. Important decisions, requirements, specifications, and discoveries should be persisted in the repository.
+- Product requirements
+- Project architecture
+- Design language
+- Feature scope
+- Feature specifications
+- Decision records
+- Agent-driven implementation
+- Automated verification
+- Human review
+- Project knowledge synchronization
+
+The objective is to create a development process that is:
+
+- Repeatable
+- Traceable
+- Testable
+- Reviewable
+- Appropriate to the maturity of the feature
+- Progressively safer as the product approaches production
+
+This document describes how the project uses the installed skills.
+
+It does not attempt to duplicate the implementation details of those skills.
 
 ---
 
-# 1. Core Principles
+# 1. Development Principles
 
 ## 1.1 Repository First
 
-The repository is the source of truth.
+The repository is the primary source of project knowledge.
 
-Important project knowledge should live in:
+Important decisions should not exist only in:
 
-- `AGENTS.md`
-- `docs/product.md`
-- `docs/architecture.md`
-- `docs/design.md`
-- `docs/scope/`
-- `docs/specs/`
-- `docs/decisions/`
-- source code
-- tests
-- configuration
+- Chat history
+- Agent context
+- Developer memory
+- Temporary prompts
 
-Do not rely on information existing only in the current conversation.
+When knowledge becomes important to future development, record it in the appropriate project document.
 
 ---
 
 ## 1.2 Understand Before Implementing
 
-Agents should understand the problem before modifying code.
+Implementation should begin with understanding.
 
-For non-trivial work:
+Before writing code:
 
-1. Understand the requirement.
-2. Read the relevant documentation.
-3. Search the existing codebase.
-4. Identify existing patterns.
-5. Determine architectural impact.
-6. Create or consult a specification.
-7. Produce an implementation plan.
-8. Implement.
-9. Verify.
-10. Test.
-11. Review.
-12. Document and synchronize project state.
+1. Identify the requirement.
+2. Identify the relevant scope item.
+3. Read the relevant project documentation.
+4. Search the repository.
+5. Identify existing patterns.
+6. Determine architectural implications.
+7. Determine the appropriate rigor level.
+8. Create or consult the feature specification.
+9. Plan the implementation.
 
 ---
 
 ## 1.3 Search Before Creating
 
-Before creating a new:
+Agents should search for existing solutions before creating new:
 
-- component
-- hook
-- utility
-- service
-- API handler
-- schema
-- database abstraction
-- state-management abstraction
-- validation utility
-- design-system primitive
+- Components
+- Hooks
+- Utilities
+- Services
+- API handlers
+- Schemas
+- State abstractions
+- Validation logic
+- Database helpers
+- UI patterns
 
-search the existing codebase.
+The goal is not maximum reuse.
 
-Prefer reusing or extending an existing pattern over creating a new one.
+The goal is **canonical reuse**.
 
-Duplicate abstractions should only be introduced when there is a documented reason.
+If an existing abstraction is the correct place for the behavior, extend it.
+
+If extending it would make the abstraction incoherent, create a new boundary.
 
 ---
 
-## 1.4 Small, Coherent Changes
+## 1.4 Small Coherent Changes
 
-Prefer small, focused changes.
+Prefer changes that:
 
-A change should generally:
+- Have one clear purpose
+- Are easy to review
+- Are easy to test
+- Minimize unrelated risk
 
-- solve one problem
-- affect the smallest reasonable surface area
-- avoid unrelated refactoring
-- avoid unnecessary dependency changes
-- preserve existing behavior outside the intended scope
+Avoid combining:
 
-Large changes should be decomposed into smaller independently verifiable steps where practical.
+- Feature work
+- Large refactors
+- Dependency migrations
+- Formatting changes
+- Architecture changes
+
+unless they are genuinely part of the same change.
 
 ---
 
 ## 1.5 Documentation Is Part of Development
 
-Documentation is not an afterthought.
+Documentation should evolve with the implementation.
 
-If implementation changes an important assumption about:
+When implementation changes project knowledge, update the appropriate documentation.
 
-- architecture
-- product behavior
-- design
-- security
-- data
-- dependencies
-- development workflow
-
-the relevant documentation must be updated.
-
-If the decision is significant or difficult to reverse, create an Architecture Decision Record in:
+The objective is to avoid:
 
 ```text
-docs/decisions/
+Documentation
+      ≠
+Implementation
+```
+
+The desired state is:
+
+```text
+Documentation
+      =
+Implementation
 ```
 
 ---
 
 # 2. Project Knowledge Hierarchy
 
-When determining how to implement something, use the following hierarchy:
+When sources disagree, use this order:
 
-```text
 1. Security constraints
 2. Product requirements
 3. Architecture
-4. Design system
-5. Existing project patterns
-6. Feature specification
-7. Agent implementation preference
-```
+4. Design language
+5. Development workflow
+6. Feature scope
+7. Feature specifications
+8. Existing implementation patterns
+9. Agent preference
 
-Agent preferences must not override documented project constraints.
-
-If two project documents conflict:
-
-1. identify the conflict
-2. do not silently choose one
-3. determine which source is authoritative
-4. update the documentation if necessary
-5. then proceed
+Conflicts should be surfaced rather than silently resolved.
 
 ---
 
-# 3. JS Mastery Workflow
+# 3. Greenfield Lifecycle
 
-This project uses the JS Mastery Skills as the primary development workflow.
+A new project has an additional responsibility that feature work does not:
 
-The standard lifecycle is:
+> Establish the system-level architecture before substantial implementation begins.
+
+The greenfield lifecycle is:
 
 ```text
 /scope
    ↓
 /architect
    ↓
-scaffold
+Establish Project Architecture
+   ↓
+Scaffold
    ↓
 /audit
+```
+
+Each stage has a different responsibility.
+
+---
+
+## 3.1 `/scope`
+
+The scope stage establishes **what the product intends to build**.
+
+It should establish:
+
+- Initial product scope
+- Features
+- User value
+- Priorities
+- Non-goals
+- Dependencies
+- Feature rigor
+- Initial lifecycle status
+
+Scope information lives under:
+
+```text
+docs/scope/
+```
+
+Scope should not be used as a substitute for architecture.
+
+---
+
+## 3.2 `/architect`
+
+The architect stage translates scoped features into implementation-ready specifications.
+
+It should establish:
+
+- User intent
+- Functional requirements
+- Non-functional requirements
+- Acceptance criteria
+- UI states
+- Data requirements
+- API requirements
+- Security considerations
+- Accessibility
+- Testing expectations
+- Technical considerations
+
+Feature specifications live under:
+
+```text
+docs/specs/
+```
+
+### Important distinction
+
+`/architect` does not replace project-level architecture.
+
+The feature architecting process answers:
+
+> How should this feature behave and fit into the system?
+
+The project architecture answers:
+
+> How is the entire application structured?
+
+---
+
+## 3.3 Establish Project Architecture
+
+Before substantial application code is generated, establish:
+
+```text
+docs/architecture.md
+```
+
+This document is the source of truth for the system-level architecture.
+
+At minimum, establish:
+
+- Architecture overview
+- Technology stack
+- Runtime boundaries
+- Application boundaries
+- Module boundaries
+- Data flow
+- State management
+- API conventions
+- Data access
+- Authentication
+- Authorization
+- Validation
+- Error handling
+- Security
+- Testing strategy
+- Deployment
+- Dependency rules
+- Architectural constraints
+
+The architecture can initially be marked:
+
+```text
+Status: Draft
+```
+
+but it should contain the actual architectural direction rather than remaining a blank template.
+
+If an architectural question has not been resolved, record it under:
+
+```text
+Open Architectural Questions
+```
+
+Do not silently invent an answer.
+
+---
+
+## 3.4 Architecture Before Scaffold
+
+Scaffolding should implement an established architectural direction.
+
+The desired sequence is:
+
+```text
+Product Scope
+     ↓
+Feature Understanding
+     ↓
+Project Architecture
+     ↓
+Application Scaffold
+```
+
+This does not mean every implementation detail must be decided in advance.
+
+The architecture should establish the important boundaries and technology choices while allowing implementation details to emerge during development.
+
+---
+
+## 3.5 `/audit`
+
+After scaffolding, `/audit` verifies the relationship between:
+
+```text
+Documentation
+     ↕
+Implementation
+```
+
+The audit should consider:
+
+### Project Context
+
+Is the project documentation present and useful?
+
+### Architecture
+
+Does `docs/architecture.md` describe the actual project?
+
+### Stack
+
+Does the implementation use the documented technologies?
+
+### Boundaries
+
+Do application and module boundaries match the architecture?
+
+### Dependencies
+
+Do dependency directions follow the documented rules?
+
+### Data
+
+Does actual data flow match the documented model?
+
+### Security
+
+Do authentication, authorization, validation, and trust boundaries match the documented architecture?
+
+### Testing
+
+Does the actual testing setup reflect the documented strategy?
+
+### Workflow
+
+Are the project instructions compatible with the installed skills?
+
+Audit findings should become improvements to the project's guardrails where appropriate.
+
+---
+
+# 4. Workflow Rigor
+
+The project does not use one fixed development pipeline.
+
+Instead, work is performed according to an appropriate rigor level.
+
+## Prototype
+
+Primary objective:
+
+> Learn quickly.
+
+Typical characteristics:
+
+- Minimal implementation
+- Basic validation
+- Limited automated testing
+- Fast iteration
+- Temporary implementation may be acceptable
+
+Avoid unnecessary production ceremony.
+
+---
+
+## Alpha
+
+Primary objective:
+
+> Establish reliable core behavior.
+
+Typical expectations:
+
+- Defined feature scope
+- Appropriate architecture
+- Feature specification
+- Basic behavioral tests
+- Runtime verification for important paths
+- Important decisions documented
+
+---
+
+## Beta
+
+Primary objective:
+
+> Reduce regression and operational risk.
+
+Typical expectations:
+
+- Clear specification
+- Architectural alignment
+- Behavioral tests
+- Runtime verification
+- Review
+- Security consideration
+- Documentation
+- Project knowledge synchronization
+
+---
+
+## GA
+
+Primary objective:
+
+> Establish production-level reliability.
+
+Typical expectations:
+
+- Complete requirements
+- Stable architecture
+- Strong behavioral coverage
+- Runtime verification
+- Independent review
+- Security review where appropriate
+- Documentation
+- Synchronized project knowledge
+- Automated quality gates
+
+A feature can move between levels as the product matures.
+
+---
+
+# 5. Feature Development Workflow
+
+The typical feature workflow is:
+
+```text
+/architect
    ↓
 /develop
    ↓
@@ -176,115 +467,144 @@ scaffold
 /sync
 ```
 
-Bug investigation uses:
+Not every feature requires every stage.
 
-```text
-/debug
-```
-
-The exact commands may vary depending on the installed agent and available skills, but the workflow principles remain the same.
-
-The living plan lives in `docs/scope/` and is owned by `/scope`. The other skills scan it to find features, their status, and the next step.
-
-## 3.1 Workflow Tiers
-
-The pipeline above describes full rigor. The skills scale it per feature through workflow tiers:
-
-| Tier | What runs after `/develop` |
-|------|----------------------------|
-| Prototype | nothing beyond the build's own self check |
-| Alpha | `/check verify` |
-| Beta | `/check verify` + `/test` |
-| GA | adds `/check review` + `/document` |
-
-`/scope` recommends and records one project default tier on the scope header `**Workflow:**` line. Any feature can carry its own override tag (for example `· GA` beside its heading). Follow the effective tier instead of running every stage for every feature.
+The rigor level determines the required depth.
 
 ---
 
-# 4. Greenfield Project Workflow
+# 6. Feature Specification
 
-A new project should not begin with arbitrary feature implementation.
+A feature should have a clear specification before substantial implementation.
 
-The recommended sequence is:
+A specification should define:
 
-```text
-Project Idea
-     ↓
-/scope
-     ↓
-/architect
-     ↓
-Scaffold
-     ↓
-/audit
-     ↓
-Feature Development
-```
+- Problem
+- User story
+- Functional requirements
+- Non-functional requirements
+- Acceptance criteria
+- UI states
+- Data requirements
+- API requirements
+- Security considerations
+- Accessibility
+- Non-goals
+- Testing requirements
 
----
+The specification is a contract for behavior.
 
-## 4.1 Scope
-
-Use:
-
-```text
-/scope
-```
-
-to establish the product direction.
-
-The scope should clarify:
-
-- product purpose
-- problem being solved
-- target users
-- primary workflows
-- MVP boundaries
-- non-goals
-- major constraints
-- success criteria
-
-The scope should not attempt to specify every implementation detail.
-
-Product decisions belong in product documentation.
+It should not become an unnecessarily detailed implementation script.
 
 ---
 
-## 4.2 Architecture
+# 7. Scope Management
 
-Use:
+Scope documents answer:
+
+> What are we building, why are we building it, and where is it in the product lifecycle?
+
+Scope documents live under:
 
 ```text
-/architect
+docs/scope/
 ```
 
-to determine how the product should be implemented.
+They should track:
 
-Architecture should consider:
+- Feature
+- Purpose
+- Priority
+- Rigor
+- Status
+- Specification
+- Dependencies
+- Notes
 
-- application structure
-- frontend architecture
-- backend architecture
-- data architecture
-- API boundaries
-- authentication
-- authorization
-- state management
-- validation
-- error handling
-- testing
-- deployment
-- observability
-- security
-- dependency boundaries
+The lifecycle should reflect the actual state of the feature.
 
-Important architectural decisions should be recorded in:
+Avoid marking work complete simply because code exists.
+
+---
+
+# 8. Project Architecture vs Feature Architecture
+
+These are related but separate concerns.
+
+## Project Architecture
+
+Located at:
 
 ```text
 docs/architecture.md
 ```
 
-or as an ADR in:
+Defines system-level structure.
+
+Examples:
+
+- Frontend/backend boundary
+- Database strategy
+- Authentication strategy
+- Module boundaries
+- API conventions
+- Deployment model
+
+## Feature Architecture
+
+Captured through:
+
+```text
+docs/specs/
+```
+
+and, where appropriate:
+
+```text
+docs/decisions/
+```
+
+Defines how an individual feature fits within the system.
+
+Examples:
+
+- Which modules own the feature
+- Required data flow
+- API behavior
+- UI state
+- New architectural decisions required by the feature
+
+The relationship is:
+
+```text
+Project Architecture
+        ↓
+Feature Architecture
+        ↓
+Implementation
+```
+
+A feature should not silently introduce a second architecture.
+
+If a feature requires changing the project architecture, update `docs/architecture.md` and record the significant decision when appropriate.
+
+---
+
+# 9. Architecture Before Implementation
+
+Before implementing a meaningful feature, determine whether it affects:
+
+- Module boundaries
+- Data flow
+- State management
+- API boundaries
+- Authentication
+- Authorization
+- Persistence
+- Infrastructure
+- External integrations
+
+If the feature introduces a significant architectural decision, record it under:
 
 ```text
 docs/decisions/
@@ -292,343 +612,454 @@ docs/decisions/
 
 ---
 
-## 4.3 Scaffold
-
-Once the architecture is established, scaffold the application.
-
-The scaffold should establish:
-
-- framework
-- language
-- package manager
-- source structure
-- testing infrastructure
-- linting
-- formatting
-- environment configuration
-- build system
-- development commands
-
-Do not add unnecessary application features during scaffolding.
-
----
-
-## 4.4 Audit
-
-After the project has been scaffolded, run:
-
-```text
-/audit
-```
-
-The audit should verify that:
-
-- project documentation exists
-- architecture is represented correctly
-- project conventions are clear
-- `AGENTS.md` contains the required project context
-- tooling is configured correctly
-- important guardrails exist
-- documentation and implementation are not obviously inconsistent
-
-The audit should identify missing guardrails before significant feature development begins.
-
----
-
-# 5. Feature Development Workflow
-
-Every non-trivial feature should follow:
-
-```text
-Requirement
-    ↓
-/architect
-    ↓
-Specification
-    ↓
-/develop
-    ↓
-/check verify
-    ↓
-/test
-    ↓
-/check review
-    ↓
-/document
-    ↓
-/sync
-```
-
----
-
-# 6. Feature Specification
-
-Feature specifications live in:
-
-```text
-docs/specs/
-```
-
-Specifications are owned by `/architect`. The canonical, always current template is `.agents/skills/architect/spec-template.md`; `docs/specs/_template.md` is a summary copy for humans.
-
-Spec status lifecycle:
-
-```text
-Proposed → In Progress → Accepted
-```
-
-Two further statuses exist: `Assumed` (the feature was built before the decision was deliberated; the spec owes ratification by `/architect`) and `Superseded` (replaced by a newer spec).
-
-Specifications are the canonical record for technical and feature decisions. ADRs in `docs/decisions/` are reserved for rare project level decisions that sit outside the feature pipeline, such as changing this workflow itself. When in doubt, write a spec.
-
-A feature specification should establish:
-
-- problem
-- user story
-- requirements
-- acceptance criteria
-- technical considerations
-- data requirements
-- API requirements
-- security considerations
-- accessibility requirements
-- UI states
-- testing requirements
-- non-goals
-
-The specification should answer:
-
-> What does success look like?
-
-before implementation begins.
-
----
-
-# 7. Architecture Before Implementation
-
-For a non-trivial feature, use:
-
-```text
-/architect
-```
-
-before:
-
-```text
-/develop
-```
-
-The architecting phase should determine:
-
-- affected modules
-- affected data
-- affected APIs
-- affected UI
-- dependencies
-- architectural risks
-- testing strategy
-- migration requirements
-
-The resulting specification should be treated as the implementation contract.
-
-If implementation reveals that the specification is incorrect or incomplete:
-
-1. stop at the relevant boundary
-2. identify the issue
-3. update the specification
-4. update architecture if necessary
-5. continue implementation
-
-Do not silently redesign the feature during implementation.
-
----
-
-# 8. Implementation
-
-Use:
-
-```text
-/develop
-```
-
-to implement the approved specification.
+# 10. Implementation
 
 Implementation should:
 
-- follow the architecture
-- follow existing patterns
-- reuse existing abstractions
-- minimize unrelated changes
-- maintain type safety
-- maintain accessibility
-- maintain security boundaries
-- include appropriate tests
+- Follow the specification
+- Follow the architecture
+- Reuse established patterns
+- Respect the design system
+- Keep changes focused
+- Validate external data
+- Preserve security boundaries
+- Avoid unnecessary abstractions
 
-The implementation should not introduce new architecture merely because it appears convenient.
-
----
-
-# 9. Verification
-
-After implementation, use:
-
-```text
-/check verify
-```
-
-Verification should establish that the feature actually behaves as required.
-
-Verification should test acceptance criteria and important user workflows.
-
-Where applicable, verify:
-
-- happy path
-- validation
-- error handling
-- loading behavior
-- empty states
-- permissions
-- authentication
-- responsive behavior
-- accessibility
-- integration behavior
-- persistence
-- external API behavior
-
-Verification is different from simply checking whether the code compiles.
+Implementation should solve the defined problem rather than expand the product.
 
 ---
 
-# 10. Testing
+# 11. Verification
 
-Use:
+Verification answers:
 
-```text
-/test
-```
+> Does the implemented feature actually work?
 
-after implementation and verification.
+Use `/check verify` where runtime verification is appropriate.
 
-Tests should be derived from:
+Verification may include:
 
-- acceptance criteria
-- documented requirements
-- public behavior
-- important failure modes
-- regression risks
+- Starting the application
+- Exercising the primary user journey
+- Testing important alternate states
+- Checking error behavior
+- Checking permissions
+- Checking authentication
+- Checking responsive behavior
+- Checking important UI interactions
 
-Prefer testing behavior over implementation details.
+Verification is distinct from compilation.
 
-Use the appropriate testing level:
-
-```text
-Unit
-  ↓
-Integration
-  ↓
-End-to-End
-```
-
-Not every feature requires every testing level.
-
-Testing should be proportional to the risk and scope of the change.
+A project compiling successfully does not prove the feature works.
 
 ---
 
-# 11. Code Review
+# 12. Testing
 
-After verification and tests, use:
+Testing answers:
 
-```text
-/check review
-```
+> Can the important behavior be checked repeatedly?
 
-The review should evaluate the implementation independently from the original implementation process.
+Tests should focus on behavior.
 
-Review for:
+Prefer testing:
+
+- User-visible outcomes
+- Domain behavior
+- API behavior
+- Important data transformations
+- Regression cases
+
+Avoid tests that become tightly coupled to incidental implementation details.
+
+Tests should be appropriate to the feature's rigor level.
+
+---
+
+# 13. Code Review
+
+Code review answers:
+
+> Is this implementation appropriate, safe, maintainable, and aligned with the project?
+
+Use `/check review` where appropriate.
+
+Review should consider:
 
 ### Correctness
 
-Does the implementation satisfy the specification?
+Does the implementation satisfy the requirement?
 
 ### Architecture
 
-Does it respect project boundaries?
+Does it fit the documented architecture?
 
 ### Maintainability
 
-Is the solution unnecessarily complex?
+Is the implementation understandable?
 
 ### Duplication
 
-Did it introduce another abstraction that already exists?
+Does it introduce unnecessary parallel abstractions?
 
 ### Security
 
-Are authentication, authorization, validation, and data handling safe?
+Does it introduce new trust boundaries or sensitive behavior?
+
+### Performance
+
+Does it introduce unnecessary expensive work?
 
 ### Testing
 
-Are the tests meaningful, behavior focused, and proportional to the risk of the change?
-
-### Accessibility
-
-Does the change maintain the documented accessibility expectations?
+Are important behavioral paths covered?
 
 ### Scope
 
-Does the change avoid unrelated modifications and unnecessary complexity?
+Does it contain unrelated changes?
 
 ---
 
-# 12. Documentation
+# 14. Documentation
 
-After review, use:
+Use `/document` when implementation changes project knowledge.
 
-```text
-/document
-```
+Documentation may need to update:
 
-to produce the human facing record of the change:
+- Product behavior
+- Architecture
+- Feature specifications
+- Decisions
+- Developer guidance
+- Operational information
 
-- pull request description
-- changelog entry
-- release note
-- postmortem, when an incident occurs
+Documentation should describe the implementation that actually exists.
 
-Documentation is written from the real commit history and diff, never from memory or intention.
+Do not document an intended architecture that the code does not implement.
 
 ---
 
-# 13. Synchronization
+# 15. Synchronization
 
-The final step of the workflow is:
+Use `/sync` to reconcile project knowledge after meaningful changes.
+
+Synchronization should ensure that:
+
+- Scope reflects implementation status
+- Specifications reflect actual behavior
+- Architecture reflects actual boundaries
+- Decisions remain accurate
+- Project context remains useful to future agents
+
+The repository should remain understandable to an agent that has never seen the original conversation.
+
+---
+
+# 16. Bug-Fix Workflow
+
+For bugs:
 
 ```text
+/debug
+   ↓
+/test
+   ↓
+/check verify
+   ↓
 /sync
 ```
 
-Synchronization keeps durable project knowledge aligned with what the repository actually shows:
+The debugging process should establish:
 
-- `AGENTS.md` files reflect new conventions
-- the scope in `docs/scope/` reflects what actually shipped
-- spec status lines reflect feature progress
-- stale specifications are flagged for `/architect`
+1. What is broken?
+2. How can it be reproduced?
+3. What behavior is expected?
+4. Where does the failure originate?
+5. What is the smallest correct fix?
+6. What regression test should be added?
 
-Synchronization makes surgical updates only. It never rewrites curated documentation; it flags anything that needs a human decision.
+Do not immediately rewrite the surrounding system.
 
 ---
 
-# 14. Git Conventions
+# 17. UI Development
 
-Commits follow Conventional Commits with a one line subject and no body:
+For UI work:
+
+1. Read `docs/design.md`.
+2. Search for existing components.
+3. Reuse design primitives.
+4. Implement required states.
+5. Consider accessibility.
+6. Consider responsive behavior.
+7. Verify the actual user journey.
+
+Important UI states commonly include:
+
+- Loading
+- Empty
+- Error
+- Success
+- Disabled
+- Partial data
+- Permission denied
+- Offline where applicable
+
+---
+
+# 18. API and Data Development
+
+For API and data changes:
+
+1. Identify the owning boundary.
+2. Define input and output behavior.
+3. Validate external input.
+4. Define error behavior.
+5. Consider authorization.
+6. Consider persistence implications.
+7. Add appropriate tests.
+8. Verify the real integration where required.
+
+Do not trust client-provided authorization information.
+
+---
+
+# 19. Security
+
+Security should be considered throughout development.
+
+Never:
+
+- Commit secrets
+- Expose credentials
+- Disable authentication to simplify development
+- Bypass authorization
+- Trust unvalidated external input
+- Log sensitive information unnecessarily
+- Store secrets in source code
+
+Security-sensitive changes should receive additional review appropriate to their risk.
+
+Security requirements should eventually be enforced through tooling where practical.
+
+---
+
+# 20. Dependency Management
+
+Before adding a dependency:
+
+1. Search the existing project.
+2. Check whether an existing dependency already provides the capability.
+3. Determine whether the dependency is necessary.
+4. Consider maintenance and security.
+5. Check compatibility with the architecture.
+6. Add only what is justified.
+
+Avoid dependency accumulation.
+
+---
+
+# 21. Database Changes
+
+Database changes should consider:
+
+- Schema ownership
+- Migration strategy
+- Existing data
+- Backwards compatibility
+- Validation
+- Indexing
+- Performance
+- Rollback or recovery
+- Test data
+
+A database change that affects production data should receive appropriate review before implementation.
+
+---
+
+# 22. Environment and Configuration
+
+Environment-specific values should not be hardcoded.
+
+Use the project's environment configuration mechanism.
+
+Document required variables appropriately.
+
+Provide an `.env.example` once environment configuration exists.
+
+Never commit actual secrets.
+
+---
+
+# 23. Git Workflow
+
+Git should preserve a clear history of coherent work.
+
+Prefer:
+
+- Focused branches
+- Focused commits
+- Clear commit messages
+- Small reviewable changes
+
+Do not combine unrelated work into a single change.
+
+The exact Git conventions are provided by the installed JS Mastery workflow and should remain consistent with its configuration.
+
+---
+
+# 24. Automated Quality Gates
+
+The template intentionally starts with minimal tooling.
+
+Once the application stack has been selected, appropriate automated checks should be introduced.
+
+Potential gates include:
 
 ```text
-feat(auth): add session persistence
+Formatting
+    ↓
+Lint
+    ↓
+Typecheck
+    ↓
+Unit / Integration Tests
+    ↓
+Build
+    ↓
+Secret Scan
 ```
 
-Do not add `Co-Authored-By` or any other tool attribution trailers. The reasoning behind a change belongs in the specification and the pull request, not the commit message.
+Not every project requires every gate immediately.
 
-Feature work happens on branches prefixed with `feat/` (`fix/` or `refine/` for other change types), never directly on the default branch.
+The project should add enforcement where it provides meaningful value.
 
-Pushing and opening pull requests always require explicit confirmation.
+---
+
+# 25. From Rules to Guardrails
+
+Repeated failures should become increasingly difficult to reproduce.
+
+Use this progression:
+
+```text
+Instruction
+     ↓
+Documented Convention
+     ↓
+Tooling
+     ↓
+Automated Check
+     ↓
+CI Enforcement
+```
+
+For example:
+
+```text
+"Avoid any"
+      ↓
+ESLint rule
+      ↓
+CI lint check
+```
+
+or:
+
+```text
+"Don't commit secrets"
+      ↓
+Secret scanner
+      ↓
+CI enforcement
+```
+
+Do not build speculative tooling.
+
+Build guardrails in response to real project needs.
+
+---
+
+# 26. Continuous Improvement
+
+The development workflow itself should evolve.
+
+When the team or agents repeatedly encounter a problem:
+
+1. Identify the failure.
+2. Determine why the existing workflow did not prevent it.
+3. Decide whether the fix belongs in documentation, tooling, or CI.
+4. Implement the smallest useful guardrail.
+5. Update the relevant documentation.
+
+The goal is a system that becomes safer through use.
+
+---
+
+# 27. Definition of Done
+
+The definition of done depends on the feature's rigor level.
+
+At minimum:
+
+- Requirements are satisfied.
+- Scope is correct.
+- Architecture is respected.
+- Existing patterns were considered.
+- Relevant states are handled.
+- Appropriate tests exist.
+- Appropriate runtime verification is complete.
+- Documentation is updated where necessary.
+- No unrelated changes remain.
+
+For Beta and GA work, additionally expect:
+
+- Appropriate review
+- Security consideration
+- Stronger regression coverage
+- Synchronized project knowledge
+- Automated quality gates where available
+
+---
+
+# 28. Standard Workflow Summary
+
+The overall development model is:
+
+```text
+Understand
+    ↓
+Scope
+    ↓
+Specify
+    ↓
+Establish Architecture
+    ↓
+Implement
+    ↓
+Verify
+    ↓
+Test
+    ↓
+Review
+    ↓
+Document
+    ↓
+Synchronize
+```
+
+The stages are adaptive.
+
+A small prototype should not carry the same process burden as a production-critical feature.
+
+The workflow exists to help the team answer five questions:
+
+1. **What are we building?**
+2. **Why are we building it?**
+3. **How should it fit into the system?**
+4. **How do we know it works?**
+5. **How do we keep the project understandable afterward?**
+
+The objective is not process for its own sake.
+
+The objective is to make the **correct path easy and the incorrect path difficult**.
