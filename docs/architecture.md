@@ -12,47 +12,30 @@ Status: Draft
 
 ---
 
-## 1. Architecture Overview
-
-Describe the overall architecture of the application.
-
-Include:
-
-- Major runtime components
-- Major system boundaries
-- Primary data flow
-- External systems
-- Important architectural principles
-
+TanStack Start builds the React and TypeScript portfolio and product lab into a statically prerendered public root route. The browser renders project names from a typed static list; interactions are native section links and local responsive menu state. The page uses no API, persistence, account, visitor input, tracking, or external asset service.
 ```text
-<High-level architecture diagram or description>
+Static build → prerendered `/` → static HTML, CSS, and JavaScript → visitor browser
 ```
-
 ### Architectural Principles
 
--
--
--
+- Keep the portfolio page and its project content static until a real interactive or persistence requirement exists.
+- Do not deploy server features, external data services, analytics, or remote assets for this page.
+- Only publish confirmed project facts and outbound URLs.
 
 ---
 
 ## 2. Technology Stack
 
-Document the technologies selected for the project.
 
 ### Frontend
 
-**Framework:**
+**Framework:** TanStack Start with React, used to prerender the public A7Studio portfolio page.
+**Language:** TypeScript.
+**UI / Component System:** React with semantic HTML.
+**Styling:** Tailwind CSS v4 through its Vite plugin; portfolio tokens live in `src/styles.css`.
+**State Management:** Local React state for the responsive navigation menu only.
+**Data Fetching:** None for this public static page.
 
-**Language:**
-
-**UI / Component System:**
-
-**Styling:**
-
-**State Management:**
-
-**Data Fetching:**
 
 ### Backend
 
@@ -101,8 +84,7 @@ Document the technologies selected for the project.
 **Formatter:**
 
 **Linter:**
-
-**Build Tool:**
+**Build Tool:** Vite with the TanStack Start plugin and static prerendering enabled for `/`.
 
 ---
 
