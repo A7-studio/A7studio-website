@@ -1,21 +1,13 @@
-# Dependencies
-node_modules/
-
-# Build output
-dist/
-build/
-out/
-
-# Test coverage
-coverage/
-
-# Environment
-.env
-.env.*
-!.env.example
-
-# Logs
-*.log
-
-# OS
+node_modules
 .DS_Store
+dist
+dist-ssr
+*.local
+.env
+.nitro
+.tanstack
+.wrangler
+.output
+.vinxi
+__unconfig*
+todos.json
