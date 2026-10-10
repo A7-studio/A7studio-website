@@ -24,7 +24,7 @@ Near black surfaces, pale primary copy, muted lavender gray supporting text, and
 
 ## Typography
 
-Use the installed system sans stack for clear display and body text, supported by a system mono stack for small technical labels. Keep large display type tightly tracked and body type open and readable.
+Use Space Grotesk for the hero, section, project, lab, navigation, and body copy so the portfolio is easy to scan. Use DM Mono for small technical labels, dates, and technology metadata. Keep display type open and readable; use weight, size, and spacing to create hierarchy rather than switching to a decorative title font.
 
 ## Spacing
 
