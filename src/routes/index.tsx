@@ -66,7 +66,7 @@ const projects: WorkItem[] = [
     category: ['mobile', 'fintech'],
     headline: 'Payments, money movement, ledger integrity, and business investment products.',
     description:
-      'Worked on Stripe KYC/KYB onboarding and Stripe integration for business financial workflows. Revamped money movement processes by fixing double-entry ledger issues, strengthening ledger integrity, and addressing negative balance scenarios. Also revamped Boya’s money market fund investment option for businesses.',
+      'Worked on Stripe KYC/KYB onboarding and Stripe integration for business financial workflows. Revamped money movement processes by fixing double-entry ledger issues, strengthening ledger integrity, and addressing negative balance scenarios. Also helped revamp a money market fund investment option for businesses.',
     tags: ['Stripe', 'KYC/KYB', 'Money Movement', 'Double-Entry Ledger', 'Ledger Integrity', 'Money Market Funds'],
     url: 'https://www.boyahq.com/',
   },
@@ -1450,9 +1450,9 @@ function HomePage() {
                   </div>
                   <span className="cv-item-company">Boya · Nairobi, Kenya</span>
                   <ul style={{ paddingLeft: '1.25rem', marginTop: '0.4rem', color: 'var(--color-muted)', fontSize: '0.8125rem', lineHeight: '1.6' }}>
-                    <li>Worked on Stripe KYC/KYB onboarding and Stripe integration for Boya’s business financial workflows.</li>
+                    <li>Worked on Stripe KYC/KYB onboarding and Stripe integration for business financial workflows.</li>
                     <li>Revamped money movement processes by fixing double-entry ledger issues, strengthening ledger integrity, and addressing negative balance scenarios.</li>
-                    <li>Revamped Boya’s money market fund investment option for businesses.</li>
+                    <li>Helped revamp a money market fund investment option for businesses.</li>
                   </ul>
                 </div>
 
