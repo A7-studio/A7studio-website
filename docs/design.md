@@ -38,6 +38,18 @@ Use one centered content frame, an oversized introduction with a restrained orbi
 
 Use fine neutral borders, small corner radii, and restrained motion. Cards are static content, not fake links. Provide a visible link only when its destination is confirmed.
 
+## Work and case studies
+
+`/work` shows a cover grid with category filters. Each story page has a header (company line, outcome, role, category, stack), numbered chapters (Brief, My part, The build, Result), a next project link, and a contact banner. Screens render only when a story is marked `screensCleared`; otherwise a typographic cover uses the project short name. Styles live under `WORK INDEX AND CASE STUDIES` in `src/styles.css`. See spec 0003.
+
+## Recruiter first home (spec 0004)
+
+The home page reads in this order: hero (title, availability pill, Download CV, Contact), employer strip with one stack line, four story tiles with a status pill, dated experience timeline, Now cards, two offers, contact. Status pills (`work-status`) use one label per project: Employer work, Live, Company closed, or Side product, paused. The timeline (`timeline`, `timeline-row`) and Now cards (`now-card`) reuse the existing tokens. No performance figures appear anywhere, and the CV is a download, not a modal.
+
+## Lab (spec 0005)
+
+The Lab reuses the work components: `work-tiles`, `work-tile`, `work-status` (status pill: Planned, Building, Live, Paused), `story-*` chapter styles and the `timeline` rows for the dated build log. It is invisible until an entry is published: no route output, nav link, home section or sitemap line. Revenue renders only as "currency amount period, as of date" from a complete figure Samuel supplies. Screens appear only when `screensCleared` is true and never show personal job data.
+
 ## Navigation
 
 Use native anchors to the work, product lab, and contact sections. The same anchors remain visible in a compact bottom bar on narrow screens. Do not intercept native fragment behavior or force smooth scrolling.

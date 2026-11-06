@@ -3,6 +3,10 @@
 **Date**: 2026-10-06
 **Status**: In Progress
 
+> **Amended by [0003](0003-work-case-studies-showcase.md)**: the one route and no images rules below are relaxed for `/work` and `/work/<slug>` case studies. Screenshots ship only when marked cleared.
+
+> **Amended by [0004](0004-recruiter-first-home-restructure.md)** (2026-11-06): the home page is now recruiter first. The lab, About, Skills and Work With Me sections, the CV modal, Valuencer, and all performance figures are retired.
+
 ## Summary
 
 This spec defines a one page A7Studio portfolio for visitors to understand the studio, browse selected work and lab projects, and connect through LinkedIn. TanStack Start is a full stack React framework that can prerender this page as static HTML, with server features available if a real backend need appears later. The page follows the visual direction in `design/code.html`, while its content comes only from confirmed scope and worktree facts.
@@ -24,7 +28,7 @@ There is no dynamic data, visitor data collection, or backend behavior for this 
 
 **Acceptance criteria**:
 - **AC-1 (Hero)**: Introduces A7Studio as Samuel Gichu's engineering lab for mobile, web, fintech, and AI-assisted product work, with clear lead generation CTAs ("Start a Project / Discuss Role", "Explore Work", "View CV") and concise confirmed experience signals.
-- **AC-2 (About Samuel)**: Highlights Samuel's background as Senior Product Engineer (7+ years across Flutter, React, TypeScript, API-driven architectures, MCP and AI-assisted engineering) and his location in Nairobi, Kenya (open to worldwide remote roles and contracts).
+- **AC-2 (About Samuel)**: Highlights Samuel's background as Senior Product Engineer (6+ years across Flutter, React, TypeScript, API-driven architectures, MCP and AI-assisted engineering) and his location in Nairobi, Kenya (open to worldwide remote roles and contracts).
 - **AC-3 (Selected Work - Project-First Titles)**: Uses concise shipped project or capability titles instead of long company names, and displays the company as secondary contextual metadata.
 - **AC-4 (In The Lab)**: Demonstrates current experiments and product builds: Kakitoo (privacy-first tipping platform, linking to `https://kakitoo.com`), Good Call (upcoming personal finance app), and AI assisted engineering experiments.
 - **AC-5 (Work With Me - Lead Conversion)**: Structures 4 clear collaboration offerings with high-intent lead triggers for prospective clients and hiring managers: Senior Remote Engineering Roles, 0-to-1 Product Sprints, Fintech & Payments Integration, and AI-Native Product Tooling.

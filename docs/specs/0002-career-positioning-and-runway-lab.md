@@ -3,6 +3,8 @@
 **Date**: 2026-10-10
 **Status**: Accepted
 
+> **Amended by [0004](0004-recruiter-first-home-restructure.md)** (2026-11-06): the home page is now recruiter first. The lab, About, Skills and Work With Me sections, the CV modal, Valuencer, and all performance figures are retired.
+
 ## Summary
 
 This enhancement makes the A7Studio portfolio easier for recruiters to understand in one pass. It keeps the existing one page structure, but reduces title and description complexity, describes Samuel's contribution plainly, and replaces the A7Markets lab concept with Good Call, an upcoming personal finance app focused on better spending decisions.
