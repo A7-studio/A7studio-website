@@ -261,7 +261,7 @@ const storyByProject: Record<string, string> = {
 const shortNames: Record<string, string> = {
   boya: 'Boya',
   beatbnk: 'BeatBnk',
-  alvin: 'alvin.finance',
+  alvin: 'Alvin',
   kakitoo: 'Kakitoo',
   chupachap: 'Chupachap',
   telkom: 'T-Kash',
