@@ -81,7 +81,7 @@ export function WorkShell({ children }: { children: ReactNode }) {
               A7<span className="brand-dot">.</span>Studio
             </span>
             <p className="footer-desc">
-              Samuel Gichu, Senior Software Engineer. Mobile, web and fintech.
+              Samuel Gichu, Senior Software Engineer. Mobile, web, fintech and AI.
             </p>
           </div>
           <div className="footer-right">

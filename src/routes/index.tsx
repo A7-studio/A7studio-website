@@ -12,17 +12,17 @@ const LINKEDIN = 'https://www.linkedin.com/in/samuel-gichu-a29695b9/'
 export const Route = createFileRoute('/')({
   head: () => ({
     meta: [
-      { title: 'A7Studio.dev — Samuel Gichu | Senior Software Engineer (Mobile & Fintech)' },
+      { title: 'A7Studio.dev — Samuel Gichu | Senior Software Engineer (Mobile, Fintech & AI)' },
       {
         name: 'description',
         content:
-          'Samuel Gichu is a Senior Software Engineer with 6+ years shipping mobile apps (Flutter), web products (React/TypeScript), and fintech payment systems. Available now for remote roles and contracts.',
+          'Samuel Gichu is a Senior Software Engineer with 6+ years shipping mobile apps (Flutter), web products (React/TypeScript), fintech payment systems, and now AI powered products. Available now for remote roles and contracts.',
       },
       { name: 'author', content: 'Samuel Gichu' },
       {
         name: 'keywords',
         content:
-          'Samuel Gichu, A7Studio, Senior Software Engineer, Flutter, React, TypeScript, NestJS, Mobile Engineer, Fintech, Payments, Stripe Connect, M-Pesa, Nairobi Kenya, Remote Engineer',
+          'Samuel Gichu, A7Studio, Senior Software Engineer, Flutter, React, TypeScript, NestJS, Mobile Engineer, Fintech, AI Products, Payments, Stripe Connect, M-Pesa, Nairobi Kenya, Remote Engineer',
       },
       { name: 'robots', content: 'index, follow' },
       { property: 'og:type', content: 'website' },
@@ -30,7 +30,7 @@ export const Route = createFileRoute('/')({
       { property: 'og:title', content: 'A7Studio.dev — Samuel Gichu | Senior Software Engineer' },
       {
         property: 'og:description',
-        content: 'Mobile, web and fintech engineer. Available now for remote roles and contracts.',
+        content: 'Mobile, web, fintech and AI engineer. Available now for remote roles and contracts.',
       },
       { property: 'og:url', content: 'https://a7studio.dev/' },
       { property: 'og:locale', content: 'en_US' },
@@ -39,7 +39,7 @@ export const Route = createFileRoute('/')({
       { name: 'twitter:title', content: 'A7Studio.dev — Samuel Gichu' },
       {
         name: 'twitter:description',
-        content: 'Senior Software Engineer with 6+ years across mobile (Flutter), web (React/TS) and fintech.',
+        content: 'Senior Software Engineer with 6+ years across mobile (Flutter), web (React/TS), fintech and AI powered products.',
       },
     ],
     links: [{ rel: 'canonical', href: 'https://a7studio.dev/' }],
@@ -259,7 +259,7 @@ function HomePage() {
 
                 <h1 id="hero-title" className="hero-title">
                   Senior Software Engineer building <span className="text-accent">mobile</span>, <span>web</span> &amp;{' '}
-                  <span className="text-accent">fintech</span> products.
+                  <span className="text-accent">fintech</span> &amp; <span>AI</span> products.
                 </h1>
 
                 <p className="hero-subhead">
@@ -302,8 +302,8 @@ function HomePage() {
                   <span className="hero-stat-label">React and TypeScript products</span>
                 </div>
                 <div className="hero-stat-card">
-                  <span className="hero-stat-value">Fintech</span>
-                  <span className="hero-stat-label">Payments and ledger systems</span>
+                  <span className="hero-stat-value">Fintech &amp; AI</span>
+                  <span className="hero-stat-label">Payments, ledgers and AI powered products</span>
                 </div>
               </div>
             </div>
@@ -463,11 +463,15 @@ function HomePage() {
           <div className="now-grid">
             <div className="now-card">
               <h3>Interviews and applications</h3>
-              <p>Applying for senior mobile, full stack and fintech roles, mostly remote.</p>
+              <p>Applying for senior mobile, full stack, fintech and AI roles, mostly remote.</p>
             </div>
             <div className="now-card">
               <h3>System design, data structures and algorithms</h3>
               <p>Regular practice for interviews and for designing better systems at work.</p>
+            </div>
+            <div className="now-card">
+              <h3>Building with AI</h3>
+              <p>Building an AI powered product to learn how to design, ship and run one end to end.</p>
             </div>
             <div className="now-card">
               <h3>Backend and Odoo</h3>
@@ -491,7 +495,7 @@ function HomePage() {
           <div className="now-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(16rem, 1fr))' }}>
             <div className="now-card">
               <h3>Full-time remote role</h3>
-              <p>Senior mobile, full stack or fintech engineer on a distributed team.</p>
+              <p>Senior mobile, full stack, fintech or AI engineer on a distributed team.</p>
             </div>
             <div className="now-card">
               <h3>Contract engagement</h3>
@@ -595,7 +599,7 @@ function HomePage() {
             <span className="brand-mark">
               A7<span className="brand-dot">.</span>Studio
             </span>
-            <p className="footer-desc">Samuel Gichu, Senior Software Engineer. Mobile, web and fintech.</p>
+            <p className="footer-desc">Samuel Gichu, Senior Software Engineer. Mobile, web, fintech and AI.</p>
           </div>
 
           <div className="footer-right">

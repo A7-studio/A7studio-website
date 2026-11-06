@@ -2772,7 +2772,7 @@ button {
 
 @media (min-width: 768px) {
   .now-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
