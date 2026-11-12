@@ -113,7 +113,10 @@ export function WorkCover({ item, image, priority = false }: { item: WorkItem; i
   }
   return (
     <div className="work-cover work-cover-type" aria-hidden="true">
-      <span className="work-cover-mark">{item.shortName ?? item.projectTitle}</span>
+      <div className="work-cover-top">
+        <span className="work-cover-pill">{item.shortName ?? item.projectTitle}</span>
+        <span className="work-cover-mark">{item.projectTitle}</span>
+      </div>
       <span className="work-cover-cat">{item.category.join(' · ')}</span>
     </div>
   )
