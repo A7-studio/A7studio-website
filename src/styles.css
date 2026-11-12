@@ -2503,12 +2503,12 @@ button {
 
 .work-illustration {
   position: absolute;
-  right: 0.75rem;
-  bottom: 1.5rem;
-  width: 50%;
+  right: 1.25rem;
+  bottom: 2.75rem;
+  width: 62%;
   height: auto;
   color: var(--color-accent);
-  opacity: 0.24;
+  opacity: 0.34;
   pointer-events: none;
 }
 
