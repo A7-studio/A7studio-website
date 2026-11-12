@@ -36,9 +36,6 @@ export function WorkShell({ children }: { children: ReactNode }) {
           </Link>
 
           <nav className="nav-links" aria-label="Main Navigation">
-            <a className="nav-link" href="/">
-              Home
-            </a>
             <Link className="nav-link" to="/work">
               Work
             </Link>
@@ -47,6 +44,12 @@ export function WorkShell({ children }: { children: ReactNode }) {
                 Lab
               </Link>
             )}
+            <a className="nav-link" href="/#experience">
+              Experience
+            </a>
+            <a className="nav-link" href="/#services">
+              Work with me
+            </a>
             <a className="nav-link" href="/#contact">
               Contact
             </a>
@@ -62,11 +65,8 @@ export function WorkShell({ children }: { children: ReactNode }) {
             >
               <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
             </button>
-            <a id="header-cv-btn" className="btn btn-outline btn-sm" href="/samuel-gichu-cv.pdf" download>
+            <a id="header-cv-btn" className="btn btn-primary btn-sm" href="/samuel-gichu-cv.pdf" download>
               Download CV <span aria-hidden="true">↓</span>
-            </a>
-            <a className="btn btn-primary btn-sm header-cta-btn" href="/#contact">
-              Hire me <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>
@@ -81,7 +81,7 @@ export function WorkShell({ children }: { children: ReactNode }) {
               A7<span className="brand-dot">.</span>Studio
             </span>
             <p className="footer-desc">
-              Samuel Gichu, Senior Software Engineer. Mobile, web and fintech.
+              Samuel Gichu, Senior Software Engineer. Mobile, web, fintech and AI.
             </p>
           </div>
           <div className="footer-right">

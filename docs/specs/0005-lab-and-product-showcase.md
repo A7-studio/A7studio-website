@@ -5,6 +5,8 @@
 
 > **Amended during build (2026-11-06)**: a `published` flag alone cannot keep text out of the client bundle, because the whole content file is bundled. A scratch test found a hidden entry's name inside a built JavaScript file. The gate is now structural: `src/content/lab.ts` holds only published entries and ships, while unpublished entries live in `src/content/lab.drafts.ts`, which no route may import. Publishing means moving an entry from `lab.drafts.ts` to `lab.ts`. The `published` field is removed, and `check:static` scans every built file, JavaScript included. Read AC-1, AC-2, AC-8 and the content model with this in mind.
 
+> **Amended by [0006](0006-portfolio-showcase-revamp.md)** (2026-11-12): jobmigo is published as the first entry, with its own page at `/jobmigo` (a new optional `path` field). Learning notes and a `repo` link are added.
+
 ## Summary
 
 This enhancement adds a Lab to A7Studio: a public build log at `/lab` with one page per product at `/lab/<slug>`. The first entry will be Career OS, the AI powered job assistant Samuel is building, but it stays off the site until he marks it published. Each entry tells what the product is and why, its stack and architecture, what Samuel is learning, and cleared screenshots. Later entries can carry confirmed revenue. The site stays a professional profile first and grows into a showcase of products and their stories. It amends spec 0004, which removed the lab and kept Career OS off the site.

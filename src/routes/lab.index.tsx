@@ -1,8 +1,8 @@
-import { Link, createFileRoute, notFound } from '@tanstack/react-router'
+import { createFileRoute, notFound } from '@tanstack/react-router'
 
 import { WorkShell } from '#/components/WorkShell'
 import { LabCover, LabNotFound } from '#/components/LabParts'
-import { formatLabDate, hasLab, latestDate, publishedEntries } from '#/content/lab'
+import { entryHref, formatLabDate, hasLab, latestDate, publishedEntries, sortedNotes } from '#/content/lab'
 import { SITE_URL } from '#/content/work'
 
 export const Route = createFileRoute('/lab/')({
@@ -30,20 +30,19 @@ function LabIndexPage() {
     <WorkShell>
       <section className="section-wrap section-spacing" aria-labelledby="lab-index-title">
         <div className="section-header">
-          <span className="section-tag">{publishedEntries.length} in the lab</span>
+          <span className="section-tag">{publishedEntries.length} {publishedEntries.length === 1 ? 'product' : 'products'}</span>
           <h1 id="lab-index-title" className="section-title">
             Lab.
           </h1>
           <p className="section-lead">
-            Products I am building and learning from, documented as they happen: what each is, how it is built, and what I
-            learned.
+            Products I am building, with the story behind each one, and short notes on what I am learning along the way.
           </p>
         </div>
 
         <ul className="work-tiles">
           {publishedEntries.map((entry) => (
             <li className="work-tile" key={entry.slug}>
-              <Link className="work-tile-link" to="/lab/$slug" params={{ slug: entry.slug }}>
+              <a className="work-tile-link" href={entryHref(entry)}>
                 <LabCover entry={entry} />
                 <div className="work-tile-body">
                   <span className="work-tile-meta">Updated {formatLabDate(latestDate(entry))}</span>
@@ -54,10 +53,37 @@ function LabIndexPage() {
                     Read the build log <span aria-hidden="true">→</span>
                   </span>
                 </div>
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
+
+        {sortedNotes.length > 0 && (
+          <div id="notes" className="lab-notes">
+            <div className="section-header">
+              <span className="section-tag">Notes</span>
+              <h2 className="section-title">What I am learning.</h2>
+              <p className="section-lead">Short dated notes on AI engineering, system design and backend work.</p>
+            </div>
+            <ol className="timeline">
+              {sortedNotes.map((note) => (
+                <li className="timeline-row" id={`note-${note.id}`} key={note.id}>
+                  <div className="timeline-when">
+                    {formatLabDate(note.date)}
+                    <br />
+                    <span className="work-status" style={{ marginTop: '0.5rem' }}>
+                      {note.topic}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="timeline-company">{note.title}</h3>
+                    <p className="timeline-title">{note.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
       </section>
     </WorkShell>
   )

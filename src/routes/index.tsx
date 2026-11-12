@@ -3,7 +3,9 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 
 import { WorkCover } from '#/components/WorkShell'
 import { employerStrip, experience } from '#/content/experience'
-import { formatLabDate, hasLab, latestDate, publishedEntries } from '#/content/lab'
+import { LabCover } from '#/components/LabParts'
+import { entryHref, formatLabDate, hasLab, latestDate, publishedEntries, sortedNotes } from '#/content/lab'
+import { hiring, offers } from '#/content/offers'
 import { featuredStories, workItems } from '#/content/work'
 
 const CV_HREF = '/samuel-gichu-cv.pdf'
@@ -12,17 +14,17 @@ const LINKEDIN = 'https://www.linkedin.com/in/samuel-gichu-a29695b9/'
 export const Route = createFileRoute('/')({
   head: () => ({
     meta: [
-      { title: 'A7Studio.dev — Samuel Gichu | Senior Software Engineer (Mobile & Fintech)' },
+      { title: 'A7Studio.dev — Samuel Gichu | Senior Software Engineer (Mobile, Fintech & AI)' },
       {
         name: 'description',
         content:
-          'Samuel Gichu is a Senior Software Engineer with 6+ years shipping mobile apps (Flutter), web products (React/TypeScript), and fintech payment systems. Available now for remote roles and contracts.',
+          'Samuel Gichu is a Senior Software Engineer with 6+ years shipping mobile apps (Flutter), web products (React/TypeScript), fintech payment systems, and now AI powered products. Available now for remote roles and contracts.',
       },
       { name: 'author', content: 'Samuel Gichu' },
       {
         name: 'keywords',
         content:
-          'Samuel Gichu, A7Studio, Senior Software Engineer, Flutter, React, TypeScript, NestJS, Mobile Engineer, Fintech, Payments, Stripe Connect, M-Pesa, Nairobi Kenya, Remote Engineer',
+          'Samuel Gichu, A7Studio, Senior Software Engineer, Flutter, React, TypeScript, NestJS, Mobile Engineer, Fintech, AI Products, Payments, Stripe Connect, M-Pesa, Nairobi Kenya, Remote Engineer',
       },
       { name: 'robots', content: 'index, follow' },
       { property: 'og:type', content: 'website' },
@@ -30,7 +32,7 @@ export const Route = createFileRoute('/')({
       { property: 'og:title', content: 'A7Studio.dev — Samuel Gichu | Senior Software Engineer' },
       {
         property: 'og:description',
-        content: 'Mobile, web and fintech engineer. Available now for remote roles and contracts.',
+        content: 'Mobile, web, fintech and AI engineer. Available now for remote roles and contracts.',
       },
       { property: 'og:url', content: 'https://a7studio.dev/' },
       { property: 'og:locale', content: 'en_US' },
@@ -39,10 +41,23 @@ export const Route = createFileRoute('/')({
       { name: 'twitter:title', content: 'A7Studio.dev — Samuel Gichu' },
       {
         name: 'twitter:description',
-        content: 'Senior Software Engineer with 6+ years across mobile (Flutter), web (React/TS) and fintech.',
+        content: 'Senior Software Engineer with 6+ years across mobile (Flutter), web (React/TS), fintech and AI powered products.',
       },
     ],
     links: [{ rel: 'canonical', href: 'https://a7studio.dev/' }],
+    scripts: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: 'Samuel Gichu',
+          jobTitle: 'Senior Software Engineer',
+          url: 'https://a7studio.dev/',
+          sameAs: [LINKEDIN],
+        }),
+      },
+    ],
   }),
   component: HomePage,
 })
@@ -50,16 +65,10 @@ export const Route = createFileRoute('/')({
 const inquiryTopics = [
   { id: 'role', label: '💼 Full-Time Role', subject: 'Senior%20Software%20Engineer%20Role' },
   { id: 'contract', label: '🤝 Contract Engagement', subject: 'Contract%20Engagement%20Inquiry' },
+  { id: 'freelance', label: '🛠️ Freelance Project', subject: 'Freelance%20Project%20Inquiry' },
   { id: 'other', label: '💬 Something Else', subject: 'Hello%20Samuel' },
 ]
 
-const navItems = [
-  { href: '#work', label: 'Work' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#lab', label: 'Lab' },
-  { href: '#now', label: 'Now' },
-  { href: '#contact', label: 'Contact' },
-]
 
 function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -111,23 +120,23 @@ function HomePage() {
           </a>
 
           <nav className="nav-links" aria-label="Main Navigation">
-            {navItems.map((item) =>
-              item.href === '#work' ? (
-                <Link key={item.href} className="nav-link" to="/work">
-                  Work
-                </Link>
-              ) : item.href === '#lab' ? (
-                hasLab ? (
-                  <a key={item.href} className="nav-link" href="#lab">
-                    Lab
-                  </a>
-                ) : null
-              ) : (
-                <a key={item.href} className="nav-link" href={item.href}>
-                  {item.label}
-                </a>
-              ),
+            <Link className="nav-link" to="/work">
+              Work
+            </Link>
+            {hasLab && (
+              <Link className="nav-link" to="/lab">
+                Lab
+              </Link>
             )}
+            <a className="nav-link" href="#experience">
+              Experience
+            </a>
+            <a className="nav-link" href="#services">
+              Work with me
+            </a>
+            <a className="nav-link" href="#contact">
+              Contact
+            </a>
           </nav>
 
           <div className="header-actions">
@@ -150,11 +159,8 @@ function HomePage() {
                 </svg>
               )}
             </button>
-            <a id="header-cv-btn" className="btn btn-outline btn-sm" href={CV_HREF} download>
+            <a id="header-cv-btn" className="btn btn-primary btn-sm" href={CV_HREF} download>
               Download CV <span aria-hidden="true">↓</span>
-            </a>
-            <a id="header-connect-btn" className="btn btn-primary btn-sm header-cta-btn" href="#contact">
-              Hire me <span aria-hidden="true">→</span>
             </a>
             <button
               type="button"
@@ -198,21 +204,21 @@ function HomePage() {
               Work <span>→</span>
             </Link>
           </li>
+          {hasLab && (
+            <li>
+              <Link to="/lab" onClick={() => setMenuOpen(false)}>
+                Lab <span>→</span>
+              </Link>
+            </li>
+          )}
           <li>
             <a href="#experience" onClick={() => setMenuOpen(false)}>
               Experience <span>→</span>
             </a>
           </li>
-          {hasLab && (
-            <li>
-              <a href="#lab" onClick={() => setMenuOpen(false)}>
-                Lab <span>→</span>
-              </a>
-            </li>
-          )}
           <li>
-            <a href="#now" onClick={() => setMenuOpen(false)}>
-              Now <span>→</span>
+            <a href="#services" onClick={() => setMenuOpen(false)}>
+              Work with me <span>→</span>
             </a>
           </li>
           <li>
@@ -258,21 +264,22 @@ function HomePage() {
                 </div>
 
                 <h1 id="hero-title" className="hero-title">
-                  Senior Software Engineer building <span className="text-accent">mobile</span>, <span>web</span> &amp;{' '}
-                  <span className="text-accent">fintech</span> products.
+                  Senior Software Engineer building <span className="text-accent">mobile</span>,{' '}
+                  <span className="text-accent">fintech</span> &amp; <span className="text-accent">AI</span> products.
                 </h1>
 
                 <p className="hero-subhead">
-                  I'm Samuel Gichu. Over 6 years I have shipped mobile apps with Flutter, web products with React and
-                  TypeScript, and payments and ledger systems on NestJS and Stripe. I own features from design to release.
+                  I'm Samuel Gichu. Over 6 years I have shipped Flutter apps, React and TypeScript products, and payments
+                  systems on NestJS and Stripe. Now I am building AI powered products, starting with jobmigo. A7Studio is
+                  where I show it all.
                 </p>
 
                 <div className="hero-actions">
                   <a id="hero-cv-btn" className="btn btn-primary" href={CV_HREF} download>
                     Download CV <span aria-hidden="true">↓</span>
                   </a>
-                  <a id="hero-cta-contact" className="btn btn-outline" href="#contact">
-                    Contact me <span aria-hidden="true">→</span>
+                  <a id="hero-cta-contact" className="btn btn-outline" href="#services">
+                    Work with me <span aria-hidden="true">→</span>
                   </a>
                   <Link id="hero-explore-btn" className="btn btn-ghost" to="/work">
                     See my work <span aria-hidden="true">→</span>
@@ -284,6 +291,7 @@ function HomePage() {
                   <span className="tech-pill">React &amp; TypeScript</span>
                   <span className="tech-pill">Node.js &amp; NestJS</span>
                   <span className="tech-pill">Payments &amp; Ledgers</span>
+                  <span className="tech-pill">AI powered products</span>
                   <span className="tech-pill">Nairobi, KE ➔ Remote</span>
                 </div>
               </div>
@@ -302,8 +310,8 @@ function HomePage() {
                   <span className="hero-stat-label">React and TypeScript products</span>
                 </div>
                 <div className="hero-stat-card">
-                  <span className="hero-stat-value">Fintech</span>
-                  <span className="hero-stat-label">Payments and ledger systems</span>
+                  <span className="hero-stat-value">Fintech &amp; AI</span>
+                  <span className="hero-stat-label">Payments, ledgers and AI powered products</span>
                 </div>
               </div>
             </div>
@@ -365,7 +373,43 @@ function HomePage() {
           </p>
         </section>
 
-        {/* 4. EXPERIENCE TIMELINE */}
+        {/* 4. PRODUCTS (spec 0006) */}
+        {hasLab && (
+          <section id="products" className="section-wrap section-spacing" aria-labelledby="products-title">
+            <div className="section-header">
+              <span className="section-tag">Products</span>
+              <h2 id="products-title" className="section-title">
+                What I am building.
+              </h2>
+              <p className="section-lead">AI powered products I design and build myself, with an honest status on each.</p>
+            </div>
+            <ul className="work-tiles work-teaser-grid">
+              {publishedEntries.slice(0, 3).map((entry) => (
+                <li className="work-tile" key={entry.slug}>
+                  <a className="work-tile-link" href={entryHref(entry)}>
+                    <LabCover entry={entry} />
+                    <div className="work-tile-body">
+                      <span className="work-tile-meta">Updated {formatLabDate(latestDate(entry))}</span>
+                      <span className="work-status">{entry.status}</span>
+                      <h3 className="work-title">{entry.name}</h3>
+                      <p className="work-headline">{entry.tagline}</p>
+                      <span className="work-link">
+                        Read the story <span aria-hidden="true">→</span>
+                      </span>
+                    </div>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p className="work-teaser-more">
+              <Link className="btn btn-outline" to="/lab">
+                See the lab <span aria-hidden="true">→</span>
+              </Link>
+            </p>
+          </section>
+        )}
+
+        {/* 5. EXPERIENCE TIMELINE */}
         <section id="experience" className="section-wrap section-spacing" aria-labelledby="experience-title">
           <div className="section-header">
             <span className="section-tag">Experience</span>
@@ -413,57 +457,22 @@ function HomePage() {
           </ol>
         </section>
 
-        {/* LAB TEASER: rendered only when an entry is published (spec 0005) */}
-        {hasLab && (
-          <section id="lab" className="section-wrap section-spacing" aria-labelledby="lab-title">
-            <div className="section-header">
-              <span className="section-tag">Lab</span>
-              <h2 id="lab-title" className="section-title">
-                What I am building.
-              </h2>
-              <p className="section-lead">Products I am building and learning from, documented as they happen.</p>
-            </div>
-            <ul className="work-tiles work-teaser-grid">
-              {publishedEntries.slice(0, 3).map((entry) => (
-                <li className="work-tile" key={entry.slug}>
-                  <Link className="work-tile-link" to="/lab/$slug" params={{ slug: entry.slug }}>
-                    <div className="work-tile-body">
-                      <span className="work-tile-meta">Updated {formatLabDate(latestDate(entry))}</span>
-                      <span className="work-status">{entry.status}</span>
-                      <h3 className="work-title">{entry.name}</h3>
-                      <p className="work-headline">{entry.tagline}</p>
-                      <span className="work-link">
-                        Read the build log <span aria-hidden="true">→</span>
-                      </span>
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <p className="work-teaser-more">
-              <Link className="btn btn-outline" to="/lab">
-                See the lab <span aria-hidden="true">→</span>
-              </Link>
-            </p>
-          </section>
-        )}
-
-        {/* 5. NOW */}
-        <section id="now" className="section-wrap section-spacing" aria-labelledby="now-title">
+        {/* 6. LEARNING (replaces Now, spec 0006) */}
+        <section id="learning" className="section-wrap section-spacing" aria-labelledby="learning-title">
           <div className="section-header">
-            <span className="section-tag">Now</span>
-            <h2 id="now-title" className="section-title">
-              Job hunting and sharpening the saw.
+            <span className="section-tag">Learning</span>
+            <h2 id="learning-title" className="section-title">
+              What I am learning.
             </h2>
             <p className="section-lead">
-              I am applying for senior roles and using the time to sharpen fundamentals.
+              I am applying for senior roles while I build jobmigo and sharpen the fundamentals.
             </p>
           </div>
 
-          <div className="now-grid">
+          <div className="now-grid now-grid-three">
             <div className="now-card">
-              <h3>Interviews and applications</h3>
-              <p>Applying for senior mobile, full stack and fintech roles, mostly remote.</p>
+              <h3>AI engineering</h3>
+              <p>Building jobmigo to learn how to design, ship and run an AI powered product end to end, and using AI tools in my daily work.</p>
             </div>
             <div className="now-card">
               <h3>System design, data structures and algorithms</h3>
@@ -471,33 +480,76 @@ function HomePage() {
             </div>
             <div className="now-card">
               <h3>Backend and Odoo</h3>
-              <p>Refreshing backend skills, and starting Odoo training on 11 November 2026.</p>
+              <p>Refreshing backend skills, and Odoo training, which started on 11 November 2026.</p>
             </div>
           </div>
 
-          <p className="now-paused">
-            Paused while I focus on this: Kakitoo and Good Call, my own product projects.
-          </p>
+          {sortedNotes.length > 0 && (
+            <div className="learning-notes">
+              <h3 className="learning-notes-title">Latest notes</h3>
+              <ul className="learning-notes-list">
+                {sortedNotes.slice(0, 3).map((note) => (
+                  <li key={note.id}>
+                    <a href={`/lab#note-${note.id}`}>
+                      <span className="learning-note-date">{formatLabDate(note.date)}</span>
+                      <span className="learning-note-title">{note.title}</span>
+                      <span className="work-status">{note.topic}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <p className="work-teaser-more">
+                <a className="btn btn-outline" href="/lab#notes">
+                  All notes <span aria-hidden="true">→</span>
+                </a>
+              </p>
+            </div>
+          )}
+
+          <p className="now-paused">Paused while I focus on this: Kakitoo and Good Call, my own product projects.</p>
         </section>
 
-        {/* 6. WORK WITH ME */}
+        {/* 7. WORK WITH ME (spec 0006) */}
         <section id="services" className="section-wrap section-spacing" aria-labelledby="services-title">
           <div className="section-header">
             <span className="section-tag">Work with me</span>
             <h2 id="services-title" className="section-title">
-              Two ways to work together.
+              Hire me, or hire me to build.
             </h2>
+            <p className="section-lead">
+              Each offer links to work I have shipped. I will scope and quote after we talk.
+            </p>
           </div>
-          <div className="now-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(16rem, 1fr))' }}>
-            <div className="now-card">
-              <h3>Full-time remote role</h3>
-              <p>Senior mobile, full stack or fintech engineer on a distributed team.</p>
-            </div>
-            <div className="now-card">
-              <h3>Contract engagement</h3>
-              <p>Payments, ledger and mobile app work for a defined scope, delivered end to end.</p>
-            </div>
+
+          <div className="now-card offer-hiring">
+            <h3>{hiring.title}</h3>
+            <p>{hiring.body}</p>
+            <a className="btn btn-primary btn-sm" href="#contact">
+              Talk about a role <span aria-hidden="true">→</span>
+            </a>
           </div>
+
+          <ul className="offer-grid">
+            {offers.map((offer) => (
+              <li className="now-card offer-card" key={offer.id}>
+                <h3>
+                  {offer.title}
+                  {offer.label && <span className="work-status offer-label">{offer.label}</span>}
+                </h3>
+                {offer.lines.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+                <p className="offer-proof">
+                  <span className="offer-proof-label">Proof</span>
+                  {offer.proof.map((item) => (
+                    <a key={item.href} href={item.href}>
+                      {item.label}
+                    </a>
+                  ))}
+                </p>
+              </li>
+            ))}
+          </ul>
         </section>
 
         {/* 7. CONTACT */}
@@ -505,9 +557,9 @@ function HomePage() {
           <div className="contact-container">
             <div className="contact-info">
               <div className="section-tag">Contact</div>
-              <h2 id="contact-title">Let’s talk about the role.</h2>
+              <h2 id="contact-title">Let’s talk.</h2>
               <p>
-                Recruiters and hiring teams can reach me directly. Choose a topic to open a prepared email, or message me on
+                Hiring teams and people with a project can reach me directly. Choose a topic to open a prepared email, or message me on
                 LinkedIn or WhatsApp.
               </p>
               <div className="contact-availability">
@@ -595,7 +647,7 @@ function HomePage() {
             <span className="brand-mark">
               A7<span className="brand-dot">.</span>Studio
             </span>
-            <p className="footer-desc">Samuel Gichu, Senior Software Engineer. Mobile, web and fintech.</p>
+            <p className="footer-desc">Samuel Gichu, Senior Software Engineer. Mobile, web, fintech and AI.</p>
           </div>
 
           <div className="footer-right">

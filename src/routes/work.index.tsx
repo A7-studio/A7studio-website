@@ -12,7 +12,7 @@ export const Route = createFileRoute('/work/')({
       {
         name: 'description',
         content:
-          'Selected mobile, frontend, and fintech products Samuel Gichu has built, with the story behind each one.',
+          'Selected mobile, frontend, fintech and AI products Samuel Gichu has built, with the story behind each one.',
       },
     ],
     links: [{ rel: 'canonical', href: `${SITE_URL}/work` }],
@@ -63,7 +63,7 @@ function WorkIndexPage() {
             Work.
           </h1>
           <p className="section-lead">
-            Mobile, web, and fintech products I have built, with the story behind each one. Open a project to see what the
+            Mobile, web, fintech and AI products I have built, with the story behind each one. Open a project to see what the
             problem was, what I owned, and how it was built.
           </p>
         </div>

@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as JobmigoRouteImport } from './routes/jobmigo'
 import { Route as LabIndexRouteImport } from './routes/lab.index'
 import { Route as LabSlugRouteImport } from './routes/lab.$slug'
 import { Route as WorkIndexRouteImport } from './routes/work.index'
@@ -18,6 +19,11 @@ import { Route as WorkSlugRouteImport } from './routes/work.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JobmigoRoute = JobmigoRouteImport.update({
+  id: '/jobmigo',
+  path: '/jobmigo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LabIndexRoute = LabIndexRouteImport.update({
@@ -43,6 +49,7 @@ const WorkSlugRoute = WorkSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/jobmigo': typeof JobmigoRoute
   '/lab/$slug': typeof LabSlugRoute
   '/work/$slug': typeof WorkSlugRoute
   '/lab/': typeof LabIndexRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/jobmigo': typeof JobmigoRoute
   '/lab/$slug': typeof LabSlugRoute
   '/work/$slug': typeof WorkSlugRoute
   '/lab': typeof LabIndexRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/jobmigo': typeof JobmigoRoute
   '/lab/$slug': typeof LabSlugRoute
   '/work/$slug': typeof WorkSlugRoute
   '/lab/': typeof LabIndexRoute
@@ -65,14 +74,23 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/lab/$slug' | '/work/$slug' | '/lab/' | '/work/'
+  fullPaths:
+    '/' | '/jobmigo' | '/lab/$slug' | '/work/$slug' | '/lab/' | '/work/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/lab/$slug' | '/work/$slug' | '/lab' | '/work'
-  id: '__root__' | '/' | '/lab/$slug' | '/work/$slug' | '/lab/' | '/work/'
+  to: '/' | '/jobmigo' | '/lab/$slug' | '/work/$slug' | '/lab' | '/work'
+  id:
+    | '__root__'
+    | '/'
+    | '/jobmigo'
+    | '/lab/$slug'
+    | '/work/$slug'
+    | '/lab/'
+    | '/work/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  JobmigoRoute: typeof JobmigoRoute
   LabSlugRoute: typeof LabSlugRoute
   WorkSlugRoute: typeof WorkSlugRoute
   LabIndexRoute: typeof LabIndexRoute
@@ -86,6 +104,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jobmigo': {
+      id: '/jobmigo'
+      path: '/jobmigo'
+      fullPath: '/jobmigo'
+      preLoaderRoute: typeof JobmigoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lab/': {
@@ -121,6 +146,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  JobmigoRoute: JobmigoRoute,
   LabSlugRoute: LabSlugRoute,
   WorkSlugRoute: WorkSlugRoute,
   LabIndexRoute: LabIndexRoute,
