@@ -75,6 +75,13 @@ export const entries: LabEntry[] = [
     tags: ['AI', 'Job search', 'TanStack Start', 'FastAPI', 'PostgreSQL'],
     path: '/jobmigo',
     repo: 'https://github.com/A7-studio/jobmigo',
+    screensCleared: true,
+    cover: {
+      src: '/lab/jobmigo/home.webp',
+      alt: 'The jobmigo home page: the headline "Skip the ghost pipeline. Apply with your best case." beside a labelled sample job check showing live posting, salary, fit and a gap.',
+      width: 1440,
+      height: 900,
+    },
     why: {
       headline: 'Applying is the bottleneck, not searching.',
       body: 'Hiring software screens CVs before a person reads them, popular roles bury generic applications, and many postings are stale or never real. Searching, tailoring and tracking also live in separate tools. jobmigo aims to tell you which few verified jobs are worth your time, why, and to prepare an application you can stand behind. It proposes and you decide. It never fabricates: generated documents reuse only facts you have confirmed, and a job\'s fit is a band with evidence, not a percentage.',
