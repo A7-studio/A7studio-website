@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, createFileRoute } from '@tanstack/react-router'
 
 import { WorkCover, WorkShell } from '#/components/WorkShell'
-import { SITE_URL, categoryFilters, workItems } from '#/content/work'
+import { SITE_URL, categoryFilters, throughFilters, workItems } from '#/content/work'
 import type { ProjectCategory, WorkItem } from '#/content/work'
 
 export const Route = createFileRoute('/work/')({
@@ -51,8 +51,12 @@ function WorkCardBody({ item }: { item: WorkItem }) {
 
 function WorkIndexPage() {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>('all')
-  const items =
-    activeCategory === 'all' ? workItems : workItems.filter((item) => item.category.includes(activeCategory))
+  const [activeCompany, setActiveCompany] = useState<string>('all')
+  const items = workItems.filter(
+    (item) =>
+      (activeCategory === 'all' || item.category.includes(activeCategory)) &&
+      (activeCompany === 'all' || item.through === activeCompany),
+  )
 
   return (
     <WorkShell>
@@ -81,6 +85,22 @@ function WorkIndexPage() {
             </button>
           ))}
         </div>
+
+        <div className="filter-tabs" role="group" aria-label="Filter projects by company">
+          {['all', ...throughFilters].map((company) => (
+            <button
+              key={company}
+              type="button"
+              className={`filter-tab${activeCompany === company ? ' is-active' : ''}`}
+              onClick={() => setActiveCompany(company)}
+              aria-pressed={activeCompany === company}
+            >
+              {company === 'all' ? 'All companies' : company}
+            </button>
+          ))}
+        </div>
+
+        {items.length === 0 && <p className="section-lead">No projects match these filters.</p>}
 
         <ul className="work-tiles">
           {items.map((item) => (

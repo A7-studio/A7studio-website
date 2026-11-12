@@ -40,6 +40,8 @@ export interface WorkItem {
   year?: string
   /** One honest label: Employer work, Live, Company closed, Side product (paused). */
   status?: string
+  /** The company the work was done through (employer or agency). Drives the company filter. */
+  through?: string
   /** Short name shown on typographic covers. */
   shortName?: string
   story?: Story
@@ -114,12 +116,12 @@ export const projects: WorkItem[] = [
     status: 'Live',
     index: '05',
     projectTitle: 'Liquor Delivery E-commerce Platform',
-    clientContext: 'Chupachap · Launched 2020 · Nairobi, Kenya',
+    clientContext: 'Built through mb96 · for Chupachap, Nairobi',
     impactBadge: 'Mobile Product Engineering',
     category: ['mobile'],
     headline: 'A WooCommerce commerce platform for fast liquor delivery in Nairobi.',
     description:
-      'Built the complete e-commerce solution with WooCommerce integration, a 500+ item product catalog, responsive mobile shopping experience, and payment gateway checkout. The platform is live and serving Nairobi customers through Chupa Chap’s fast delivery service.',
+      'Helped build the e-commerce solution with WooCommerce integration, a 500+ item product catalog, responsive mobile shopping experience, and payment gateway checkout. The platform is live and serving Nairobi customers through Chupa Chap’s fast delivery service.',
     tags: ['Flutter', 'React', 'React Native', 'WordPress', 'WooCommerce', 'Node.js', 'REST APIs', 'MongoDB'],
     url: 'https://chupachap.co.ke',
   },
@@ -128,7 +130,7 @@ export const projects: WorkItem[] = [
     status: 'Employer work',
     index: '06',
     projectTitle: 'T-Kash Mobile Payments App',
-    clientContext: 'Built with mb96 for Telkom Kenya',
+    clientContext: 'Built through mb96 · for Telkom Kenya',
     impactBadge: 'Mobile Product Engineering',
     category: ['mobile'],
     headline: 'A mobile payments app for Telkom Kenya customers.',
@@ -142,7 +144,7 @@ export const projects: WorkItem[] = [
     status: 'Employer work',
     index: '07',
     projectTitle: 'Giraffe Spotter & Client Applications',
-    clientContext: 'Shipped for SYNTAX Ltd · US & UK Clients',
+    clientContext: 'Built through SYNTAX · for the Giraffe Conservation Foundation',
     impactBadge: 'Product Engineering',
     category: ['mobile', 'frontend'],
     headline: 'An AI assisted citizen science app for giraffe research and conservation.',
@@ -152,18 +154,32 @@ export const projects: WorkItem[] = [
     url: 'https://synt.ax/',
   },
   {
-    id: 'mb96',
+    id: 'fuelingbrains',
     status: 'Employer work',
     index: '08',
-    projectTitle: 'Commerce Products & UI Systems',
-    clientContext: 'Shipped for mb96 Ltd · Kenya, Canada & US Clients',
-    impactBadge: 'Mobile & Web Product Engineering',
-    category: ['mobile', 'frontend'],
-    headline: 'Cross platform applications and reusable UI systems for international clients.',
+    projectTitle: 'Early Childhood Education Platform',
+    clientContext: 'Built through mb96 · for Fueling Brains',
+    impactBadge: 'Web Product Engineering',
+    category: ['frontend'],
+    headline: 'A learning platform for early childhood education.',
     description:
-      'Built mobile and web applications for clients in Kenya, Canada, and the US, with reusable UI components, design systems, microservice integrations, and REST APIs. Worked across Agile delivery cycles to turn product requirements into reliable client applications.',
-    tags: ['Flutter', 'React', 'React Native', 'WordPress', 'WooCommerce', 'REST APIs', 'Node.js'],
-    url: 'https://www.linkedin.com/in/samuel-gichu-a29695b9/',
+      'Part of the team at mb96 that built web products for Fueling Brains, an early childhood education company with a learning system, school solutions, and tools for educators and parents.',
+    tags: ['Web'],
+    url: 'https://www.fuelingbrains.com/',
+  },
+  {
+    id: 'missingvoices',
+    status: 'Employer work',
+    index: '09',
+    projectTitle: 'Human Rights Reporting Platform',
+    clientContext: 'Built through mb96 · for Missing Voices, Kenya',
+    impactBadge: 'Web Product Engineering',
+    category: ['frontend'],
+    headline: 'A public record of police killings and enforced disappearances in Kenya.',
+    description:
+      'Part of the team at mb96 that built the Missing Voices website, which documents extrajudicial killings and enforced disappearances, publishes news and statistics, and lets people report an incident, sign petitions, and follow trials.',
+    tags: ['Web'],
+    url: 'https://missingvoices.or.ke/',
   },
 ]
 
@@ -271,7 +287,7 @@ stories.chupachap = {
   },
   myPart: {
     headline: 'The whole shopping experience.',
-    body: 'I built the complete e-commerce solution: a responsive mobile shopping experience and a payment gateway checkout.',
+    body: 'I helped build the e-commerce solution at mb96: a responsive mobile shopping experience and a payment gateway checkout.',
   },
   build: {
     headline: 'WooCommerce at the core.',
@@ -288,6 +304,18 @@ const storyByProject: Record<string, string> = {
   chupachap: 'chupachap',
 }
 
+const throughByProject: Record<string, string> = {
+  boya: 'Boya',
+  beatbnk: 'BeatBnk',
+  alvin: 'Alvin Technologies',
+  kakitoo: 'Kakitoo',
+  chupachap: 'mb96',
+  telkom: 'mb96',
+  fuelingbrains: 'mb96',
+  missingvoices: 'mb96',
+  syntax: 'SYNTAX',
+}
+
 const shortNames: Record<string, string> = {
   boya: 'Boya',
   beatbnk: 'BeatBnk',
@@ -296,14 +324,18 @@ const shortNames: Record<string, string> = {
   chupachap: 'Chupachap',
   telkom: 'T-Kash',
   syntax: 'Giraffe Spotter',
-  mb96: 'mb96',
+  fuelingbrains: 'Fueling Brains',
+  missingvoices: 'Missing Voices',
 }
 
 export const workItems: WorkItem[] = projects.map((project) => {
   const storyKey = storyByProject[project.id]
-  const withName = { ...project, shortName: shortNames[project.id] }
+  const withName = { ...project, shortName: shortNames[project.id], through: throughByProject[project.id] }
   return storyKey ? { ...withName, story: stories[storyKey] } : withName
 })
+
+/** Companies the work was done through, in the order they first appear. */
+export const throughFilters = [...new Set(projects.map((project) => throughByProject[project.id]))]
 
 export const storyItems = workItems.filter((item) => item.story)
 export const storySlugs = storyItems.map((item) => item.id)

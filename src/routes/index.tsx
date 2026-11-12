@@ -7,6 +7,7 @@ import { LabCover } from '#/components/LabParts'
 import { entryHref, formatLabDate, hasLab, latestDate, publishedEntries, sortedNotes } from '#/content/lab'
 import { hiring, offers } from '#/content/offers'
 import { featuredStories, workItems } from '#/content/work'
+import type { WorkItem } from '#/content/work'
 
 const CV_HREF = '/samuel-gichu-cv.pdf'
 const LINKEDIN = 'https://www.linkedin.com/in/samuel-gichu-a29695b9/'
@@ -451,6 +452,23 @@ function HomePage() {
                       <li key={line}>{line}</li>
                     ))}
                   </ul>
+                  {role.workIds && role.workIds.length > 0 && (
+                    <p className="offer-proof">
+                      <span className="offer-proof-label">Projects</span>
+                      {role.workIds
+                        .map((id) => workItems.find((item) => item.id === id))
+                        .filter((item): item is WorkItem => Boolean(item))
+                        .map((item) => (
+                          <a
+                            key={item.id}
+                            href={item.story ? `/work/${item.id}` : item.url}
+                            {...(item.story ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
+                          >
+                            {item.shortName ?? item.projectTitle}
+                          </a>
+                        ))}
+                    </p>
+                  )}
                 </div>
               </li>
             ))}
