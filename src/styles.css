@@ -45,7 +45,7 @@
     --header-bg: rgba(255, 255, 255, 0.85);
     --header-border: rgba(226, 232, 240, 0.85);
 
-    --color-accent: #059669;
+    --color-accent: #047857;
     --color-accent-dim: rgba(5, 150, 105, 0.08);
     --color-accent-glow: rgba(5, 150, 105, 0.15);
     --color-on-accent: #ffffff;
@@ -53,7 +53,7 @@
     --color-ink: #0f172a;
     --color-text: #1e293b;
     --color-muted: #475569;
-    --color-dim: #94a3b8;
+    --color-dim: #64748b;
 
     --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.08);
     --shadow-glow: 0 0 30px rgba(5, 150, 105, 0.08);
@@ -73,7 +73,7 @@
   --header-bg: rgba(255, 255, 255, 0.85);
   --header-border: rgba(226, 232, 240, 0.85);
 
-  --color-accent: #059669;
+  --color-accent: #047857;
   --color-accent-dim: rgba(5, 150, 105, 0.08);
   --color-accent-glow: rgba(5, 150, 105, 0.15);
   --color-on-accent: #ffffff;
@@ -81,7 +81,7 @@
   --color-ink: #0f172a;
   --color-text: #1e293b;
   --color-muted: #475569;
-  --color-dim: #94a3b8;
+  --color-dim: #64748b;
 
   --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.08);
   --shadow-glow: 0 0 30px rgba(5, 150, 105, 0.08);
