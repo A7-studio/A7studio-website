@@ -201,8 +201,14 @@ const stories: Record<string, Story> = {
     },
   },
   kakitoo: {
-    screensCleared: false,
+    screensCleared: true,
     role: 'Lead Mobile Engineer',
+    cover: {
+      src: '/work/kakitoo/welcome.webp',
+      alt: 'The Kakitoo welcome page, showing how to dial *835*77# to tip with M-Pesa and the first step of getting a KAKITOO ID.',
+      width: 1280,
+      height: 800,
+    },
     brief: {
       headline: 'Blue collar workers needed a safe way to be tipped.',
       body: 'Kakitoo is a tipping platform for blue collar workers in East Africa. The aim is to help people boost their income securely and anonymously, whether or not the tipper has a smartphone.',

@@ -5,6 +5,7 @@ import { Link } from '@tanstack/react-router'
 import type { StoryImage, WorkItem } from '#/content/work'
 import { visibleImage } from '#/content/work'
 import { hasLab } from '#/content/lab'
+import { WorkIllustration } from '#/components/WorkIllustration'
 
 export function WorkShell({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
@@ -113,11 +114,12 @@ export function WorkCover({ item, image, priority = false }: { item: WorkItem; i
   }
   return (
     <div className="work-cover work-cover-type" aria-hidden="true">
+      <WorkIllustration category={item.category} />
       <div className="work-cover-top">
         <span className="work-cover-pill">{item.shortName ?? item.projectTitle}</span>
         <span className="work-cover-mark">{item.projectTitle}</span>
       </div>
-      <span className="work-cover-cat">{item.category.join(' · ')}</span>
+      <span className="work-cover-cat">{item.category.join(' · ')} · Illustration</span>
     </div>
   )
 }

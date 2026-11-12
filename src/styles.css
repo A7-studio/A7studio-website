@@ -2497,6 +2497,27 @@ button {
     var(--color-surface-raised);
 }
 
+.work-cover-type {
+  position: relative;
+}
+
+.work-illustration {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 1.5rem;
+  width: 50%;
+  height: auto;
+  color: var(--color-accent);
+  opacity: 0.24;
+  pointer-events: none;
+}
+
+.work-cover-top,
+.work-cover-cat {
+  position: relative;
+  z-index: 1;
+}
+
 .work-cover-top {
   display: flex;
   flex-direction: column;
