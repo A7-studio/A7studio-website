@@ -172,7 +172,7 @@ for (const entry of labModule.entries) {
   assert.ok(sitemap.includes(`<loc>https://a7studio.dev${href}<`), `Sitemap is missing ${href}`)
   if (entry.path) {
     // One page per product (AC-5): no second page under /lab
-    assert.ok(!existsSync(new URL(`../dist/client/lab/${entry.slug}`, import.meta.url)), `${entry.slug} has a duplicate page under /lab`)
+    assert.ok(!existsSync(new URL(`../dist/client/lab/${entry.slug}/index.html`, import.meta.url)), `${entry.slug} has a duplicate page under /lab`)
     assert.ok(!labIndexHtml.includes(`href="/lab/${entry.slug}"`), `Lab index links to /lab/${entry.slug}`)
   }
   if (entry.revenue) {
