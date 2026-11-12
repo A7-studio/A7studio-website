@@ -12,6 +12,8 @@ export interface Experience {
   note?: string
   summary: string[]
   url?: string
+  /** Ids of projects in `work.ts` that were done in this role. */
+  workIds?: string[]
 }
 
 /** Source: CV dated 2026-11-01 plus facts Samuel supplied. No performance figures. */
@@ -30,6 +32,7 @@ export const experience: Experience[] = [
       'Built payments and operations dashboards in React and Vue.js on NestJS APIs.',
     ],
     url: 'https://www.boyahq.com/',
+    workIds: ['boya'],
   },
   {
     id: 'beatbnk',
@@ -58,6 +61,7 @@ export const experience: Experience[] = [
       'Built React and Vue.js dashboards on NestJS APIs, with automated testing and CI/CD.',
     ],
     url: 'https://alvin.finance/',
+    workIds: ['alvin'],
   },
   {
     id: 'kakitoo',
@@ -72,6 +76,7 @@ export const experience: Experience[] = [
       'Designed mobile-first experiences for low-connectivity users and owned app-store releases.',
     ],
     url: 'https://kakitoo.com',
+    workIds: ['kakitoo'],
   },
   {
     id: 'syntax',
@@ -85,6 +90,7 @@ export const experience: Experience[] = [
       'Built reusable component libraries and fixed production issues.',
     ],
     url: 'https://synt.ax/',
+    workIds: ['syntax'],
   },
   {
     id: 'mb96',
@@ -95,8 +101,9 @@ export const experience: Experience[] = [
     kind: 'employer',
     summary: [
       'Shipped cross-platform mobile and web products for clients in Kenya, Canada and the US, with Flutter, React and React Native.',
-      'Shipped T-Kash, Fueling Brains, Missing Voices and Chupachap.',
+      'Helped build T-Kash, Fueling Brains, Missing Voices and Chupachap.',
     ],
+    workIds: ['telkom', 'chupachap', 'fuelingbrains', 'missingvoices'],
   },
   {
     id: 'gavtech',
