@@ -2,9 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://a7studio.dev/</loc></url>
   <url><loc>https://a7studio.dev/work</loc></url>
+  <url><loc>https://a7studio.dev/lab</loc></url>
+  <url><loc>https://a7studio.dev/jobmigo</loc></url>
   <url><loc>https://a7studio.dev/work/boya</loc></url>
   <url><loc>https://a7studio.dev/work/alvin</loc></url>
   <url><loc>https://a7studio.dev/work/kakitoo</loc></url>
   <url><loc>https://a7studio.dev/work/telkom</loc></url>
   <url><loc>https://a7studio.dev/work/syntax</loc></url>
+  <url><loc>https://a7studio.dev/work/chupachap</loc></url>
 </urlset>

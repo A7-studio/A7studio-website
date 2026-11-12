@@ -2835,3 +2835,153 @@ button {
     margin-bottom: 1.75rem;
   }
 }
+
+
+/* PORTFOLIO SHOWCASE REVAMP (spec 0006) */
+.now-grid-three {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .now-grid-three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.offer-hiring {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.offer-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .offer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.offer-card h3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.offer-label {
+  margin: 0;
+}
+
+.offer-proof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-top: 1rem;
+}
+
+.offer-proof-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.offer-proof a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.learning-notes {
+  margin-top: 2rem;
+}
+
+.learning-notes-title {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.learning-notes-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.learning-notes-list a {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  min-height: 44px;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.learning-note-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.learning-note-title {
+  color: var(--color-ink);
+}
+
+.lab-notes {
+  margin-top: 4rem;
+}
+
+/* Touch targets: at least 44 by 44 pixels on phone widths (spec 0006, AC-12) */
+@media (max-width: 767px) {
+  .btn-icon,
+  .menu-toggle {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .brand,
+  .story-back,
+  .footer-right a,
+  .filter-tab,
+  .timeline-company a,
+  .work-visit,
+  .work-link,
+  .btn-sm {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .mobile-nav-links a,
+  .inquiry-pill,
+  .copy-btn,
+  .social-link {
+    min-height: 44px;
+  }
+
+  .email-address,
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .email-address {
+    min-height: 44px;
+  }
+}

@@ -250,12 +250,36 @@ const stories: Record<string, Story> = {
   },
 }
 
+stories.chupachap = {
+  screensCleared: true,
+  role: 'Software Engineer, mobile and web',
+  cover: {
+    src: '/work/chupachap/home.webp',
+    alt: 'The Chupachap home page, with the category menu, search, and a promotional banner.',
+    width: 1280,
+    height: 800,
+  },
+  brief: {
+    headline: 'Nairobi needed liquor delivered fast.',
+    body: 'Chupa Chap is a liquor delivery store for Nairobi customers, built around fast delivery.',
+  },
+  myPart: {
+    headline: 'The whole shopping experience.',
+    body: 'I built the complete e-commerce solution: a responsive mobile shopping experience and a payment gateway checkout.',
+  },
+  build: {
+    headline: 'WooCommerce at the core.',
+    body: 'The store runs on WooCommerce, with a catalog of more than 500 items, and it is live at chupachap.co.ke.',
+  },
+}
+
 const storyByProject: Record<string, string> = {
   boya: 'boya',
   alvin: 'alvin',
   telkom: 'telkom',
   syntax: 'syntax',
   kakitoo: 'kakitoo',
+  chupachap: 'chupachap',
 }
 
 const shortNames: Record<string, string> = {
