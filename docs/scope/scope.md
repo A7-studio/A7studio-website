@@ -21,7 +21,7 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 | 8 | Work case studies showcase | Journey 2 | done |
 | 9 | Recruiter first home restructure | Journey 2 | done |
 | 10 | Lab and product showcase (AI job assistant) | Journey 2 | done |
-| 11 | Portfolio showcase revamp and jobmigo page | Journey 2 | planned |
+| 11 | Portfolio showcase revamp and jobmigo page | Journey 2 | in-progress |
 
 ## Journey 1: Discover the engineer and selected work
 
@@ -88,11 +88,11 @@ Bring the Lab back as a documented build log, starting with the AI powered job a
 - [x] Build it: `/develop lab and product showcase` · code in `src/content/lab.ts`, `src/content/lab.drafts.ts`, `src/routes/lab.*`, `src/components/LabParts.tsx`
 - [x] Verify it: `/check verify lab and product showcase`
 
-### 11. Portfolio showcase revamp and jobmigo page · planned
+### 11. Portfolio showcase revamp and jobmigo page · in-progress
 Grow A7Studio from a recruiter page into a personal showcase in three stages: shipped work and experience now, AI powered products and learning next, a consultancy later. Keep the current look and evolve it. Publish the Lab with jobmigo (Building, text only) at `/jobmigo`, add dated learning notes, add four freelance offers backed by real work, and meet the UI and UX rules in the spec. The jobmigo app is hosted apart from this site.
 **Done when:** a visitor can see what Samuel builds, open his work, open jobmigo at `/jobmigo`, read learning notes in the Lab, and find four freelance offers with proof links; AI wording stays honest, the voice stays "I", and `check:static` enforces both.
 - [x] Design it (spec): `/architect portfolio showcase revamp` → [0006](../specs/0006-portfolio-showcase-revamp.md)
-- [ ] Build it: `/develop portfolio showcase revamp` · code in `src/routes/index.tsx`, `src/routes/jobmigo.tsx`, `src/content/lab.ts`, `src/content/offers.ts`
+- [x] Build it: `/develop portfolio showcase revamp` · code in `src/routes/index.tsx`, `src/routes/jobmigo.tsx`, `src/content/lab.ts`, `src/content/offers.ts`
 - [ ] Verify it: `/check verify portfolio showcase revamp`
 
 ## Journey 3: Receive and review leads

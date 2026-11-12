@@ -1,7 +1,7 @@
 # 0006. Portfolio showcase revamp and jobmigo page
 
 **Date**: 2026-11-12
-**Status**: Proposed
+**Status**: In Progress
 
 ## Summary
 
@@ -183,8 +183,9 @@ Build approach is Journey: finish the visitor path from the hero to proof to pro
 
 ## Follow-up
 
-- [ ] Samuel to write the jobmigo chapters (what and why, stack, what he is learning) and the first build log entry with its date.
-- [ ] Samuel to export cleared screenshots for Kakitoo and Chupachap, and confirm he may publish Chupachap screens.
+- [ ] Samuel to write the "What I'm learning" chapter for jobmigo, and more build log entries. The first chapters and log entry were drafted from the public README at github.com/A7-studio/jobmigo on 2026-11-12, so Samuel should read them.
+- [x] Chupachap screenshot captured from chupachap.co.ke on 2026-11-12 and marked cleared. Samuel to confirm his role and that he is happy to publish it.
+- [ ] Kakitoo screenshot: the site shows a loading overlay in a headless capture, so none was taken. Samuel to export a clean screen.
 - [ ] Samuel to name the AI courses he is taking, if he wants them shown.
 - [ ] Samuel to supply the public CV PDF (carried over from spec 0004).
 - [ ] Add the app link to jobmigo when the app is live, and a redirect plan when it gets its own domain.

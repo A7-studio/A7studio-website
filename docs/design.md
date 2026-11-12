@@ -50,6 +50,10 @@ The home page reads in this order: hero (title, availability pill, Download CV, 
 
 The Lab reuses the work components: `work-tiles`, `work-tile`, `work-status` (status pill: Planned, Building, Live, Paused), `story-*` chapter styles and the `timeline` rows for the dated build log. It is invisible until an entry is published: no route output, nav link, home section or sitemap line. Revenue renders only as "currency amount period, as of date" from a complete figure Samuel supplies. Screens appear only when `screensCleared` is true and never show personal job data.
 
+## Showcase revamp (spec 0006)
+
+The home page reads: hero, employer strip, selected work, products, experience, learning, work with me, contact. The header has five links (Work, Lab, Experience, Work with me, Contact), the theme button and one action, Download CV. A product with its own path (jobmigo at `/jobmigo`) renders the shared `LabEntryView` and has no `/lab/<slug>` page. Learning notes are dated rows on `/lab` with the three newest on the home page. Offers (`offers.ts`) are one hiring card and four freelance cards, each with proof links and no prices. On phone widths every control is at least 44 by 44 pixels. Shipped images are WebP or AVIF and at most 200 KB, and `check:static` enforces this.
+
 ## Navigation
 
 Use native anchors to the work, product lab, and contact sections. The same anchors remain visible in a compact bottom bar on narrow screens. Do not intercept native fragment behavior or force smooth scrolling.

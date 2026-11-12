@@ -5,6 +5,8 @@
 
 > **Amended by [0005](0005-lab-and-product-showcase.md)** (2026-11-06): a Lab returns once an entry is published. Until then AC-4 holds: the Lab and Career OS do not appear.
 
+> **Amended by [0006](0006-portfolio-showcase-revamp.md)** (2026-11-12): the home order, header actions, Now section and Work With Me section change. The recruiter facts, status labels and retired claims still hold.
+
 ## Summary
 
 This enhancement reorders the home page so a recruiter can answer five questions in about five seconds: who Samuel is, what he is good at, proof, availability, and how to make contact. It adds an availability line, a CV download, an experience timeline taken from his CV, and a "Now" section about his job search and learning. It removes unconfirmed figures, the Valuencer entry, and the paused lab cards. It amends specs 0001, 0002 and 0003. Career OS is out of scope and is not mentioned on the site.
