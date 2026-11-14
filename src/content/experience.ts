@@ -56,7 +56,9 @@ export const experience: Experience[] = [
     dates: 'Mar 2022 – Dec 2024',
     kind: 'employer',
     summary: [
-      'Delivered embedded-finance products for enterprise clients across mobile and web: the Alvin app, embeddable widgets for enterprise software, and alvin.finance.',
+      'Built Budgets and Insights, an embedded app for enterprise users to plan spend, budget and see insights about their money in real time.',
+      'Maintained and built new features for the Alvin app, a personal finance management app.',
+      'Built an embeddable mini app for booking flight tickets for enterprise clients such as bank apps.',
       'Built custom Flutter packages integrating native iOS and Android APIs.',
       'Built React and Vue.js dashboards on NestJS APIs, with automated testing and CI/CD.',
     ],

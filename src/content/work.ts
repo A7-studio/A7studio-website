@@ -91,9 +91,9 @@ export const projects: WorkItem[] = [
     clientContext: 'Shipped for Alvin Technologies (alvin.finance) · Remote',
     impactBadge: 'Embedded Finance Engineering',
     category: ['mobile', 'frontend', 'fintech'],
-    headline: 'React widgets, Flutter packages, and cross platform finance infrastructure.',
+    headline: 'Embedded budgeting, flight booking, and a personal finance app for enterprise clients.',
     description:
-      'Built embeddable React finance widgets for enterprise clients, custom Flutter packages with native iOS and Android APIs, and backend services for financial transactions. Added mini program deployment and automated testing with CI/CD.',
+      'Built Budgets and Insights, an embedded app that lets enterprise users plan their spend, budget and get insights about their money in real time. Built an embeddable mini app for booking flight tickets for enterprise clients such as bank apps, embeddable React finance widgets, and custom Flutter packages with native iOS and Android APIs. Maintained and built new features for the Alvin app, a personal finance management app, with automated testing and CI/CD.',
     tags: ['Flutter', 'React', 'Next.js', 'TanStack Query', 'Firebase', 'Native APIs', 'CI/CD', 'Flask'],
     url: 'https://alvin.finance/',
   },
@@ -209,11 +209,11 @@ const stories: Record<string, Story> = {
     },
     myPart: {
       headline: 'Mobile and web, working asynchronously with a remote team.',
-      body: 'I delivered embedded-finance products for enterprise clients across mobile and web.',
+      body: 'I maintained and built new features for the Alvin app, a personal finance management app, and built embedded products for enterprise clients across mobile and web.',
     },
     build: {
-      headline: 'Widgets, packages, and dashboards.',
-      body: 'I built embeddable React widgets for enterprise software, custom Flutter packages that integrate native iOS and Android APIs, and React and Vue.js dashboards on NestJS APIs, shipped with automated testing and CI/CD.',
+      headline: 'Budgets, flights, widgets, and dashboards.',
+      body: 'Budgets and Insights is an embedded app that lets enterprise users plan their spend, budget and see insights about their money in real time. I also built an embeddable mini app for booking flight tickets for enterprise clients such as bank apps, embeddable React widgets, custom Flutter packages that integrate native iOS and Android APIs, and React and Vue.js dashboards on NestJS APIs, shipped with automated testing and CI/CD.',
     },
   },
   kakitoo: {
