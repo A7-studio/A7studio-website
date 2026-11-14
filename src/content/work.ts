@@ -93,7 +93,7 @@ export const projects: WorkItem[] = [
     category: ['mobile', 'frontend', 'fintech'],
     headline: 'Embedded budgeting, flight booking, and a personal finance app for enterprise clients.',
     description:
-      'Built Budgets and Insights, an embedded app that lets enterprise users plan their spend, budget and get insights about their money in real time. Built an embeddable mini app for booking flight tickets for enterprise clients such as bank apps, embeddable React finance widgets, and custom Flutter packages with native iOS and Android APIs. Maintained and built new features for the Alvin app, a personal finance management app, with automated testing and CI/CD.',
+      'Most of the apps were mini apps that add personal finance features inside existing mobile and web apps of enterprise clients, mainly banks in Nigeria. Built Budgets and Insights, an embedded app that lets enterprise users plan their spend, budget and get insights about their money in real time. Built an embeddable mini app for booking flight tickets for enterprise clients such as bank apps, embeddable React finance widgets, and custom Flutter packages with native iOS and Android APIs. Maintained and built new features for the Alvin app, a personal finance management app, with automated testing and CI/CD.',
     tags: ['Flutter', 'React', 'Next.js', 'TanStack Query', 'Firebase', 'Native APIs', 'CI/CD', 'Flask'],
     url: 'https://alvin.finance/',
   },
@@ -205,7 +205,7 @@ const stories: Record<string, Story> = {
     role: 'Senior Frontend & Mobile Engineer',
     brief: {
       headline: 'Enterprise clients wanted finance inside their own products.',
-      body: 'Alvin Technologies builds embedded finance: apps and widgets that put financial services inside other companies\' software, including the Alvin app and alvin.finance.',
+      body: 'Alvin Technologies builds embedded finance: mini apps and widgets that put personal finance features inside the existing mobile and web apps of enterprise clients, mainly banks in Nigeria. It also makes the Alvin app, a personal finance management app.',
     },
     myPart: {
       headline: 'Mobile and web, working asynchronously with a remote team.',

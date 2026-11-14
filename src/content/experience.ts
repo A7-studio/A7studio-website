@@ -56,6 +56,7 @@ export const experience: Experience[] = [
     dates: 'Mar 2022 – Dec 2024',
     kind: 'employer',
     summary: [
+      'Most of the apps were mini apps that add personal finance features inside existing mobile and web apps of enterprise clients, mainly banks in Nigeria.',
       'Built Budgets and Insights, an embedded app for enterprise users to plan spend, budget and see insights about their money in real time.',
       'Maintained and built new features for the Alvin app, a personal finance management app.',
       'Built an embeddable mini app for booking flight tickets for enterprise clients such as bank apps.',
