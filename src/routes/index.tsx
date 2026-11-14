@@ -26,7 +26,7 @@ export const Route = createFileRoute('/')({
       {
         name: 'keywords',
         content:
-          'Samuel Gichu, A7Studio, Senior Software Engineer, Flutter, React, TypeScript, NestJS, Mobile Engineer, Fintech, AI Products, Payments, Stripe Connect, M-Pesa, Nairobi Kenya, Remote Engineer',
+          'Samuel Gichu, A7Studio, Senior Software Engineer, Flutter, React, TypeScript, NestJS, Python, FastAPI, Mobile Engineer, Fintech, AI Products, Payments, Stripe Connect, M-Pesa, Nairobi Kenya, Remote Engineer',
       },
       { name: 'robots', content: 'index, follow' },
       { property: 'og:type', content: 'website' },
@@ -292,7 +292,7 @@ function HomePage() {
                 <div className="hero-pills" aria-label="Core Competencies">
                   <span className="tech-pill">Flutter &amp; Dart</span>
                   <span className="tech-pill">React &amp; TypeScript</span>
-                  <span className="tech-pill">Node.js &amp; NestJS</span>
+                  <span className="tech-pill">Node.js, NestJS &amp; FastAPI</span>
                   <span className="tech-pill">Payments &amp; Ledgers</span>
                   <span className="tech-pill">AI powered products</span>
                   <span className="tech-pill">Nairobi, KE ➔ Remote</span>
@@ -332,7 +332,7 @@ function HomePage() {
             ))}
           </ul>
           <p className="stack-line" style={{ marginTop: '1.5rem' }}>
-            <strong>Stack I ship with:</strong> Flutter, Dart, React, TypeScript, Vue.js, Node.js, NestJS, PostgreSQL,
+            <strong>Stack I ship with:</strong> Flutter, Dart, React, TypeScript, Vue.js, Node.js, NestJS, Python and FastAPI, PostgreSQL,
             Firebase, Stripe Connect, M-PESA STK and USSD, CI/CD and automated testing.
           </p>
         </section>
