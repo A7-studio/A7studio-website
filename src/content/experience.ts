@@ -44,7 +44,7 @@ export const experience: Experience[] = [
     note: 'Company closed',
     summary: [
       'Led a distributed mobile team as a hands-on engineer: architecture, code review, mentoring, and shipping the hardest parts.',
-      'Introduced automated testing and CI/CD for the Flutter apps, and used AI-assisted workflows (MCP, coding agents).',
+      'Introduced automated testing and CI/CD for the Flutter apps, which raised velocity by 35% and cut production bugs by 60%, and used AI-assisted workflows (MCP, coding agents).',
       'The company has closed and the app is no longer on the Play Store.',
     ],
   },

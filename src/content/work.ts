@@ -79,7 +79,7 @@ export const projects: WorkItem[] = [
     category: ['mobile', 'fintech'],
     headline: 'Mobile engineering leadership, Flutter architecture, and AI assisted delivery.',
     description:
-      'Led mobile development and mentored the team across Flutter architecture, testing, CI/CD, and AI augmented workflows. Used MCP servers and tools including Antigravity, Cursor, and Claude in the team workflow.',
+      'Led mobile development and mentored the team across Flutter architecture, testing, CI/CD, and AI augmented workflows. Automated testing and CI/CD raised velocity by 35% and cut production bugs by 60%. Used MCP servers and tools including Antigravity, Cursor, and Claude in the team workflow.',
     tags: ['Flutter', 'Mobile Architecture', 'AI Assisted Development', 'MCP', 'Testing', 'CI/CD'],
     url: 'https://www.linkedin.com/in/samuel-gichu-a29695b9/',
   },
