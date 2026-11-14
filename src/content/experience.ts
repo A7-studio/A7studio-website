@@ -57,9 +57,9 @@ export const experience: Experience[] = [
     kind: 'employer',
     summary: [
       'Most of the apps were mini apps that add personal finance features inside existing mobile and web apps of enterprise clients, mainly banks in Nigeria.',
-      'Built Budgets and Insights, an embedded app for enterprise users to plan spend, budget and see insights about their money in real time.',
+      'Built Budgets and Insights, an embedded app for enterprise users to plan spend, budget and see insights about their money in real time, with spend split into needs, wants and savings and transactions synced and categorised when a bank account is linked.',
       'Maintained and built new features for the Alvin app, a personal finance management app.',
-      'Built an embeddable mini app for booking flight tickets for enterprise clients such as bank apps.',
+      'Built an embeddable mini app for booking flight tickets, from search to traveller details and confirmation, for enterprise clients such as bank apps.',
       'Built custom Flutter packages integrating native iOS and Android APIs.',
       'Built React and Vue.js dashboards on NestJS APIs, with automated testing and CI/CD.',
     ],
