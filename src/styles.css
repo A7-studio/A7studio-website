@@ -3029,3 +3029,34 @@ button {
     min-height: 44px;
   }
 }
+
+/* RELIABILITY STORY (spec 0007) */
+.principle-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .principle-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.principle-grid .work-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.story-kept {
+  max-width: 44rem;
+  margin-top: 1rem;
+  color: var(--color-text);
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1rem;
+}

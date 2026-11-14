@@ -6,6 +6,7 @@ import { employerStrip, experience } from '#/content/experience'
 import { LabCover } from '#/components/LabParts'
 import { entryHref, formatLabDate, hasLab, latestDate, publishedEntries, sortedNotes } from '#/content/lab'
 import { hiring, offers } from '#/content/offers'
+import { principles } from '#/content/principles'
 import { featuredStories, workItems } from '#/content/work'
 import type { WorkItem } from '#/content/work'
 
@@ -19,7 +20,7 @@ export const Route = createFileRoute('/')({
       {
         name: 'description',
         content:
-          'Samuel Gichu is a Senior Software Engineer with 6+ years shipping mobile apps (Flutter), web products (React/TypeScript), fintech payment systems, and now AI powered products. Available now for remote roles and contracts.',
+          'Samuel Gichu is a Senior Software Engineer with 6+ years building payments, ledgers and mobile apps that keep working on low cost phones and patchy networks, and now AI powered products. Available now for remote roles and contracts.',
       },
       { name: 'author', content: 'Samuel Gichu' },
       {
@@ -33,7 +34,7 @@ export const Route = createFileRoute('/')({
       { property: 'og:title', content: 'A7Studio.dev — Samuel Gichu | Senior Software Engineer' },
       {
         property: 'og:description',
-        content: 'Mobile, web, fintech and AI engineer. Available now for remote roles and contracts.',
+        content: 'Senior Software Engineer building mobile and payments products that keep working on weak networks. Available now for remote roles and contracts.',
       },
       { property: 'og:url', content: 'https://a7studio.dev/' },
       { property: 'og:locale', content: 'en_US' },
@@ -42,7 +43,7 @@ export const Route = createFileRoute('/')({
       { name: 'twitter:title', content: 'A7Studio.dev — Samuel Gichu' },
       {
         name: 'twitter:description',
-        content: 'Senior Software Engineer with 6+ years across mobile (Flutter), web (React/TS), fintech and AI powered products.',
+        content: 'Senior Software Engineer building payments and mobile products that keep working on weak networks, now with AI.',
       },
     ],
     links: [{ rel: 'canonical', href: 'https://a7studio.dev/' }],
@@ -265,14 +266,15 @@ function HomePage() {
                 </div>
 
                 <h1 id="hero-title" className="hero-title">
-                  Senior Software Engineer building <span className="text-accent">mobile</span>,{' '}
-                  <span className="text-accent">fintech</span> &amp; <span className="text-accent">AI</span> products.
+                  Senior Software Engineer shipping <span className="text-accent">mobile</span> and{' '}
+                  <span className="text-accent">fintech</span> products, now building with{' '}
+                  <span className="text-accent">AI</span>.
                 </h1>
 
                 <p className="hero-subhead">
-                  I'm Samuel Gichu. Over 6 years I have shipped Flutter apps, React and TypeScript products, and payments
-                  systems on NestJS and Stripe. Now I am building AI powered products, starting with jobmigo. A7Studio is
-                  where I show it all.
+                  I'm Samuel Gichu. I build the parts of a product that have to keep working when the network doesn't:
+                  payments, ledgers and mobile apps for people on low cost phones and patchy data. Now I am building AI
+                  powered products, starting with jobmigo. A7Studio is where I show it all.
                 </p>
 
                 <div className="hero-actions">
@@ -333,6 +335,29 @@ function HomePage() {
             <strong>Stack I ship with:</strong> Flutter, Dart, React, TypeScript, Vue.js, Node.js, NestJS, PostgreSQL,
             Firebase, Stripe Connect, M-PESA STK and USSD, CI/CD and automated testing.
           </p>
+        </section>
+
+        {/* 2b. HOW I WORK (spec 0007) */}
+        <section id="how-i-work" className="section-wrap section-spacing" aria-labelledby="how-title">
+          <div className="section-header">
+            <span className="section-tag">Approach</span>
+            <h2 id="how-title" className="section-title">
+              How I work.
+            </h2>
+            <p className="section-lead">I build for weak networks, cheap phones and systems I do not control.</p>
+          </div>
+
+          <ul className="principle-grid">
+            {principles.map((p) => (
+              <li className="now-card" key={p.id}>
+                <h3>{p.title}</h3>
+                <p>{p.line}</p>
+                <Link className="work-link" to={p.proof.href}>
+                  {p.proof.label} <span aria-hidden="true">→</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
 
         {/* 3. SELECTED WORK */}

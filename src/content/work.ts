@@ -44,6 +44,8 @@ export interface WorkItem {
   through?: string
   /** Short name shown on typographic covers. */
   shortName?: string
+  /** One line on what had to keep working (spec 0007). Left out when Samuel has not supplied a fact. */
+  keptWorking?: string
   story?: Story
 }
 
@@ -57,6 +59,7 @@ export const categoryFilters: { id: ProjectCategory; label: string }[] = [
 export const projects: WorkItem[] = [
   {
     id: 'boya',
+    keptWorking: 'Wallet and ledger balances stayed correct through failures and retries.',
     status: 'Employer work',
     index: '01',
     projectTitle: 'Business Payments & Ledger Systems',
@@ -85,6 +88,7 @@ export const projects: WorkItem[] = [
   },
   {
     id: 'alvin',
+    keptWorking: 'Budgets, insights and booking ran as mini apps inside existing bank apps in Nigeria.',
     status: 'Employer work',
     index: '03',
     projectTitle: 'Embedded Finance Applications',
@@ -99,6 +103,7 @@ export const projects: WorkItem[] = [
   },
   {
     id: 'kakitoo',
+    keptWorking: 'Tips reached workers without smartphones, through M-Pesa STK Push and anonymous USSD.',
     status: 'Side product, paused',
     index: '04',
     projectTitle: 'Privacy Focused Tipping Platform',

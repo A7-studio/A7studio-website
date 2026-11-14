@@ -1,7 +1,7 @@
 # 0007. Reliability story revamp
 
 **Date**: 2026-11-15
-**Status**: Proposed
+**Status**: Accepted
 
 ## Summary
 
@@ -146,7 +146,8 @@ Build approach is Journey: hero first, then the section, then the stories and of
 
 ## Follow-up
 
-- [ ] Samuel to pick the headline (option 1 or 2).
+- [x] Headline: Samuel picked option 1 on 2026-11-15.
+- [ ] Not built yet: Napili row, and `keptWorking` for BeatBnk, T-Kash, Giraffe Spotter, Chupachap, Fueling Brains and Missing Voices (only Boya, Kakitoo and Alvin have supplied facts).
 - [ ] Samuel to confirm his Napili title and dates, and whether Napili may be shown.
 - [ ] Samuel to supply or approve a "what had to keep working" line per story.
 - [ ] Samuel to confirm "more than six years" before it is used.

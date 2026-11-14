@@ -17,6 +17,7 @@ const css = await readFile(new URL(`../dist/client${stylesheetPath}`, import.met
 const expectedSections = [
   'A7Studio',
   'Samuel Gichu',
+  'How I work.',
   'Selected work',
   'Where I have worked',
   'What I owned, and where.',
@@ -76,7 +77,7 @@ const homeText = [homeHtml, workIndexHtml, ...storyHtml].join('\n')
 const allowedFigures = [/raised velocity by 35%/g, /cut production bugs by 60%/g]
 const textWithoutAllowed = allowedFigures.reduce((text, allowed) => text.replace(allowed, ''), homeText)
 assert.ok(!/\b(?:30|35|40|50|60|85)\s?%/.test(textWithoutAllowed), 'Prerendered pages contain a retired figure')
-for (const retired of [/Valuencer/i, /Senior Product Engineer/i, /A7Markets/i, /Career OS/i, /Start a Project/]) {
+for (const retired of [/Valuencer/i, /Senior Product Engineer/i, /A7Markets/i, /Career OS/i, /Start a Project/, /building mobile, fintech/i, /building mobile, fintech &(?:amp;)? AI/i]) {
   assert.ok(!retired.test(homeText), `Prerendered pages contain retired copy: ${retired}`)
 }
 // Spec 0006: honest AI wording (AC-3) and the "I" voice (AC-10)

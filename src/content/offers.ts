@@ -23,7 +23,7 @@ export const offers: Offer[] = [
   {
     id: 'mobile',
     title: 'Mobile app build',
-    lines: ['Flutter and React Native apps, from design to store release.', 'I have led mobile teams and built apps for clients in Kenya, Canada and the US.'],
+    lines: ['Flutter and React Native apps built for low cost phones and patchy data, from design to store release.', 'I have led mobile teams and built apps for clients in Kenya, Canada and the US.'],
     proof: [
       { label: 'Giraffe Spotter', href: '/work/syntax' },
       { label: 'Kakitoo', href: '/work/kakitoo' },
@@ -33,7 +33,7 @@ export const offers: Offer[] = [
   {
     id: 'payments',
     title: 'Payments and fintech',
-    lines: ['Stripe Connect, M-Pesa, ledgers, KYC and KYB onboarding, and money movement that recovers from failure.', 'Built inside fintech teams, on mobile, web and NestJS APIs.'],
+    lines: ['Stripe Connect, M-Pesa, ledgers, KYC and KYB onboarding, and payments that stay correct through retries and failures.', 'Built inside fintech teams, on mobile, web and NestJS APIs.'],
     proof: [
       { label: 'Boya', href: '/work/boya' },
       { label: 'Alvin', href: '/work/alvin' },
@@ -43,7 +43,7 @@ export const offers: Offer[] = [
   {
     id: 'web',
     title: 'Web app build',
-    lines: ['React and TypeScript products, dashboards and embeddable widgets.', 'Reusable UI systems on top of REST and NestJS APIs.'],
+    lines: ['React and TypeScript products, dashboards and widgets that embed inside apps you already run.', 'Reusable UI systems on top of REST and NestJS APIs.'],
     proof: [
       { label: 'Alvin', href: '/work/alvin' },
       { label: 'Chupachap', href: '/work/chupachap' },
