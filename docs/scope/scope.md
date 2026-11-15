@@ -95,6 +95,13 @@ Grow A7Studio from a recruiter page into a personal showcase in three stages: sh
 - [x] Build it: `/develop portfolio showcase revamp` · code in `src/routes/index.tsx`, `src/routes/jobmigo.tsx`, `src/content/lab.ts`, `src/content/offers.ts`
 - [x] Verify it: `/check verify portfolio showcase revamp`
 
+### 12. Reliability story revamp · in progress
+Retell the site around software that keeps working when the network does not: a new hero, a How I work section, a "what had to keep working" line per story, and reworded offers. Copy and order only, no new route or dependency.
+**Done when:** a visitor reads one distinct story from the hero to the offers, every claim traces to Samuel's bio or a stated fact, and `check:static` rejects the old headline.
+- [x] Design it (spec): `/architect reliability story revamp` → [0007](../specs/0007-reliability-story-revamp.md)
+- [x] Build it: `/develop reliability story revamp` · code in `src/routes/index.tsx`, `src/content/principles.ts`, `src/content/work.ts`, `src/content/offers.ts`
+- [ ] Verify it: `/check verify reliability story revamp`
+
 ## Journey 3: Receive and review leads
 
 ### 6. Lead capture and private lead dashboard · needs a decision · Beta

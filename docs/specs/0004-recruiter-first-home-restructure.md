@@ -7,6 +7,8 @@
 
 > **Amended by [0006](0006-portfolio-showcase-revamp.md)** (2026-11-12): the home order, header actions, Now section and Work With Me section change. The recruiter facts, status labels and retired claims still hold.
 
+> **Amended (2026-11-14)**: Samuel confirmed two BeatBnk figures, "raised velocity by 35%" and "cut production bugs by 60%", and wants them on the site. AC-5 still bans every other performance figure. `check:static` allows only those two phrases.
+
 ## Summary
 
 This enhancement reorders the home page so a recruiter can answer five questions in about five seconds: who Samuel is, what he is good at, proof, availability, and how to make contact. It adds an availability line, a CV download, an experience timeline taken from his CV, and a "Now" section about his job search and learning. It removes unconfirmed figures, the Valuencer entry, and the paused lab cards. It amends specs 0001, 0002 and 0003. Career OS is out of scope and is not mentioned on the site.
