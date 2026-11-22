@@ -93,9 +93,9 @@ assert.match(homeHtml, /Mobile app build/, 'Home page is missing the offers')
 assert.ok(!/\$\s?\d|\bKES\s?\d|USD\s?\d|per hour/i.test(homeHtml.split('id="services"')[1]?.split('id="contact"')[0] ?? ''), 'Offers must not show prices')
 assert.match(homeHtml, /Freelance Project/, 'Contact topics are missing Freelance Project')
 assert.match(homeHtml, /Senior Software Engineer/, 'Home page is missing the title')
-const { existsSync: cvExists } = await import('node:fs')
-assert.ok(cvExists(new URL('../public/samuel-gichu-cv.pdf', import.meta.url)), 'CV file missing: public/samuel-gichu-cv.pdf')
-assert.match(homeHtml, /href="\/samuel-gichu-cv\.pdf"/, 'Home page does not link the CV')
+// The CV changes by role, so it is requested by email and never downloaded (spec 0008).
+assert.ok(!/samuel-gichu-cv\.pdf/.test(homeHtml), 'Home page must not link a downloadable CV')
+assert.match(homeHtml, /Request a CV/, 'Home page is missing the Request a CV action')
 
 // Verify metadata & links
 assert.match(homeHtml, /A7Studio\.dev — Samuel Gichu/)

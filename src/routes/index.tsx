@@ -10,7 +10,8 @@ import { principles } from '#/content/principles'
 import { featuredStories, workItems } from '#/content/work'
 import type { WorkItem } from '#/content/work'
 
-const CV_HREF = '/samuel-gichu-cv.pdf'
+const CV_REQUEST_HREF =
+  'mailto:kibochas@gmail.com?subject=CV%20request&body=Hi%20Samuel%2C%0A%0ACould%20you%20send%20me%20your%20CV%20for%20this%20role%3A%20...'
 const LINKEDIN = 'https://www.linkedin.com/in/samuel-gichu-a29695b9/'
 const GITHUB = 'https://github.com/kibzsam'
 
@@ -162,8 +163,8 @@ function HomePage() {
                 </svg>
               )}
             </button>
-            <a id="header-cv-btn" className="btn btn-primary btn-sm" href={CV_HREF} download>
-              Download CV <span aria-hidden="true">↓</span>
+            <a id="header-cta-btn" className="btn btn-primary btn-sm" href="#contact">
+              Get in touch
             </a>
             <button
               type="button"
@@ -231,8 +232,8 @@ function HomePage() {
           </li>
         </ul>
         <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <a className="btn btn-outline" style={{ width: '100%' }} href={CV_HREF} download>
-            Download CV ↓
+          <a className="btn btn-outline" style={{ width: '100%' }} href={CV_REQUEST_HREF}>
+            Request a CV
           </a>
           <a
             className="btn btn-whatsapp"
@@ -279,15 +280,15 @@ function HomePage() {
                 </p>
 
                 <div className="hero-actions">
-                  <a id="hero-cv-btn" className="btn btn-primary" href={CV_HREF} download>
-                    Download CV <span aria-hidden="true">↓</span>
-                  </a>
+                  <Link id="hero-explore-btn" className="btn btn-primary" to="/work">
+                    See my work <span aria-hidden="true">→</span>
+                  </Link>
                   <a id="hero-cta-contact" className="btn btn-outline" href="#services">
                     Work with me <span aria-hidden="true">→</span>
                   </a>
-                  <Link id="hero-explore-btn" className="btn btn-ghost" to="/work">
-                    See my work <span aria-hidden="true">→</span>
-                  </Link>
+                  <a id="hero-cv-btn" className="btn btn-ghost" href={CV_REQUEST_HREF}>
+                    Request a CV
+                  </a>
                 </div>
 
                 <div className="hero-pills" aria-label="Core Competencies">
@@ -667,8 +668,8 @@ function HomePage() {
                 Connect on LinkedIn <span aria-hidden="true">↗</span>
               </a>
 
-              <a id="contact-cv-btn" className="btn btn-outline" href={CV_HREF} download>
-                Download CV <span aria-hidden="true">↓</span>
+              <a id="contact-cv-btn" className="btn btn-outline" href={CV_REQUEST_HREF}>
+                Request a CV
               </a>
 
               <div className="contact-social-row" aria-label="Profiles">

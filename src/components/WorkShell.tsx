@@ -66,8 +66,8 @@ export function WorkShell({ children }: { children: ReactNode }) {
             >
               <span aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>
             </button>
-            <a id="header-cv-btn" className="btn btn-primary btn-sm" href="/samuel-gichu-cv.pdf" download>
-              Download CV <span aria-hidden="true">↓</span>
+            <a id="header-cta-btn" className="btn btn-primary btn-sm" href="/#contact">
+              Get in touch
             </a>
           </div>
         </div>
