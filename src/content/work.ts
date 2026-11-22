@@ -44,6 +44,8 @@ export interface WorkItem {
   through?: string
   /** Short name shown on typographic covers. */
   shortName?: string
+  /** One line on what had to keep working (spec 0007). Left out when Samuel has not supplied a fact. */
+  keptWorking?: string
   story?: Story
 }
 
@@ -57,6 +59,7 @@ export const categoryFilters: { id: ProjectCategory; label: string }[] = [
 export const projects: WorkItem[] = [
   {
     id: 'boya',
+    keptWorking: 'Wallet and ledger balances stayed correct through failures and retries.',
     status: 'Employer work',
     index: '01',
     projectTitle: 'Business Payments & Ledger Systems',
@@ -79,26 +82,28 @@ export const projects: WorkItem[] = [
     category: ['mobile', 'fintech'],
     headline: 'Mobile engineering leadership, Flutter architecture, and AI assisted delivery.',
     description:
-      'Led mobile development and mentored the team across Flutter architecture, testing, CI/CD, and AI augmented workflows. Used MCP servers and tools including Antigravity, Cursor, and Claude in the team workflow.',
+      'Led mobile development and mentored the team across Flutter architecture, testing, CI/CD, and AI augmented workflows. Automated testing and CI/CD raised velocity by 35% and cut production bugs by 60%. Used MCP servers and tools including Antigravity, Cursor, and Claude in the team workflow.',
     tags: ['Flutter', 'Mobile Architecture', 'AI Assisted Development', 'MCP', 'Testing', 'CI/CD'],
     url: 'https://www.linkedin.com/in/samuel-gichu-a29695b9/',
   },
   {
     id: 'alvin',
+    keptWorking: 'Budgets, insights and booking ran as mini apps inside existing bank apps in Nigeria.',
     status: 'Employer work',
     index: '03',
     projectTitle: 'Embedded Finance Applications',
     clientContext: 'Shipped for Alvin Technologies (alvin.finance) · Remote',
     impactBadge: 'Embedded Finance Engineering',
     category: ['mobile', 'frontend', 'fintech'],
-    headline: 'React widgets, Flutter packages, and cross platform finance infrastructure.',
+    headline: 'Embedded budgeting, flight booking, and a personal finance app for enterprise clients.',
     description:
-      'Built embeddable React finance widgets for enterprise clients, custom Flutter packages with native iOS and Android APIs, and backend services for financial transactions. Added mini program deployment and automated testing with CI/CD.',
+      'Most of the apps were mini apps that add personal finance features inside existing mobile and web apps of enterprise clients, mainly banks in Nigeria. Built Budgets and Insights, an embedded app that lets enterprise users plan their spend, budget and get insights about their money in real time. Budgets splits spend into needs, wants and savings, with an amount set for each category, and linking a bank account syncs and categorises transactions before the app opens. Built an embeddable mini app for booking flight tickets, covering flight search, traveller details and confirmation, for enterprise clients such as bank apps, embeddable React finance widgets, and custom Flutter packages with native iOS and Android APIs. Maintained and built new features for the Alvin app, a personal finance management app, with automated testing and CI/CD.',
     tags: ['Flutter', 'React', 'Next.js', 'TanStack Query', 'Firebase', 'Native APIs', 'CI/CD', 'Flask'],
     url: 'https://alvin.finance/',
   },
   {
     id: 'kakitoo',
+    keptWorking: 'Tips reached workers without smartphones, through M-Pesa STK Push and anonymous USSD.',
     status: 'Side product, paused',
     index: '04',
     projectTitle: 'Privacy Focused Tipping Platform',
@@ -205,15 +210,15 @@ const stories: Record<string, Story> = {
     role: 'Senior Frontend & Mobile Engineer',
     brief: {
       headline: 'Enterprise clients wanted finance inside their own products.',
-      body: 'Alvin Technologies builds embedded finance: apps and widgets that put financial services inside other companies\' software, including the Alvin app and alvin.finance.',
+      body: 'Alvin Technologies builds embedded finance: mini apps and widgets that put personal finance features inside the existing mobile and web apps of enterprise clients, mainly banks in Nigeria. It also makes the Alvin app, a personal finance management app.',
     },
     myPart: {
       headline: 'Mobile and web, working asynchronously with a remote team.',
-      body: 'I delivered embedded-finance products for enterprise clients across mobile and web.',
+      body: 'I maintained and built new features for the Alvin app, a personal finance management app, and built embedded products for enterprise clients across mobile and web.',
     },
     build: {
-      headline: 'Widgets, packages, and dashboards.',
-      body: 'I built embeddable React widgets for enterprise software, custom Flutter packages that integrate native iOS and Android APIs, and React and Vue.js dashboards on NestJS APIs, shipped with automated testing and CI/CD.',
+      headline: 'Budgets, flights, widgets, and dashboards.',
+      body: 'Budgets and Insights is an embedded app that lets enterprise users plan their spend, budget and see insights about their money in real time. I also built an embeddable mini app for booking flight tickets for enterprise clients such as bank apps, embeddable React widgets, custom Flutter packages that integrate native iOS and Android APIs, and React and Vue.js dashboards on NestJS APIs, shipped with automated testing and CI/CD.',
     },
   },
   kakitoo: {

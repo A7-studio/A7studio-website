@@ -52,7 +52,7 @@ The Lab reuses the work components: `work-tiles`, `work-tile`, `work-status` (st
 
 ## Showcase revamp (spec 0006)
 
-The home page reads: hero, employer strip, selected work, products, experience, learning, work with me, contact. The header has five links (Work, Lab, Experience, Work with me, Contact), the theme button and one action, Download CV. A product with its own path (jobmigo at `/jobmigo`) renders the shared `LabEntryView` and has no `/lab/<slug>` page. Learning notes are dated rows on `/lab` with the three newest on the home page. Offers (`offers.ts`) are one hiring card and four freelance cards, each with proof links and no prices. On phone widths every control is at least 44 by 44 pixels. Shipped images are WebP or AVIF and at most 200 KB, and `check:static` enforces this.
+The home page reads: hero, employer strip, selected work, products, experience, learning, work with me, contact. The header has five links (Work, Lab, Experience, Work with me, Contact), the theme button and one action, Get in touch. The CV changes by role, so there is no download: Request a CV opens an email, and the hero actions are See my work, Work with me and Request a CV. A product with its own path (jobmigo at `/jobmigo`) renders the shared `LabEntryView` and has no `/lab/<slug>` page. Learning notes are dated rows on `/lab` with the three newest on the home page. Offers (`offers.ts`) are one hiring card and four freelance cards, each with proof links and no prices. On phone widths every control is at least 44 by 44 pixels. Shipped images are WebP or AVIF and at most 200 KB, and `check:static` enforces this.
 
 ## Navigation
 

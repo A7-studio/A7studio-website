@@ -6,11 +6,14 @@ import { employerStrip, experience } from '#/content/experience'
 import { LabCover } from '#/components/LabParts'
 import { entryHref, formatLabDate, hasLab, latestDate, publishedEntries, sortedNotes } from '#/content/lab'
 import { hiring, offers } from '#/content/offers'
+import { principles } from '#/content/principles'
 import { featuredStories, workItems } from '#/content/work'
 import type { WorkItem } from '#/content/work'
 
-const CV_HREF = '/samuel-gichu-cv.pdf'
+const CV_REQUEST_HREF =
+  'mailto:kibochas@gmail.com?subject=CV%20request&body=Hi%20Samuel%2C%0A%0ACould%20you%20send%20me%20your%20CV%20for%20this%20role%3A%20...'
 const LINKEDIN = 'https://www.linkedin.com/in/samuel-gichu-a29695b9/'
+const GITHUB = 'https://github.com/kibzsam'
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -19,13 +22,13 @@ export const Route = createFileRoute('/')({
       {
         name: 'description',
         content:
-          'Samuel Gichu is a Senior Software Engineer with 6+ years shipping mobile apps (Flutter), web products (React/TypeScript), fintech payment systems, and now AI powered products. Available now for remote roles and contracts.',
+          'Samuel Gichu is a Senior Software Engineer with 6+ years building payments, ledgers and mobile apps that keep working on low cost phones and patchy networks, and now AI powered products. Available now for remote roles and contracts.',
       },
       { name: 'author', content: 'Samuel Gichu' },
       {
         name: 'keywords',
         content:
-          'Samuel Gichu, A7Studio, Senior Software Engineer, Flutter, React, TypeScript, NestJS, Mobile Engineer, Fintech, AI Products, Payments, Stripe Connect, M-Pesa, Nairobi Kenya, Remote Engineer',
+          'Samuel Gichu, A7Studio, Senior Software Engineer, Flutter, React, TypeScript, NestJS, Python, FastAPI, Mobile Engineer, Fintech, AI Products, Payments, Stripe Connect, M-Pesa, Nairobi Kenya, Remote Engineer',
       },
       { name: 'robots', content: 'index, follow' },
       { property: 'og:type', content: 'website' },
@@ -33,7 +36,7 @@ export const Route = createFileRoute('/')({
       { property: 'og:title', content: 'A7Studio.dev — Samuel Gichu | Senior Software Engineer' },
       {
         property: 'og:description',
-        content: 'Mobile, web, fintech and AI engineer. Available now for remote roles and contracts.',
+        content: 'Senior Software Engineer building mobile and payments products that keep working on weak networks. Available now for remote roles and contracts.',
       },
       { property: 'og:url', content: 'https://a7studio.dev/' },
       { property: 'og:locale', content: 'en_US' },
@@ -42,7 +45,7 @@ export const Route = createFileRoute('/')({
       { name: 'twitter:title', content: 'A7Studio.dev — Samuel Gichu' },
       {
         name: 'twitter:description',
-        content: 'Senior Software Engineer with 6+ years across mobile (Flutter), web (React/TS), fintech and AI powered products.',
+        content: 'Senior Software Engineer building payments and mobile products that keep working on weak networks, now with AI.',
       },
     ],
     links: [{ rel: 'canonical', href: 'https://a7studio.dev/' }],
@@ -55,7 +58,7 @@ export const Route = createFileRoute('/')({
           name: 'Samuel Gichu',
           jobTitle: 'Senior Software Engineer',
           url: 'https://a7studio.dev/',
-          sameAs: [LINKEDIN],
+          sameAs: [LINKEDIN, GITHUB],
         }),
       },
     ],
@@ -160,8 +163,8 @@ function HomePage() {
                 </svg>
               )}
             </button>
-            <a id="header-cv-btn" className="btn btn-primary btn-sm" href={CV_HREF} download>
-              Download CV <span aria-hidden="true">↓</span>
+            <a id="header-cta-btn" className="btn btn-primary btn-sm" href="#contact">
+              Get in touch
             </a>
             <button
               type="button"
@@ -229,8 +232,8 @@ function HomePage() {
           </li>
         </ul>
         <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <a className="btn btn-outline" style={{ width: '100%' }} href={CV_HREF} download>
-            Download CV ↓
+          <a className="btn btn-outline" style={{ width: '100%' }} href={CV_REQUEST_HREF}>
+            Request a CV
           </a>
           <a
             className="btn btn-whatsapp"
@@ -265,32 +268,33 @@ function HomePage() {
                 </div>
 
                 <h1 id="hero-title" className="hero-title">
-                  Senior Software Engineer building <span className="text-accent">mobile</span>,{' '}
-                  <span className="text-accent">fintech</span> &amp; <span className="text-accent">AI</span> products.
+                  Senior Software Engineer shipping <span className="text-accent">mobile</span> and{' '}
+                  <span className="text-accent">fintech</span> products, now building with{' '}
+                  <span className="text-accent">AI</span>.
                 </h1>
 
                 <p className="hero-subhead">
-                  I'm Samuel Gichu. Over 6 years I have shipped Flutter apps, React and TypeScript products, and payments
-                  systems on NestJS and Stripe. Now I am building AI powered products, starting with jobmigo. A7Studio is
-                  where I show it all.
+                  I'm Samuel Gichu. I build the parts of a product that have to keep working when the network doesn't:
+                  payments, ledgers and mobile apps for people on low cost phones and patchy data. Now I am building AI
+                  powered products, starting with jobmigo. A7Studio is where I show it all.
                 </p>
 
                 <div className="hero-actions">
-                  <a id="hero-cv-btn" className="btn btn-primary" href={CV_HREF} download>
-                    Download CV <span aria-hidden="true">↓</span>
-                  </a>
+                  <Link id="hero-explore-btn" className="btn btn-primary" to="/work">
+                    See my work <span aria-hidden="true">→</span>
+                  </Link>
                   <a id="hero-cta-contact" className="btn btn-outline" href="#services">
                     Work with me <span aria-hidden="true">→</span>
                   </a>
-                  <Link id="hero-explore-btn" className="btn btn-ghost" to="/work">
-                    See my work <span aria-hidden="true">→</span>
-                  </Link>
+                  <a id="hero-cv-btn" className="btn btn-ghost" href={CV_REQUEST_HREF}>
+                    Request a CV
+                  </a>
                 </div>
 
                 <div className="hero-pills" aria-label="Core Competencies">
                   <span className="tech-pill">Flutter &amp; Dart</span>
                   <span className="tech-pill">React &amp; TypeScript</span>
-                  <span className="tech-pill">Node.js &amp; NestJS</span>
+                  <span className="tech-pill">Node.js, NestJS &amp; FastAPI</span>
                   <span className="tech-pill">Payments &amp; Ledgers</span>
                   <span className="tech-pill">AI powered products</span>
                   <span className="tech-pill">Nairobi, KE ➔ Remote</span>
@@ -330,9 +334,32 @@ function HomePage() {
             ))}
           </ul>
           <p className="stack-line" style={{ marginTop: '1.5rem' }}>
-            <strong>Stack I ship with:</strong> Flutter, Dart, React, TypeScript, Vue.js, Node.js, NestJS, PostgreSQL,
+            <strong>Stack I ship with:</strong> Flutter, Dart, React, TypeScript, Vue.js, Node.js, NestJS, Python and FastAPI, PostgreSQL,
             Firebase, Stripe Connect, M-PESA STK and USSD, CI/CD and automated testing.
           </p>
+        </section>
+
+        {/* 2b. HOW I WORK (spec 0007) */}
+        <section id="how-i-work" className="section-wrap section-spacing" aria-labelledby="how-title">
+          <div className="section-header">
+            <span className="section-tag">Approach</span>
+            <h2 id="how-title" className="section-title">
+              How I work.
+            </h2>
+            <p className="section-lead">I build for weak networks, cheap phones and systems I do not control.</p>
+          </div>
+
+          <ul className="principle-grid">
+            {principles.map((p) => (
+              <li className="now-card" key={p.id}>
+                <h3>{p.title}</h3>
+                <p>{p.line}</p>
+                <Link className="work-link" to={p.proof.href}>
+                  {p.proof.label} <span aria-hidden="true">→</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
 
         {/* 3. SELECTED WORK */}
@@ -641,13 +668,16 @@ function HomePage() {
                 Connect on LinkedIn <span aria-hidden="true">↗</span>
               </a>
 
-              <a id="contact-cv-btn" className="btn btn-outline" href={CV_HREF} download>
-                Download CV <span aria-hidden="true">↓</span>
+              <a id="contact-cv-btn" className="btn btn-outline" href={CV_REQUEST_HREF}>
+                Request a CV
               </a>
 
               <div className="contact-social-row" aria-label="Profiles">
                 <a className="social-link" href={LINKEDIN} target="_blank" rel="noopener noreferrer">
                   LinkedIn
+                </a>
+                <a className="social-link" href={GITHUB} target="_blank" rel="noopener noreferrer">
+                  GitHub
                 </a>
                 <a className="social-link" href="mailto:hello@a7studio.io">
                   hello@a7studio.io

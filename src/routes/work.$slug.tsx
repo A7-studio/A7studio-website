@@ -95,6 +95,11 @@ function StoryPage() {
           <h1 className="section-title">{item.projectTitle}</h1>
           <p className="story-outcome">{item.headline}</p>
           <p className="section-lead">{item.description}</p>
+          {item.keptWorking && (
+            <p className="story-kept">
+              <strong>What had to keep working.</strong> {item.keptWorking}
+            </p>
+          )}
 
           <dl className="story-meta">
             <div>

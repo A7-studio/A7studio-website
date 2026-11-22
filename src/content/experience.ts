@@ -44,7 +44,7 @@ export const experience: Experience[] = [
     note: 'Company closed',
     summary: [
       'Led a distributed mobile team as a hands-on engineer: architecture, code review, mentoring, and shipping the hardest parts.',
-      'Introduced automated testing and CI/CD for the Flutter apps, and used AI-assisted workflows (MCP, coding agents).',
+      'Introduced automated testing and CI/CD for the Flutter apps, which raised velocity by 35% and cut production bugs by 60%, and used AI-assisted workflows (MCP, coding agents).',
       'The company has closed and the app is no longer on the Play Store.',
     ],
   },
@@ -56,7 +56,10 @@ export const experience: Experience[] = [
     dates: 'Mar 2022 – Dec 2024',
     kind: 'employer',
     summary: [
-      'Delivered embedded-finance products for enterprise clients across mobile and web: the Alvin app, embeddable widgets for enterprise software, and alvin.finance.',
+      'Most of the apps were mini apps that add personal finance features inside existing mobile and web apps of enterprise clients, mainly banks in Nigeria.',
+      'Built Budgets and Insights, an embedded app for enterprise users to plan spend, budget and see insights about their money in real time, with spend split into needs, wants and savings and transactions synced and categorised when a bank account is linked.',
+      'Maintained and built new features for the Alvin app, a personal finance management app.',
+      'Built an embeddable mini app for booking flight tickets, from search to traveller details and confirmation, for enterprise clients such as bank apps.',
       'Built custom Flutter packages integrating native iOS and Android APIs.',
       'Built React and Vue.js dashboards on NestJS APIs, with automated testing and CI/CD.',
     ],
