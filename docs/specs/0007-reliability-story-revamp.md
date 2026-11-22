@@ -1,7 +1,7 @@
 # 0007. Reliability story revamp
 
 **Date**: 2026-11-15
-**Status**: Accepted
+**Status**: Done
 
 ## Summary
 
@@ -147,12 +147,11 @@ Build approach is Journey: hero first, then the section, then the stories and of
 ## Follow-up
 
 - [x] Headline: Samuel picked option 1 on 2026-11-15.
-- [ ] Not built yet: Napili row, and `keptWorking` for BeatBnk, T-Kash, Giraffe Spotter, Chupachap, Fueling Brains and Missing Voices (only Boya, Kakitoo and Alvin have supplied facts).
-- [ ] Samuel to confirm his Napili title and dates, and whether Napili may be shown.
-- [ ] Samuel to supply or approve a "what had to keep working" line per story.
-- [ ] Samuel to confirm "more than six years" before it is used.
+- [x] Closed 2026-11-22 at Samuel's request. Skipped, not built: the Napili timeline row (AC-5) and `keptWorking` lines for BeatBnk, T-Kash, Giraffe Spotter, Chupachap, Fueling Brains and Missing Voices (AC-3 covers Boya, Kakitoo and Alvin only).
+- [x] "More than six years" is not used in new copy. The "6+ years" wording that was already on the site stays.
+- [x] Amendment: on 2026-11-22 the hero actions changed to See my work, Work with me and Request a CV, and the header action to Get in touch, because the CV changes by role. This replaces the Download CV action named in specs 0004 and 0006.
 - [ ] Add the NGO project as a work story only after it is won, shipped and cleared to publish.
-- [ ] Carried over: CV PDF, Giraffe Spotter Play link, Chupachap role label, Fueling Brains and Missing Voices categories.
+- [ ] Carried over: Giraffe Spotter Play link, Chupachap role label, Fueling Brains and Missing Voices categories.
 
 ## References
 
