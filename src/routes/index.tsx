@@ -12,6 +12,7 @@ import type { WorkItem } from '#/content/work'
 
 const CV_HREF = '/samuel-gichu-cv.pdf'
 const LINKEDIN = 'https://www.linkedin.com/in/samuel-gichu-a29695b9/'
+const GITHUB = 'https://github.com/kibzsam'
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -56,7 +57,7 @@ export const Route = createFileRoute('/')({
           name: 'Samuel Gichu',
           jobTitle: 'Senior Software Engineer',
           url: 'https://a7studio.dev/',
-          sameAs: [LINKEDIN],
+          sameAs: [LINKEDIN, GITHUB],
         }),
       },
     ],
@@ -673,6 +674,9 @@ function HomePage() {
               <div className="contact-social-row" aria-label="Profiles">
                 <a className="social-link" href={LINKEDIN} target="_blank" rel="noopener noreferrer">
                   LinkedIn
+                </a>
+                <a className="social-link" href={GITHUB} target="_blank" rel="noopener noreferrer">
+                  GitHub
                 </a>
                 <a className="social-link" href="mailto:hello@a7studio.io">
                   hello@a7studio.io
