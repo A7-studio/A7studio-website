@@ -93,7 +93,7 @@ assert.match(homeHtml, /Mobile app build/, 'Home page is missing the offers')
 assert.ok(!/\$\s?\d|\bKES\s?\d|USD\s?\d|per hour/i.test(homeHtml.split('id="services"')[1]?.split('id="contact"')[0] ?? ''), 'Offers must not show prices')
 assert.match(homeHtml, /Freelance Project/, 'Contact topics are missing Freelance Project')
 assert.match(homeHtml, /Senior Software Engineer/, 'Home page is missing the title')
-// The CV changes by role, so it is requested by email and never downloaded (spec 0008).
+// The CV changes by role, so it is requested by email and never downloaded.
 assert.ok(!/samuel-gichu-cv\.pdf/.test(homeHtml), 'Home page must not link a downloadable CV')
 assert.match(homeHtml, /Request a CV/, 'Home page is missing the Request a CV action')
 
