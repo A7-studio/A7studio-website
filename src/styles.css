@@ -3060,3 +3060,10 @@ button {
   border-left: 3px solid var(--color-accent);
   padding-left: 1rem;
 }
+
+.status-note {
+  margin: 0.5rem 0 0;
+  color: var(--color-dim);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}

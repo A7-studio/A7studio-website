@@ -66,10 +66,10 @@ export const projects: WorkItem[] = [
     clientContext: 'Shipped for Boya · Fintech · Nairobi, Kenya',
     impactBadge: 'Fintech Product Engineering',
     category: ['mobile', 'fintech'],
-    headline: 'Payments, money movement, ledger integrity, and business investment products.',
+    headline: 'Payments, wallets and ledgers, a money market fund feature for businesses, and the Boya app on Google Play and the App Store.',
     description:
-      'Worked on Stripe KYC/KYB onboarding and Stripe integration for business financial workflows. Revamped money movement processes by fixing double-entry ledger issues, strengthening ledger integrity, and addressing negative balance scenarios. Also helped revamp a money market fund investment option for businesses.',
-    tags: ['Stripe', 'KYC/KYB', 'Money Movement', 'Double-Entry Ledger', 'Ledger Integrity', 'Money Market Funds'],
+      'Built a money market fund (MMF) investment feature end to end, from NestJS APIs to a Vue.js dashboard, so businesses could invest their money. Fixed duplicate payments and negative wallet balances with idempotency keys and safe retries in PostgreSQL, and worked on a Stripe Connect integration with KYB/KYC onboarding for businesses in the US market.',
+    tags: ['Stripe Connect', 'KYC/KYB', 'Money Market Funds', 'Idempotency', 'PostgreSQL', 'NestJS', 'Vue.js', 'Flutter'],
     url: 'https://www.boyahq.com/',
   },
   {
@@ -112,7 +112,7 @@ export const projects: WorkItem[] = [
     category: ['mobile', 'frontend', 'fintech'],
     headline: "We're here for the kiDOGO.",
     description:
-      'A hassle free tipping platform for blue collar workers in East Africa, helping people boost their income securely and anonymously. Built the Flutter mobile app and React web frontend with M-Pesa STK Push, anonymous USSD tipping through *835*77#, and the custom KAKITOO ID privacy system.',
+      'A hassle free tipping platform for blue collar workers in East Africa, helping people boost their income securely and anonymously. Built the Flutter mobile apps and the Next.js web app with M-PESA STK Push, anonymous USSD tipping through *835*77#, and the custom KAKITOO ID privacy system.',
     tags: ['Flutter', 'React', 'Next.js', 'M-Pesa STK Push', 'USSD', 'KAKITOO ID'],
     url: 'https://kakitoo.com',
   },
@@ -154,8 +154,8 @@ export const projects: WorkItem[] = [
     category: ['mobile', 'frontend'],
     headline: 'An AI assisted citizen science app for giraffe research and conservation.',
     description:
-      'Built Flutter applications from design, reusable component libraries, backend integrations, and production fixes for international clients. For Giraffe Spotter, built the mobile experience for uploading giraffe photos, fur pattern matching, location and date capture, directory browsing, and donations, helping GCF turn safari sightings into research data.',
-    tags: ['Flutter', 'AI Image Matching', 'Citizen Science', 'Firebase', 'REST APIs', 'Cloud Functions'],
+      'Built Flutter applications from design, reusable component libraries, backend integrations, and production fixes for international clients. For Giraffe Spotter, built the app, integrated the AI fur pattern matching, and built the backend APIs in Laravel (PHP), covering giraffe photo upload, location and date capture, directory browsing, and donations, helping GCF turn safari sightings into research data.',
+    tags: ['Flutter', 'AI Image Matching', 'Citizen Science', 'Firebase', 'Laravel', 'REST APIs'],
     url: 'https://synt.ax/',
   },
   {
@@ -194,15 +194,15 @@ const stories: Record<string, Story> = {
     role: 'Full Stack Engineer, Fintech & Payments',
     brief: {
       headline: 'Businesses needed to move money with confidence.',
-      body: 'Boya is a fintech product for business finance. The work covered payments, KYC/KYB onboarding, money movement, and a money market fund investment option for businesses.',
+      body: 'Boya is a fintech product for business finance. The work covered a money market fund feature for businesses, payments and wallets, and KYB/KYC onboarding.',
     },
     myPart: {
-      headline: 'Payments across mobile, APIs, and integrations.',
-      body: 'I built payment workflows across mobile, backend APIs, and integrations, including Stripe Connect, webhooks, and transaction lifecycle handling. I also built payments and operations dashboards in React and Vue.js on NestJS APIs.',
+      headline: 'A money market fund feature, built end to end.',
+      body: 'I built a money market fund (MMF) investment feature end to end, from NestJS APIs to a Vue.js dashboard, so businesses could invest their money. I also built payment, wallet and access features in the Boya Flutter app, and finance dashboards in React on REST APIs.',
     },
     build: {
-      headline: 'Ledgers that balance, workflows that recover.',
-      body: 'Money movement ran as workflows managed with Temporal. I strengthened ledger integrity: double-entry correctness, negative balance cases, failure and retry paths, and reconciliation.',
+      headline: 'A retried payment is recorded once.',
+      body: 'I fixed duplicate payments and negative wallet balances by adding idempotency keys and safe retries in PostgreSQL. I also worked on a Stripe Connect integration with KYB/KYC onboarding so businesses in the US market could use Boya, and helped build a Claude-based AI code-review step in the CI/CD pipeline.',
     },
   },
   alvin: {
@@ -236,7 +236,7 @@ const stories: Record<string, Story> = {
     },
     myPart: {
       headline: 'Mobile lead, across the app and the web.',
-      body: 'I led the mobile engineering and built the Flutter app and the React web frontend for the product.',
+      body: 'I led the mobile engineering and built the Flutter apps and the Next.js web app for the product.',
     },
     build: {
       headline: 'Payments and privacy, built into the flow.',
@@ -268,7 +268,7 @@ const stories: Record<string, Story> = {
     },
     myPart: {
       headline: 'The mobile experience, from design to production.',
-      body: 'At SYNTAX I built Flutter applications from design, with reusable component libraries, backend integrations, and production fixes for international clients. For Giraffe Spotter I built the mobile experience.',
+      body: 'At SYNTAX I built Flutter applications from design, with reusable component libraries, backend integrations, and production fixes for international clients. For Giraffe Spotter I built the app, integrated the AI fur pattern matching and built the Laravel (PHP) backend APIs.',
     },
     build: {
       headline: 'Photos in, matched sightings out.',
