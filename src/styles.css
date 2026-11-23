@@ -3063,7 +3063,24 @@ button {
 
 .status-note {
   margin: 0.5rem 0 0;
-  color: var(--color-dim);
+  color: var(--color-muted);
   font-size: 0.9rem;
   line-height: 1.5;
+}
+
+/* Keep the hero actions on the first screen at laptop heights (spec 0007, AC-9) */
+@media (min-width: 1024px) {
+  .hero {
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.75rem, 4.4vw, 4rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-subhead {
+    margin-bottom: 1.75rem;
+  }
 }
