@@ -15,8 +15,8 @@ export interface Offer {
 }
 
 export const hiring = {
-  title: 'Full time or contract role',
-  body: 'Senior mobile, full stack, fintech or AI engineer on a distributed team, or a contract with a defined scope.',
+  title: 'Full-time, hybrid or remote role',
+  body: 'Full-time, hybrid or remote role: full-stack, Flutter, payments or applied AI engineer, in Kenya or remote and open to Kenya.',
 }
 
 export const offers: Offer[] = [
@@ -33,7 +33,7 @@ export const offers: Offer[] = [
   {
     id: 'payments',
     title: 'Payments and fintech',
-    lines: ['Stripe Connect, M-Pesa, ledgers, KYC and KYB onboarding, and payments that stay correct through retries and failures.', 'Built inside fintech teams, on mobile, web and NestJS APIs.'],
+    lines: ['Stripe Connect, M-PESA, wallets and ledgers, KYC and KYB, a money market fund feature, and payments that stay correct through retries and failures.', 'Built inside fintech teams, on mobile, web and NestJS APIs.'],
     proof: [
       { label: 'Boya', href: '/work/boya' },
       { label: 'Alvin', href: '/work/alvin' },
@@ -43,7 +43,7 @@ export const offers: Offer[] = [
   {
     id: 'web',
     title: 'Web app build',
-    lines: ['React and TypeScript products, dashboards and widgets that embed inside apps you already run.', 'Reusable UI systems on top of REST and NestJS APIs.'],
+    lines: ['React, Next.js and TypeScript products, finance dashboards and embeddable mini apps, on REST and NestJS APIs.'],
     proof: [
       { label: 'Alvin', href: '/work/alvin' },
       { label: 'Chupachap', href: '/work/chupachap' },
@@ -53,7 +53,7 @@ export const offers: Offer[] = [
     id: 'ai',
     title: 'AI powered features',
     label: 'New',
-    lines: ['Adding AI features to a product, from the idea to something people can use.', 'I am building jobmigo to learn this end to end, and I use AI tools in my daily work.'],
+    lines: ['Claude-based code review and AI reconciliation tools at Boya, AI photo matching in Giraffe Spotter, and jobmigo (in development).'],
     proof: [{ label: 'jobmigo', href: '/jobmigo' }],
   },
 ]

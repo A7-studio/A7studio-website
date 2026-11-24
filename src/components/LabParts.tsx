@@ -126,6 +126,7 @@ export function LabEntryView({ entry }: { entry: LabEntry }) {
           </span>
           <h1 className="section-title">{entry.name}</h1>
           <p className="story-outcome">{entry.tagline}</p>
+          {entry.statusNote && <p className="status-note">{entry.statusNote}</p>}
 
           <dl className="story-meta">
             {entry.tags && entry.tags.length > 0 && (

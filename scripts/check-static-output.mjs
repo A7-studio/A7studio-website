@@ -61,7 +61,6 @@ const expectedCareerCopy = [
   'Giraffe Spotter',
   'fur pattern matching',
   'Stripe Connect',
-  'Temporal',
   'Gavtech Solutions',
   'Available now',
   '11 November 2026',
@@ -74,10 +73,22 @@ for (const phrase of expectedCareerCopy) {
 // Spec 0004: retired claims must not return
 const homeText = [homeHtml, workIndexHtml, ...storyHtml].join('\n')
 // Samuel confirmed two BeatBnk figures on 2026-11-14 (amends spec 0004 AC-5); every other figure stays retired.
-const allowedFigures = [/raised velocity by 35%/g, /cut production bugs by 60%/g]
+// On 2026-11-24 Samuel confirmed the figures in his candidate profile; each is allowed only as its exact phrase.
+const allowedFigures = [
+  /raised velocity by 35%/g,
+  /cut production bugs by 60%/g,
+  /cutting production bugs by 60%/g,
+  /raising team velocity by 35%/g,
+  /by about 40%/g,
+  /about 85% automated test coverage/g,
+  /cut deployment time by 50%/g,
+  /Increased client adoption by 40%/g,
+  /cut new-feature development time by 30%/g,
+  /cut development time by 25%/g,
+]
 const textWithoutAllowed = allowedFigures.reduce((text, allowed) => text.replace(allowed, ''), homeText)
 assert.ok(!/\b(?:30|35|40|50|60|85)\s?%/.test(textWithoutAllowed), 'Prerendered pages contain a retired figure')
-for (const retired of [/Valuencer/i, /Senior Product Engineer/i, /A7Markets/i, /Career OS/i, /Start a Project/, /building mobile, fintech/i, /building mobile, fintech &(?:amp;)? AI/i]) {
+for (const retired of [/Senior Product Engineer/i, /A7Markets/i, /Career OS/i, /Start a Project/, /building mobile, fintech/i, /building mobile, fintech &(?:amp;)? AI/i]) {
   assert.ok(!retired.test(homeText), `Prerendered pages contain retired copy: ${retired}`)
 }
 // Spec 0006: honest AI wording (AC-3) and the "I" voice (AC-10)
@@ -88,11 +99,12 @@ for (const banned of [/AI (?:expert|specialist|guru)/i, /\bAI Engineer\b/, /\b(?
   assert.ok(!banned.test(wordingText), `Pages contain wording the spec forbids: ${banned}`)
 }
 assert.match(homeHtml, /application\/ld\+json/, 'Home page has no structured data')
-assert.match(homeHtml, /"jobTitle":"Senior Software Engineer"/, 'Structured data is missing the job title')
+assert.match(homeHtml, /"jobTitle":"Full-Stack & Flutter Engineer"/, 'Structured data is missing the job title')
 assert.match(homeHtml, /Mobile app build/, 'Home page is missing the offers')
 assert.ok(!/\$\s?\d|\bKES\s?\d|USD\s?\d|per hour/i.test(homeHtml.split('id="services"')[1]?.split('id="contact"')[0] ?? ''), 'Offers must not show prices')
 assert.match(homeHtml, /Freelance Project/, 'Contact topics are missing Freelance Project')
-assert.match(homeHtml, /Senior Software Engineer/, 'Home page is missing the title')
+assert.match(homeHtml, /Full-stack and Flutter engineer/i, 'Home page is missing the title')
+assert.ok(!/FastAPI/.test(homeHtml.split('id="products"')[0]), 'FastAPI is not claimed in the hero or stack line')
 // The CV changes by role, so it is requested by email and never downloaded.
 assert.ok(!/samuel-gichu-cv\.pdf/.test(homeHtml), 'Home page must not link a downloadable CV')
 assert.match(homeHtml, /Request a CV/, 'Home page is missing the Request a CV action')
@@ -107,7 +119,7 @@ assert.match(html, /https:\/\/chupachap\.co\.ke/)
 assert.match(html, /https:\/\/alvin\.finance/)
 assert.match(html, /https:\/\/www\.boyahq\.com/)
 assert.match(html, /https:\/\/www\.linkedin\.com\/in\/samuel-gichu-a29695b9\//)
-assert.match(homeHtml, /hello@a7studio\.io/)
+assert.ok(!/hello@a7studio\.io/.test(homeHtml), 'hello@a7studio.io is not a confirmed working address')
 assert.match(css, /prefers-reduced-motion/)
 
 // Case study pages (spec 0003)

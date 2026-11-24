@@ -18,25 +18,25 @@ const GITHUB = 'https://github.com/kibzsam'
 export const Route = createFileRoute('/')({
   head: () => ({
     meta: [
-      { title: 'A7Studio.dev — Samuel Gichu | Senior Software Engineer (Mobile, Fintech & AI)' },
+      { title: 'Full-Stack & Flutter Engineer | Payments, Fintech & Applied AI' },
       {
         name: 'description',
         content:
-          'Samuel Gichu is a Senior Software Engineer with 6+ years building payments, ledgers and mobile apps that keep working on low cost phones and patchy networks, and now AI powered products. Available now for remote roles and contracts.',
+          'Samuel Gichu is a Full-Stack and Flutter engineer with 6+ years building payments, ledgers and mobile apps that keep working on low cost phones and patchy networks, and now AI-powered products. Available now for full-time, hybrid and remote roles in Kenya, and remote roles that hire in Kenya.',
       },
       { name: 'author', content: 'Samuel Gichu' },
       {
         name: 'keywords',
         content:
-          'Samuel Gichu, A7Studio, Senior Software Engineer, Flutter, React, TypeScript, NestJS, Python, FastAPI, Mobile Engineer, Fintech, AI Products, Payments, Stripe Connect, M-Pesa, Nairobi Kenya, Remote Engineer',
+          'Samuel Gichu, A7Studio, Full-Stack Engineer, Flutter Engineer, React, Next.js, TypeScript, NestJS, Mobile Engineer, Fintech, AI Products, Payments, Stripe Connect, M-Pesa, Nairobi Kenya, Remote Engineer',
       },
       { name: 'robots', content: 'index, follow' },
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'A7Studio' },
-      { property: 'og:title', content: 'A7Studio.dev — Samuel Gichu | Senior Software Engineer' },
+      { property: 'og:title', content: 'Samuel Gichu | Full-Stack & Flutter Engineer' },
       {
         property: 'og:description',
-        content: 'Senior Software Engineer building mobile and payments products that keep working on weak networks. Available now for remote roles and contracts.',
+        content: 'Full-stack and Flutter engineer building payments and mobile products that keep working on weak networks. Available now for roles in Kenya and remote.',
       },
       { property: 'og:url', content: 'https://a7studio.dev/' },
       { property: 'og:locale', content: 'en_US' },
@@ -45,7 +45,7 @@ export const Route = createFileRoute('/')({
       { name: 'twitter:title', content: 'A7Studio.dev — Samuel Gichu' },
       {
         name: 'twitter:description',
-        content: 'Senior Software Engineer building payments and mobile products that keep working on weak networks, now with AI.',
+        content: 'Full-stack and Flutter engineer building payments, fintech and AI-powered products.',
       },
     ],
     links: [{ rel: 'canonical', href: 'https://a7studio.dev/' }],
@@ -56,7 +56,7 @@ export const Route = createFileRoute('/')({
           '@context': 'https://schema.org',
           '@type': 'Person',
           name: 'Samuel Gichu',
-          jobTitle: 'Senior Software Engineer',
+          jobTitle: 'Full-Stack & Flutter Engineer',
           url: 'https://a7studio.dev/',
           sameAs: [LINKEDIN, GITHUB],
         }),
@@ -67,7 +67,7 @@ export const Route = createFileRoute('/')({
 })
 
 const inquiryTopics = [
-  { id: 'role', label: '💼 Full-Time Role', subject: 'Senior%20Software%20Engineer%20Role' },
+  { id: 'role', label: '💼 Full-Time Role', subject: 'Engineering%20Role' },
   { id: 'contract', label: '🤝 Contract Engagement', subject: 'Contract%20Engagement%20Inquiry' },
   { id: 'freelance', label: '🛠️ Freelance Project', subject: 'Freelance%20Project%20Inquiry' },
   { id: 'other', label: '💬 Something Else', subject: 'Hello%20Samuel' },
@@ -263,20 +263,19 @@ function HomePage() {
                 <div className="hero-status-pill">
                   <span className="pulse-dot" aria-hidden="true" />
                   <span>
-                    <span className="highlight">Available now</span> for remote roles and contracts
+                    <span className="highlight">Available now</span> for full-time, hybrid and remote roles in Kenya, and remote roles that hire in Kenya
                   </span>
                 </div>
 
                 <h1 id="hero-title" className="hero-title">
-                  Senior Software Engineer shipping <span className="text-accent">mobile</span> and{' '}
-                  <span className="text-accent">fintech</span> products, now building with{' '}
-                  <span className="text-accent">AI</span>.
+                  Full-stack and Flutter engineer building <span className="text-accent">payments</span>,{' '}
+                  <span className="text-accent">fintech</span> and <span className="text-accent">AI-powered</span> products.
                 </h1>
 
                 <p className="hero-subhead">
-                  I'm Samuel Gichu. I build the parts of a product that have to keep working when the network doesn't:
-                  payments, ledgers and mobile apps for people on low cost phones and patchy data. Now I am building AI
-                  powered products, starting with jobmigo. A7Studio is where I show it all.
+                  I'm Samuel Gichu. I work in TypeScript, React, Node.js, SQL and Flutter, and I build the parts of a product that
+                  have to keep working when the network doesn't: payments, ledgers and mobile apps for people on low cost
+                  phones and patchy data. Now I am building AI-powered products, starting with jobmigo.
                 </p>
 
                 <div className="hero-actions">
@@ -293,11 +292,10 @@ function HomePage() {
 
                 <div className="hero-pills" aria-label="Core Competencies">
                   <span className="tech-pill">Flutter &amp; Dart</span>
-                  <span className="tech-pill">React &amp; TypeScript</span>
-                  <span className="tech-pill">Node.js, NestJS &amp; FastAPI</span>
+                  <span className="tech-pill">TypeScript, React &amp; Next.js</span>
+                  <span className="tech-pill">Node.js &amp; NestJS</span>
                   <span className="tech-pill">Payments &amp; Ledgers</span>
-                  <span className="tech-pill">AI powered products</span>
-                  <span className="tech-pill">Nairobi, KE ➔ Remote</span>
+                  <span className="tech-pill">AI-powered products</span>
                 </div>
               </div>
 
@@ -334,8 +332,8 @@ function HomePage() {
             ))}
           </ul>
           <p className="stack-line" style={{ marginTop: '1.5rem' }}>
-            <strong>Stack I ship with:</strong> Flutter, Dart, React, TypeScript, Vue.js, Node.js, NestJS, Python and FastAPI, PostgreSQL,
-            Firebase, Stripe Connect, M-PESA STK and USSD, CI/CD and automated testing.
+            <strong>Stack I ship with:</strong> TypeScript, JavaScript, HTML, CSS, React, Next.js, Vue.js, Node.js, NestJS, SQL (PostgreSQL), MongoDB, Redis,
+            Flutter, Dart, Stripe Connect, M-PESA STK and USSD, Git, CI/CD and automated testing.
           </p>
         </section>
 
@@ -421,6 +419,7 @@ function HomePage() {
                       <span className="work-status">{entry.status}</span>
                       <h3 className="work-title">{entry.name}</h3>
                       <p className="work-headline">{entry.tagline}</p>
+                      {entry.statusNote && <p className="status-note">{entry.statusNote}</p>}
                       <span className="work-link">
                         Read the story <span aria-hidden="true">→</span>
                       </span>
@@ -609,7 +608,7 @@ function HomePage() {
               </p>
               <div className="contact-availability">
                 <span className="pulse-dot" />
-                <span>Available now for remote roles and contracts</span>
+                <span>Available now for full-time, hybrid and remote roles in Kenya, and remote roles that hire in Kenya</span>
               </div>
 
               <div className="inquiry-selector" style={{ marginTop: '2rem' }}>
@@ -678,9 +677,6 @@ function HomePage() {
                 </a>
                 <a className="social-link" href={GITHUB} target="_blank" rel="noopener noreferrer">
                   GitHub
-                </a>
-                <a className="social-link" href="mailto:hello@a7studio.io">
-                  hello@a7studio.io
                 </a>
               </div>
             </div>

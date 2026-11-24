@@ -156,3 +156,7 @@ Build approach is Journey: hero first, then the section, then the stories and of
 ## References
 
 - `docs/specs/0004-recruiter-first-home-restructure.md`, `0006-portfolio-showcase-revamp.md`, `docs/design.md`, `docs/scope/scope.md`.
+
+## Amendment, 2026-11-24
+
+Samuel supplied a content update from his candidate profile. Applied: hero and title now say "Full-stack and Flutter engineer building payments, fintech and AI-powered products"; availability names Kenya and remote; FastAPI, Python and Temporal removed from the hero, stack line and Boya; the stack line, experience entries (with Gavtech dates, Valuencer, Power, Camo Chess, Laravel), offers and jobmigo status line follow the profile. The confirmed figures (35%, 60%, about 40%, 85%, 50%, 40%, 30%, 25%) are allowed in `check:static` only as exact phrases. `hello@a7studio.io` was removed because only a7studio.dev is known to receive mail. Kept on Samuel's earlier word: Alvin Budgets and Insights, flight booking and Nigerian banks, the Odoo training and Good Call lines. Not done: the Giraffe Spotter Google Play link (no URL supplied) and the phone link (not on the site).
