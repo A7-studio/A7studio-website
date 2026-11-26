@@ -83,6 +83,14 @@ const COMMITS = [
   'feat: offline queue for patchy networks',
 ]
 
+/** Example brief shown filling in above the contact options (illustration only). */
+const BRIEF_DEMO = [
+  { label: 'The idea:', value: 'an assistant that answers customers from our docs' },
+  { label: 'Who it is for:', value: 'our support team and 2,000 customers' },
+  { label: 'What exists today:', value: 'a help centre and a shared inbox' },
+  { label: 'First version by:', value: 'end of next quarter' },
+]
+
 const HERO_WORDS = ['AI-powered apps', 'mobile apps', 'payment systems', 'web platforms']
 
 const IDEA_BRIEF =
@@ -524,6 +532,13 @@ function HomePage() {
                 <span className="process-number">{String(index + 1).padStart(2, '0')}</span>
                 <h3>{step.title}</h3>
                 <p>{step.line}</p>
+                <div className="step-demo" aria-hidden="true">
+                  {step.demo.map((line, i) => (
+                    <span key={line.text} className={`demo-line is-${line.kind}`} style={{ '--d': i } as React.CSSProperties}>
+                      {line.text}
+                    </span>
+                  ))}
+                </div>
               </li>
             ))}
           </ol>
@@ -726,6 +741,14 @@ function HomePage() {
                 Tell me about your idea. Choose a topic to open an email with a short brief to fill in, or message me on LinkedIn or
                 WhatsApp. Hiring teams are welcome too.
               </p>
+              <div className="brief-demo reveal" aria-hidden="true">
+                <span className="brief-demo-bar">New email · AI-powered app idea</span>
+                {BRIEF_DEMO.map((line, i) => (
+                  <span key={line.label} className="demo-line brief-line" style={{ '--d': i } as React.CSSProperties}>
+                    <strong>{line.label}</strong> {line.value}
+                  </span>
+                ))}
+              </div>
               <div className="contact-availability">
                 <span className="pulse-dot" />
                 <span>Available now for freelance projects, and for roles in Kenya or remote</span>
