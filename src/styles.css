@@ -4159,3 +4159,30 @@ button {
     background-position: 4vw 2vw, -3vw 3vw, 2vw -2vw;
   }
 }
+
+/* The hero's mesh grid on the same alternating sections, faded at the edges. */
+#main > section:nth-of-type(odd):not(.hero)::after {
+  content: '';
+  position: absolute;
+  inset: 0 calc(50% - 50vw);
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 70px 70px;
+  opacity: 0.22;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 15%, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 15%, transparent 72%);
+}
+
+/* Mesh a little stronger so it reads on the blue canvas (hero and alternating sections). */
+.hero-grid,
+#main > section:nth-of-type(odd):not(.hero)::after {
+  opacity: 0.45;
+}
+
+[data-theme="light"] .hero-grid,
+[data-theme="light"] #main > section:nth-of-type(odd):not(.hero)::after {
+  opacity: 0.6;
+}
