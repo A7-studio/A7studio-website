@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 import { Link } from '@tanstack/react-router'
+import { useTheme } from './useTheme'
 
 import type { StoryImage, WorkItem } from '#/content/work'
 import { visibleImage } from '#/content/work'
@@ -8,17 +8,7 @@ import { hasLab } from '#/content/lab'
 import { WorkIllustration } from '#/components/WorkIllustration'
 
 export function WorkShell({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
-    if (typeof window === 'undefined') return 'dark'
-    const saved = localStorage.getItem('a7-theme') as 'dark' | 'light' | null
-    if (saved) return saved
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
-  })
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-    localStorage.setItem('a7-theme', theme)
-  }, [theme])
+  const [theme, setTheme] = useTheme()
 
   return (
     <>

@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react'
 import { Link, createFileRoute } from '@tanstack/react-router'
 
+import { usePageMotion, useRotatingIndex } from '#/components/Motion'
+import { HeroEditor } from '#/components/HeroEditor'
+import { SpaceBackground } from '#/components/SpaceBackground'
+import { useTheme } from '#/components/useTheme'
 import { WorkCover } from '#/components/WorkShell'
 import { employerStrip, experience } from '#/content/experience'
-import { LabCover } from '#/components/LabParts'
 import { entryHref, formatLabDate, hasLab, publishedEntries, sortedNotes } from '#/content/lab'
-import { hiring, offers } from '#/content/offers'
+import { hiring, offerFilters, offers } from '#/content/offers'
+import type { OfferKind } from '#/content/offers'
 import { principles } from '#/content/principles'
 import { processSteps } from '#/content/process'
 import { featuredStories, workItems } from '#/content/work'
@@ -69,6 +73,27 @@ export const Route = createFileRoute('/')({
 
 const caseStudy = publishedEntries.find((entry) => entry.slug === 'jobmigo') ?? publishedEntries[0]
 
+/** Example commit messages for the ticker (illustration, not a real log). */
+const COMMITS = [
+  'example log',
+  'feat: retrieval over the CV',
+  'test: evaluation suite for job matches',
+  'feat: M-PESA STK push with retries',
+  'fix: idempotent payment webhook',
+  'chore: deploy preview for the founder',
+  'feat: offline queue for patchy networks',
+]
+
+/** Example brief shown filling in above the contact options (illustration only). */
+const BRIEF_DEMO = [
+  { label: 'The idea:', value: 'an assistant that answers customers from our docs' },
+  { label: 'Who it is for:', value: 'our support team and our customers' },
+  { label: 'What exists today:', value: 'a help centre and a shared inbox' },
+  { label: 'First version by:', value: 'end of next quarter' },
+]
+
+const HERO_WORDS = ['AI-powered apps', 'mobile apps', 'payment systems', 'web platforms']
+
 const IDEA_BRIEF =
   'Hi%20Samuel%2C%0A%0AThe%20idea%3A%20%0AWho%20it%20is%20for%3A%20%0AWhat%20exists%20today%3A%20%0AWhen%20I%20need%20a%20first%20version%3A%20%0A'
 
@@ -88,19 +113,13 @@ function ideaHref(topicId: string) {
 
 function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const heroWord = useRotatingIndex(HERO_WORDS.length)
+  const [offerFilter, setOfferFilter] = useState<OfferKind | 'all'>('all')
+  const visibleOffers = offerFilter === 'all' ? offers : offers.filter((offer) => offer.kinds.includes(offerFilter))
+  usePageMotion()
   const [copiedEmail, setCopiedEmail] = useState(false)
   const [selectedInquiry, setSelectedInquiry] = useState(inquiryTopics[0])
-  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
-    if (typeof window === 'undefined') return 'dark'
-    const saved = localStorage.getItem('a7-theme') as 'dark' | 'light' | null
-    if (saved) return saved
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
-  })
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-    localStorage.setItem('a7-theme', theme)
-  }, [theme])
+  const [theme, setTheme] = useTheme()
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -262,12 +281,25 @@ function HomePage() {
         </div>
       </div>
 
+      <SpaceBackground />
+
       <main id="main">
         {/* 1. HERO */}
         <section id="home" className="hero" aria-labelledby="hero-title">
           <div className="hero-grid" aria-hidden="true" />
           <div className="hero-glow-1" aria-hidden="true" />
           <div className="hero-glow-2" aria-hidden="true" />
+          <div className="grid-beams" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
+          <div className="aurora" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </div>
 
           <div className="section-wrap hero-content">
             <div className="hero-body">
@@ -279,10 +311,24 @@ function HomePage() {
                   </span>
                 </div>
 
-                <h1 id="hero-title" className="hero-title">
-                  I build <span className="text-accent">AI-powered apps</span> for founders and teams, from the first idea to
-                  something people use.
+                <h1 id="hero-title" className="hero-title hero-display">
+                  AI-powered apps. <span className="hero-display-accent">Built.</span>
                 </h1>
+
+                <p className="hero-pitch">
+                  I build{' '}
+                  <span className="hero-rotator">
+                    <span className="sr-only">AI-powered apps</span>
+                    <span className="hero-rotator-words" aria-hidden="true">
+                      {HERO_WORDS.map((word, i) => (
+                        <span key={word} className={`hero-rotator-word text-accent${i === heroWord ? ' is-active' : ''}`}>
+                          {word}
+                        </span>
+                      ))}
+                    </span>
+                  </span>{' '}
+                  for founders and teams, from the first idea to something people use.
+                </p>
 
                 <p className="hero-subhead">
                   I'm Samuel Gichu, a full-stack and Flutter engineer. For 6+ years I have shipped payments, mobile and web
@@ -291,7 +337,7 @@ function HomePage() {
                 </p>
 
                 <div className="hero-actions">
-                  <a id="hero-idea-btn" className="btn btn-primary" href={ideaHref('ai-app')}>
+                  <a id="hero-idea-btn" className="btn btn-primary magnetic" href={ideaHref('ai-app')}>
                     Tell me about your idea <span aria-hidden="true">→</span>
                   </a>
                   <a id="hero-explore-btn" className="btn btn-outline" href="#services">
@@ -311,24 +357,10 @@ function HomePage() {
                 </div>
               </div>
 
-              <div className="hero-right" aria-label="Quick Highlights">
-                <div className="hero-stat-card">
-                  <span className="hero-stat-value">6+</span>
-                  <span className="hero-stat-label">Years in software engineering</span>
-                </div>
-                <div className="hero-stat-card">
-                  <span className="hero-stat-value">Mobile</span>
-                  <span className="hero-stat-label">Flutter and React Native apps</span>
-                </div>
-                <div className="hero-stat-card">
-                  <span className="hero-stat-value">Web</span>
-                  <span className="hero-stat-label">React and TypeScript products</span>
-                </div>
-                <div className="hero-stat-card">
-                  <span className="hero-stat-value">AI apps</span>
-                  <span className="hero-stat-label">LLM features, retrieval and evaluation tests</span>
-                </div>
+              <div className="hero-right-editor">
+                <HeroEditor />
               </div>
+
             </div>
           </div>
         </section>
@@ -338,11 +370,27 @@ function HomePage() {
           <p id="employers-title" className="employer-strip-label">
             Where I have worked
           </p>
-          <ul className="employer-strip">
-            {employerStrip.map((name) => (
-              <li key={name}>{name}</li>
+          <div className="marquee">
+            <ul className="employer-strip marquee-track">
+              {employerStrip.map((name) => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
+            <ul className="employer-strip marquee-track marquee-copy" aria-hidden="true">
+              {employerStrip.map((name) => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="marquee commit-ticker" aria-hidden="true">
+            {[0, 1].map((copy) => (
+              <ul className={`marquee-track${copy ? ' marquee-copy' : ''}`} key={copy}>
+                {COMMITS.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
             ))}
-          </ul>
+          </div>
           <p className="stack-line" style={{ marginTop: '1.5rem' }}>
             <strong>Stack I ship with:</strong> TypeScript, JavaScript, HTML, CSS, React, Next.js, Vue.js, Node.js, NestJS, SQL (PostgreSQL), MongoDB, Redis,
             Flutter, Dart, Stripe Connect, M-PESA STK and USSD, Git, CI/CD and automated testing.
@@ -351,7 +399,7 @@ function HomePage() {
 
         {/* 3. WHAT I CAN BUILD (spec 0008) */}
         <section id="services" className="section-wrap section-spacing" aria-labelledby="services-title">
-          <div className="section-header">
+          <div className="section-header reveal">
             <span className="section-tag">Build with me</span>
             <h2 id="services-title" className="section-title">
               What I can build for you.
@@ -359,9 +407,33 @@ function HomePage() {
             <p className="section-lead">Each one links to work I have shipped or am building. I scope and quote after we talk.</p>
           </div>
 
-          <ul className="offer-grid">
-            {offers.map((offer) => (
-              <li className="now-card offer-card" key={offer.id}>
+          <div className="catalog">
+            <div className="catalog-bar">
+              <span className="catalog-title">Build catalog</span>
+              <div className="catalog-filters" role="group" aria-label="Filter what I can build">
+                {offerFilters.map((filter) => (
+                  <button
+                    key={filter.id}
+                    type="button"
+                    className={`catalog-filter${offerFilter === filter.id ? ' is-active' : ''}`}
+                    aria-pressed={offerFilter === filter.id}
+                    onClick={() => setOfferFilter(filter.id)}
+                  >
+                    {filter.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          <ul className="offer-grid catalog-grid">
+            {visibleOffers.map((offer) => (
+              <li className="offer-card catalog-card spotlight" key={offer.id}>
+                <span className="catalog-meta">
+                  <span>[{String(offers.indexOf(offer) + 1).padStart(2, '0')}] {offer.kinds.join(' · ')}</span>
+                  <span className={`catalog-status${offer.status === 'Building' ? ' is-building' : ''}`}>
+                    <span className="catalog-dot" aria-hidden="true" />
+                    {offer.status}
+                  </span>
+                </span>
                 <h3>
                   {offer.title}
                   {offer.label && <span className="work-status offer-label">{offer.label}</span>}
@@ -380,6 +452,7 @@ function HomePage() {
               </li>
             ))}
           </ul>
+          </div>
 
           <p className="work-teaser-more">
             <a className="btn btn-primary" href={ideaHref('ai-app')}>
@@ -391,7 +464,7 @@ function HomePage() {
         {/* 4. JOBMIGO CASE STUDY (spec 0008) */}
         {caseStudy && (
           <section id="products" className="section-wrap section-spacing" aria-labelledby="products-title">
-            <div className="section-header">
+            <div className="section-header reveal">
               <span className="section-tag">Case study · {caseStudy.status}</span>
               <h2 id="products-title" className="section-title">
                 What I am building.
@@ -412,7 +485,7 @@ function HomePage() {
                     <h3>What it does</h3>
                     <ul className="case-study-list">
                       {caseStudy.features.map((feature) => (
-                        <li key={feature}>{feature}</li>
+                        <li className="reveal" key={feature}>{feature}</li>
                       ))}
                     </ul>
                   </>
@@ -424,16 +497,38 @@ function HomePage() {
                   </a>
                 </p>
               </div>
-              <a className="case-study-cover" href={entryHref(caseStudy)} tabIndex={-1} aria-hidden="true">
-                <LabCover entry={caseStudy} />
-              </a>
+              <div className="mock-panel" role="img" aria-label={`A drawing of what ${caseStudy.name} does today: each step is marked working or next.`}>
+                <div className="mock-panel-bar" aria-hidden="true">
+                  <span className="mock-dots">
+                    <span />
+                    <span />
+                    <span />
+                  </span>
+                  <span>{caseStudy.name} · evaluation run</span>
+                </div>
+                <ul className="mock-rows" aria-hidden="true">
+                  {(caseStudy.features ?? []).map((feature, i) => (
+                    <li className="mock-row reveal" key={feature}>
+                      <span className="mock-index">{String(i + 1).padStart(2, '0')}</span>
+                      <span className="mock-text">{feature.replace(/\.$/, '')}</span>
+                      <span className="mock-state">working</span>
+                    </li>
+                  ))}
+                  <li className="mock-row is-next reveal">
+                    <span className="mock-index">{String((caseStudy.features?.length ?? 0) + 1).padStart(2, '0')}</span>
+                    <span className="mock-text">Production deploy</span>
+                    <span className="mock-state">next</span>
+                  </li>
+                </ul>
+                <p className="mock-caption" aria-hidden="true">Illustration of what runs today, not a screenshot.</p>
+              </div>
             </div>
           </section>
         )}
 
         {/* 5. HOW I WORK WITH YOU (spec 0008) */}
         <section id="process" className="section-wrap section-spacing" aria-labelledby="process-title">
-          <div className="section-header">
+          <div className="section-header reveal">
             <span className="section-tag">Process</span>
             <h2 id="process-title" className="section-title">
               How I work with you.
@@ -442,10 +537,17 @@ function HomePage() {
           </div>
           <ol className="process-list">
             {processSteps.map((step, index) => (
-              <li className="now-card" key={step.id}>
+              <li className="now-card reveal spotlight" key={step.id}>
                 <span className="process-number">{String(index + 1).padStart(2, '0')}</span>
                 <h3>{step.title}</h3>
                 <p>{step.line}</p>
+                <div className="step-demo" aria-hidden="true">
+                  {step.demo.map((line, i) => (
+                    <span key={line.text} className={`demo-line is-${line.kind}`} style={{ '--d': i } as React.CSSProperties}>
+                      {line.text}
+                    </span>
+                  ))}
+                </div>
               </li>
             ))}
           </ol>
@@ -453,7 +555,7 @@ function HomePage() {
 
         {/* 6. SELECTED WORK (proof) */}
         <section id="work" className="section-wrap section-spacing" aria-labelledby="work-title">
-          <div className="section-header">
+          <div className="section-header reveal">
             <span className="section-tag">Proof</span>
             <h2 id="work-title" className="section-title">
               Selected work.
@@ -466,7 +568,7 @@ function HomePage() {
 
           <ul className="work-tiles work-teaser-grid work-teaser-four">
             {featuredStories.map((item) => (
-              <li className="work-tile" key={item.id}>
+              <li className="work-tile reveal tilt" key={item.id}>
                 <Link className="work-tile-link" to="/work/$slug" params={{ slug: item.id }}>
                   <WorkCover item={item} />
                   <div className="work-tile-body">
@@ -492,7 +594,7 @@ function HomePage() {
 
         {/* 7. BUILT TO KEEP WORKING (spec 0007) */}
         <section id="how-i-work" className="section-wrap section-spacing" aria-labelledby="how-title">
-          <div className="section-header">
+          <div className="section-header reveal">
             <span className="section-tag">Principles</span>
             <h2 id="how-title" className="section-title">
               Built to keep working.
@@ -502,7 +604,7 @@ function HomePage() {
 
           <ul className="principle-grid">
             {principles.map((p) => (
-              <li className="now-card" key={p.id}>
+              <li className="now-card reveal" key={p.id}>
                 <h3>{p.title}</h3>
                 <p>{p.line}</p>
                 <Link className="work-link" to={p.proof.href}>
@@ -515,7 +617,7 @@ function HomePage() {
 
         {/* 5. EXPERIENCE TIMELINE */}
         <section id="experience" className="section-wrap section-spacing" aria-labelledby="experience-title">
-          <div className="section-header">
+          <div className="section-header reveal">
             <span className="section-tag">Experience</span>
             <h2 id="experience-title" className="section-title">
               What I owned, and where.
@@ -588,7 +690,7 @@ function HomePage() {
 
         {/* 6. LEARNING (replaces Now, spec 0006) */}
         <section id="learning" className="section-wrap section-spacing" aria-labelledby="learning-title">
-          <div className="section-header">
+          <div className="section-header reveal">
             <span className="section-tag">Learning</span>
             <h2 id="learning-title" className="section-title">
               What I am learning.
@@ -648,6 +750,14 @@ function HomePage() {
                 Tell me about your idea. Choose a topic to open an email with a short brief to fill in, or message me on LinkedIn or
                 WhatsApp. Hiring teams are welcome too.
               </p>
+              <div className="brief-demo reveal" aria-hidden="true">
+                <span className="brief-demo-bar">New email · AI-powered app idea</span>
+                {BRIEF_DEMO.map((line, i) => (
+                  <span key={line.label} className="demo-line brief-line" style={{ '--d': i } as React.CSSProperties}>
+                    <strong>{line.label}</strong> {line.value}
+                  </span>
+                ))}
+              </div>
               <div className="contact-availability">
                 <span className="pulse-dot" />
                 <span>Available now for freelance projects, and for roles in Kenya or remote</span>
