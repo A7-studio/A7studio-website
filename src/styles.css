@@ -3351,3 +3351,11 @@ button {
   outline-offset: 3px;
   box-shadow: 0 0 0 6px var(--color-canvas);
 }
+
+/* No theme fade on first paint (spec 0009 follow-up) */
+.theme-init,
+.theme-init *,
+.theme-init *::before,
+.theme-init *::after {
+  transition: none !important;
+}

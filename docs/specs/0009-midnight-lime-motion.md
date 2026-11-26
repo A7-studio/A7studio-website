@@ -27,5 +27,5 @@ Plain CSS plus a small hook (`src/components/Motion.tsx`) using IntersectionObse
 
 ## Follow-up
 
-- [ ] The saved cloud theme still shows navy for a moment on load (an existing theme script issue). Fix with an inline theme script in the document head.
+- [x] Fixed 2026-11-27: a head script in `__root.tsx` applies the saved or system theme before first paint, transitions stay off for the first frame, and `useTheme` reads the theme after mount, which also removed a React hydration error (#418) for cloud theme visitors.
 - [ ] Check reduced motion and a keyboard pass on a real device.

@@ -2,6 +2,13 @@ import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 
 import appCss from '../styles.css?url'
 
+/**
+ * Sets the saved or system theme before first paint, so a cloud theme visitor
+ * never sees a navy flash (spec 0009 follow-up). Transitions stay off until
+ * after the first frame. Mirrors the theme logic in the page components.
+ */
+const THEME_SCRIPT = `(function(){var d=document.documentElement;try{var t=localStorage.getItem('a7-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)}catch(e){}d.classList.add('theme-init');requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.remove('theme-init')})})})()`
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -36,13 +43,14 @@ export const Route = createRootRoute({
         href: appCss,
       },
     ],
+    scripts: [{ children: THEME_SCRIPT }],
   }),
   shellComponent: RootDocument,
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>

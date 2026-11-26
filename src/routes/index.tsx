@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, createFileRoute } from '@tanstack/react-router'
 
 import { usePageMotion, useRotatingIndex } from '#/components/Motion'
+import { useTheme } from '#/components/useTheme'
 import { WorkCover } from '#/components/WorkShell'
 import { employerStrip, experience } from '#/content/experience'
 import { LabCover } from '#/components/LabParts'
@@ -95,17 +96,7 @@ function HomePage() {
   usePageMotion()
   const [copiedEmail, setCopiedEmail] = useState(false)
   const [selectedInquiry, setSelectedInquiry] = useState(inquiryTopics[0])
-  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
-    if (typeof window === 'undefined') return 'dark'
-    const saved = localStorage.getItem('a7-theme') as 'dark' | 'light' | null
-    if (saved) return saved
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
-  })
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-    localStorage.setItem('a7-theme', theme)
-  }, [theme])
+  const [theme, setTheme] = useTheme()
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
