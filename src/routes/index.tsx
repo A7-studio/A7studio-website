@@ -86,7 +86,7 @@ const COMMITS = [
 /** Example brief shown filling in above the contact options (illustration only). */
 const BRIEF_DEMO = [
   { label: 'The idea:', value: 'an assistant that answers customers from our docs' },
-  { label: 'Who it is for:', value: 'our support team and 2,000 customers' },
+  { label: 'Who it is for:', value: 'our support team and our customers' },
   { label: 'What exists today:', value: 'a help centre and a shared inbox' },
   { label: 'First version by:', value: 'end of next quarter' },
 ]
