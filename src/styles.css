@@ -4,20 +4,23 @@
 :root,
 [data-theme="dark"] {
   color-scheme: dark;
-  --color-canvas: #03060f;
-  --color-surface: #0a1020;
-  --color-surface-raised: #0f1730;
-  --color-surface-hover: #152040;
-  --color-border: #1b2645;
-  --color-border-glow: #2a3a66;
+  --color-canvas: #041236;
+  --color-surface: #071b4a;
+  --color-surface-raised: #0a2259;
+  --color-surface-hover: #0e2a6b;
+  --color-border: #163478;
+  --color-border-glow: #23469a;
 
   /* Header surface tokens */
-  --header-bg: rgba(3, 6, 15, 0.82);
-  --header-border: rgba(27, 38, 69, 0.85);
+  --header-bg: rgba(4, 18, 54, 0.85);
+  --header-border: rgba(22, 52, 120, 0.85);
 
   /* Space black and navy panels, cloud white, electric lime (specs 0009, 0010). Lime is a fill or text on navy only: it is 1.1 to 1 on white. */
   --color-accent: #c6ff3d;
   --color-accent-fill: #c6ff3d;
+  --color-primary: #135bff;
+  --color-primary-hover: #2a6bff;
+  --color-on-primary: #ffffff;
   --color-accent-dim: rgba(198, 255, 61, 0.12);
   --color-accent-glow: rgba(198, 255, 61, 0.24);
   --color-on-accent: #0b1530;
@@ -48,6 +51,9 @@
 
     --color-accent: #3f6b00;
   --color-accent-fill: #c6ff3d;
+  --color-primary: #135bff;
+  --color-primary-hover: #2a6bff;
+  --color-on-primary: #ffffff;
     --color-accent-dim: rgba(198, 255, 61, 0.35);
     --color-accent-glow: rgba(120, 170, 0, 0.22);
     --color-on-accent: #0b1530;
@@ -77,6 +83,9 @@
 
   --color-accent: #3f6b00;
   --color-accent-fill: #c6ff3d;
+  --color-primary: #135bff;
+  --color-primary-hover: #2a6bff;
+  --color-on-primary: #ffffff;
   --color-accent-dim: rgba(198, 255, 61, 0.35);
   --color-accent-glow: rgba(120, 170, 0, 0.22);
   --color-on-accent: #0b1530;
@@ -384,16 +393,16 @@ button {
 }
 
 .btn-primary {
-  background: var(--color-accent-fill);
-  color: var(--color-on-accent);
-  border: 1px solid var(--color-accent-fill);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border: 1px solid var(--color-primary);
   font-weight: 600;
 }
 
 .btn-primary:hover {
-  background: var(--color-ink);
-  border-color: var(--color-ink);
-  color: var(--color-canvas);
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  color: var(--color-on-primary);
   transform: translateY(-2px);
   box-shadow: 0 6px 24px var(--color-accent-glow);
 }
@@ -3666,4 +3675,14 @@ button {
 .marquee {
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
+}
+
+/* Electric blue with a touch of lime, squarer buttons (2026-11-27) */
+.btn {
+  border-radius: 4px;
+}
+
+.copy-btn,
+.inquiry-pill {
+  border-radius: 4px;
 }

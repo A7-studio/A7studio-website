@@ -20,3 +20,7 @@ The home page takes the feel of scrums.com (a precise, space dark engineering lo
 ## Decision
 
 Plain canvas and CSS, no dependency. Lime replaces the reference site's blue so the look is ours, not a copy.
+
+## Amendment, 2026-11-27: electric blue with a touch of lime
+
+Dark canvas is now deep blue `#041236` with blue panels (`#071b4a`, `#0a2259`). Primary buttons are electric blue `#135bff` with white text (5.3 to 1); lime stays as the accent for "Built.", the rotating phrase, status dots, filters and labels. Buttons, the copy button and contact topics use a 4px radius. Revert this commit to go back to space black with lime buttons.
