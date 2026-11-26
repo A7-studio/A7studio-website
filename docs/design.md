@@ -89,3 +89,7 @@ Use semantic header, nav, main, sections, lists, and footer. Maintain high contr
 ## Content Guidelines
 
 Only display details and destinations confirmed by the portfolio spec and existing worktree. Keep missing roles, descriptions, project statuses, URLs, experience claims, and metrics absent. Label Good Call as an upcoming personal finance app until more details are confirmed.
+
+## Colour: paper, ink and cornflower (2026-11-27)
+
+The palette is paper white and ink black with a cornflower blue accent. Ink theme (dark, the default): canvas `#0e0f12`, text `#e7e3da`, headings `#f7f5ef`, accent cornflower `#6495ed` with ink text on accent buttons. Paper theme (light): canvas `#f7f5ef`, text `#1f2024`, headings `#0e0f12`, accent `#3560bd` (a deeper cornflower, because `#6495ed` is only 2.7 to 1 on paper) with white text on accent buttons. Every text colour and accent pairing measures at least 4.5 to 1. WhatsApp keeps its own green.
