@@ -4,9 +4,10 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 import { WorkCover } from '#/components/WorkShell'
 import { employerStrip, experience } from '#/content/experience'
 import { LabCover } from '#/components/LabParts'
-import { entryHref, formatLabDate, hasLab, latestDate, publishedEntries, sortedNotes } from '#/content/lab'
+import { entryHref, formatLabDate, hasLab, publishedEntries, sortedNotes } from '#/content/lab'
 import { hiring, offers } from '#/content/offers'
 import { principles } from '#/content/principles'
+import { processSteps } from '#/content/process'
 import { featuredStories, workItems } from '#/content/work'
 import type { WorkItem } from '#/content/work'
 
@@ -18,11 +19,11 @@ const GITHUB = 'https://github.com/kibzsam'
 export const Route = createFileRoute('/')({
   head: () => ({
     meta: [
-      { title: 'Full-Stack & Flutter Engineer | Payments, Fintech & Applied AI' },
+      { title: 'Samuel Gichu | AI-powered apps for founders and teams' },
       {
         name: 'description',
         content:
-          'Samuel Gichu is a Full-Stack and Flutter engineer with 6+ years building payments, ledgers and mobile apps that keep working on low cost phones and patchy networks, and now AI-powered products. Available now for full-time, hybrid and remote roles in Kenya, and remote roles that hire in Kenya.',
+          'Samuel Gichu builds AI-powered apps for founders and teams, from the first idea to something people use. Full-stack and Flutter engineer with 6+ years shipping payments, mobile and web products. Available for freelance projects and roles.',
       },
       { name: 'author', content: 'Samuel Gichu' },
       {
@@ -33,10 +34,10 @@ export const Route = createFileRoute('/')({
       { name: 'robots', content: 'index, follow' },
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'A7Studio' },
-      { property: 'og:title', content: 'Samuel Gichu | Full-Stack & Flutter Engineer' },
+      { property: 'og:title', content: 'Samuel Gichu | AI-powered apps for founders and teams' },
       {
         property: 'og:description',
-        content: 'Full-stack and Flutter engineer building payments and mobile products that keep working on weak networks. Available now for roles in Kenya and remote.',
+        content: 'I build AI-powered apps for founders and teams, from the first idea to something people use.',
       },
       { property: 'og:url', content: 'https://a7studio.dev/' },
       { property: 'og:locale', content: 'en_US' },
@@ -45,7 +46,7 @@ export const Route = createFileRoute('/')({
       { name: 'twitter:title', content: 'A7Studio.dev — Samuel Gichu' },
       {
         name: 'twitter:description',
-        content: 'Full-stack and Flutter engineer building payments, fintech and AI-powered products.',
+        content: 'I build AI-powered apps for founders and teams, from the first idea to something people use.',
       },
     ],
     links: [{ rel: 'canonical', href: 'https://a7studio.dev/' }],
@@ -66,12 +67,23 @@ export const Route = createFileRoute('/')({
   component: HomePage,
 })
 
+const caseStudy = publishedEntries.find((entry) => entry.slug === 'jobmigo') ?? publishedEntries[0]
+
+const IDEA_BRIEF =
+  'Hi%20Samuel%2C%0A%0AThe%20idea%3A%20%0AWho%20it%20is%20for%3A%20%0AWhat%20exists%20today%3A%20%0AWhen%20I%20need%20a%20first%20version%3A%20%0A'
+
 const inquiryTopics = [
-  { id: 'role', label: '💼 Full-Time Role', subject: 'Engineering%20Role' },
-  { id: 'contract', label: '🤝 Contract Engagement', subject: 'Contract%20Engagement%20Inquiry' },
-  { id: 'freelance', label: '🛠️ Freelance Project', subject: 'Freelance%20Project%20Inquiry' },
-  { id: 'other', label: '💬 Something Else', subject: 'Hello%20Samuel' },
+  { id: 'ai-app', label: '🤖 AI-powered app', subject: 'AI-powered%20app%20idea', body: IDEA_BRIEF },
+  { id: 'add-ai', label: '✨ Add AI to my product', subject: 'Add%20AI%20to%20my%20product', body: IDEA_BRIEF },
+  { id: 'mobile', label: '📱 Mobile or payments app', subject: 'Mobile%20or%20payments%20app', body: IDEA_BRIEF },
+  { id: 'role', label: '💼 Hiring', subject: 'Engineering%20role', body: "Hi%20Samuel%2C%0A%0AI'm%20reaching%20out%20about%20a%20role%3A%20" },
+  { id: 'other', label: '💬 Something else', subject: 'Hello%20Samuel', body: 'Hi%20Samuel%2C%0A%0A' },
 ]
+
+function ideaHref(topicId: string) {
+  const topic = inquiryTopics.find((item) => item.id === topicId) ?? inquiryTopics[0]
+  return `mailto:kibochas@gmail.com?subject=${topic.subject}&body=${topic.body}`
+}
 
 
 function HomePage() {
@@ -136,7 +148,7 @@ function HomePage() {
               Experience
             </a>
             <a className="nav-link" href="#services">
-              Work with me
+              Build with me
             </a>
             <a className="nav-link" href="#contact">
               Contact
@@ -222,7 +234,7 @@ function HomePage() {
           </li>
           <li>
             <a href="#services" onClick={() => setMenuOpen(false)}>
-              Work with me <span>→</span>
+              Build with me <span>→</span>
             </a>
           </li>
           <li>
@@ -263,30 +275,30 @@ function HomePage() {
                 <div className="hero-status-pill">
                   <span className="pulse-dot" aria-hidden="true" />
                   <span>
-                    <span className="highlight">Available now</span> for full-time, hybrid and remote roles in Kenya, and remote roles that hire in Kenya
+                    <span className="highlight">Available now</span> for freelance projects, and for roles in Kenya or remote
                   </span>
                 </div>
 
                 <h1 id="hero-title" className="hero-title">
-                  Full-stack and Flutter engineer building <span className="text-accent">payments</span>,{' '}
-                  <span className="text-accent">fintech</span> and <span className="text-accent">AI-powered</span> products.
+                  I build <span className="text-accent">AI-powered apps</span> for founders and teams, from the first idea to
+                  something people use.
                 </h1>
 
                 <p className="hero-subhead">
-                  I'm Samuel Gichu. I work in TypeScript, React, Node.js, SQL and Flutter, and I build the parts of a product that
-                  have to keep working when the network doesn't: payments, ledgers and mobile apps for people on low cost
-                  phones and patchy data. Now I am building AI-powered products, starting with jobmigo.
+                  I'm Samuel Gichu, a full-stack and Flutter engineer. For 6+ years I have shipped payments, mobile and web
+                  products in TypeScript, React, Node.js, SQL and Flutter for companies like Boya, Alvin and BeatBnk. Now I
+                  build AI products like jobmigo, and I can build yours.
                 </p>
 
                 <div className="hero-actions">
-                  <Link id="hero-explore-btn" className="btn btn-primary" to="/work">
-                    See my work <span aria-hidden="true">→</span>
-                  </Link>
-                  <a id="hero-cta-contact" className="btn btn-outline" href="#services">
-                    Work with me <span aria-hidden="true">→</span>
+                  <a id="hero-idea-btn" className="btn btn-primary" href={ideaHref('ai-app')}>
+                    Tell me about your idea <span aria-hidden="true">→</span>
+                  </a>
+                  <a id="hero-explore-btn" className="btn btn-outline" href="#services">
+                    See what I can build <span aria-hidden="true">→</span>
                   </a>
                   <a id="hero-cv-btn" className="btn btn-ghost" href={CV_REQUEST_HREF}>
-                    Request a CV
+                    Hiring? Request a CV
                   </a>
                 </div>
 
@@ -313,8 +325,8 @@ function HomePage() {
                   <span className="hero-stat-label">React and TypeScript products</span>
                 </div>
                 <div className="hero-stat-card">
-                  <span className="hero-stat-value">Fintech &amp; AI</span>
-                  <span className="hero-stat-label">Payments, ledgers and AI powered products</span>
+                  <span className="hero-stat-value">AI apps</span>
+                  <span className="hero-stat-label">LLM features, retrieval and evaluation tests</span>
                 </div>
               </div>
             </div>
@@ -337,30 +349,109 @@ function HomePage() {
           </p>
         </section>
 
-        {/* 2b. HOW I WORK (spec 0007) */}
-        <section id="how-i-work" className="section-wrap section-spacing" aria-labelledby="how-title">
+        {/* 3. WHAT I CAN BUILD (spec 0008) */}
+        <section id="services" className="section-wrap section-spacing" aria-labelledby="services-title">
           <div className="section-header">
-            <span className="section-tag">Approach</span>
-            <h2 id="how-title" className="section-title">
-              How I work.
+            <span className="section-tag">Build with me</span>
+            <h2 id="services-title" className="section-title">
+              What I can build for you.
             </h2>
-            <p className="section-lead">I build for weak networks, cheap phones and systems I do not control.</p>
+            <p className="section-lead">Each one links to work I have shipped or am building. I scope and quote after we talk.</p>
           </div>
 
-          <ul className="principle-grid">
-            {principles.map((p) => (
-              <li className="now-card" key={p.id}>
-                <h3>{p.title}</h3>
-                <p>{p.line}</p>
-                <Link className="work-link" to={p.proof.href}>
-                  {p.proof.label} <span aria-hidden="true">→</span>
-                </Link>
+          <ul className="offer-grid">
+            {offers.map((offer) => (
+              <li className="now-card offer-card" key={offer.id}>
+                <h3>
+                  {offer.title}
+                  {offer.label && <span className="work-status offer-label">{offer.label}</span>}
+                </h3>
+                {offer.lines.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+                <p className="offer-proof">
+                  <span className="offer-proof-label">Proof</span>
+                  {offer.proof.map((item) => (
+                    <a key={item.href} href={item.href}>
+                      {item.label}
+                    </a>
+                  ))}
+                </p>
               </li>
             ))}
           </ul>
+
+          <p className="work-teaser-more">
+            <a className="btn btn-primary" href={ideaHref('ai-app')}>
+              Tell me about your idea <span aria-hidden="true">→</span>
+            </a>
+          </p>
         </section>
 
-        {/* 3. SELECTED WORK */}
+        {/* 4. JOBMIGO CASE STUDY (spec 0008) */}
+        {caseStudy && (
+          <section id="products" className="section-wrap section-spacing" aria-labelledby="products-title">
+            <div className="section-header">
+              <span className="section-tag">Case study · {caseStudy.status}</span>
+              <h2 id="products-title" className="section-title">
+                What I am building.
+              </h2>
+              <p className="section-lead">{caseStudy.name}: {caseStudy.tagline.replace(/\.$/, '')}. An example of what an AI-powered first version looks like.</p>
+            </div>
+
+            <div className="case-study">
+              <div className="case-study-text">
+                {caseStudy.why && (
+                  <>
+                    <h3>The problem</h3>
+                    <p>{caseStudy.why.headline}</p>
+                  </>
+                )}
+                {caseStudy.features && (
+                  <>
+                    <h3>What it does</h3>
+                    <ul className="case-study-list">
+                      {caseStudy.features.map((feature) => (
+                        <li key={feature}>{feature}</li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+                {caseStudy.statusNote && <p className="status-note">{caseStudy.statusNote}</p>}
+                <p className="case-study-actions">
+                  <a className="btn btn-outline" href={entryHref(caseStudy)}>
+                    Read the {caseStudy.name} story <span aria-hidden="true">→</span>
+                  </a>
+                </p>
+              </div>
+              <a className="case-study-cover" href={entryHref(caseStudy)} tabIndex={-1} aria-hidden="true">
+                <LabCover entry={caseStudy} />
+              </a>
+            </div>
+          </section>
+        )}
+
+        {/* 5. HOW I WORK WITH YOU (spec 0008) */}
+        <section id="process" className="section-wrap section-spacing" aria-labelledby="process-title">
+          <div className="section-header">
+            <span className="section-tag">Process</span>
+            <h2 id="process-title" className="section-title">
+              How I work with you.
+            </h2>
+            <p className="section-lead">Four steps from your idea to something people use.</p>
+          </div>
+          <ol className="process-list">
+            {processSteps.map((step, index) => (
+              <li className="now-card" key={step.id}>
+                <span className="process-number">{String(index + 1).padStart(2, '0')}</span>
+                <h3>{step.title}</h3>
+                <p>{step.line}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        {/* 6. SELECTED WORK (proof) */}
         <section id="work" className="section-wrap section-spacing" aria-labelledby="work-title">
           <div className="section-header">
             <span className="section-tag">Proof</span>
@@ -399,42 +490,28 @@ function HomePage() {
           </p>
         </section>
 
-        {/* 4. PRODUCTS (spec 0006) */}
-        {hasLab && (
-          <section id="products" className="section-wrap section-spacing" aria-labelledby="products-title">
-            <div className="section-header">
-              <span className="section-tag">Products</span>
-              <h2 id="products-title" className="section-title">
-                What I am building.
-              </h2>
-              <p className="section-lead">AI powered products I design and build myself, with an honest status on each.</p>
-            </div>
-            <ul className="work-tiles work-teaser-grid">
-              {publishedEntries.slice(0, 3).map((entry) => (
-                <li className="work-tile" key={entry.slug}>
-                  <a className="work-tile-link" href={entryHref(entry)}>
-                    <LabCover entry={entry} />
-                    <div className="work-tile-body">
-                      <span className="work-tile-meta">Updated {formatLabDate(latestDate(entry))}</span>
-                      <span className="work-status">{entry.status}</span>
-                      <h3 className="work-title">{entry.name}</h3>
-                      <p className="work-headline">{entry.tagline}</p>
-                      {entry.statusNote && <p className="status-note">{entry.statusNote}</p>}
-                      <span className="work-link">
-                        Read the story <span aria-hidden="true">→</span>
-                      </span>
-                    </div>
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <p className="work-teaser-more">
-              <Link className="btn btn-outline" to="/lab">
-                See the lab <span aria-hidden="true">→</span>
-              </Link>
-            </p>
-          </section>
-        )}
+        {/* 7. BUILT TO KEEP WORKING (spec 0007) */}
+        <section id="how-i-work" className="section-wrap section-spacing" aria-labelledby="how-title">
+          <div className="section-header">
+            <span className="section-tag">Principles</span>
+            <h2 id="how-title" className="section-title">
+              Built to keep working.
+            </h2>
+            <p className="section-lead">I build for weak networks, cheap phones and systems I do not control.</p>
+          </div>
+
+          <ul className="principle-grid">
+            {principles.map((p) => (
+              <li className="now-card" key={p.id}>
+                <h3>{p.title}</h3>
+                <p>{p.line}</p>
+                <Link className="work-link" to={p.proof.href}>
+                  {p.proof.label} <span aria-hidden="true">→</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         {/* 5. EXPERIENCE TIMELINE */}
         <section id="experience" className="section-wrap section-spacing" aria-labelledby="experience-title">
@@ -444,6 +521,14 @@ function HomePage() {
               What I owned, and where.
             </h2>
             <p className="section-lead">The same history as my CV, newest first.</p>
+          </div>
+
+          <div className="now-card offer-hiring">
+            <h3>Hiring? {hiring.title}</h3>
+            <p>{hiring.body}</p>
+            <a className="btn btn-outline btn-sm" href={CV_REQUEST_HREF}>
+              Request a CV
+            </a>
           </div>
 
           <ol className="timeline">
@@ -553,49 +638,6 @@ function HomePage() {
           <p className="now-paused">Paused while I focus on this: Kakitoo and Good Call, my own product projects.</p>
         </section>
 
-        {/* 7. WORK WITH ME (spec 0006) */}
-        <section id="services" className="section-wrap section-spacing" aria-labelledby="services-title">
-          <div className="section-header">
-            <span className="section-tag">Work with me</span>
-            <h2 id="services-title" className="section-title">
-              Hire me, or hire me to build.
-            </h2>
-            <p className="section-lead">
-              Each offer links to work I have shipped. I will scope and quote after we talk.
-            </p>
-          </div>
-
-          <div className="now-card offer-hiring">
-            <h3>{hiring.title}</h3>
-            <p>{hiring.body}</p>
-            <a className="btn btn-primary btn-sm" href="#contact">
-              Talk about a role <span aria-hidden="true">→</span>
-            </a>
-          </div>
-
-          <ul className="offer-grid">
-            {offers.map((offer) => (
-              <li className="now-card offer-card" key={offer.id}>
-                <h3>
-                  {offer.title}
-                  {offer.label && <span className="work-status offer-label">{offer.label}</span>}
-                </h3>
-                {offer.lines.map((line) => (
-                  <p key={line}>{line}</p>
-                ))}
-                <p className="offer-proof">
-                  <span className="offer-proof-label">Proof</span>
-                  {offer.proof.map((item) => (
-                    <a key={item.href} href={item.href}>
-                      {item.label}
-                    </a>
-                  ))}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </section>
-
         {/* 7. CONTACT */}
         <section id="contact" className="section-wrap section-spacing" aria-labelledby="contact-title">
           <div className="contact-container">
@@ -603,12 +645,12 @@ function HomePage() {
               <div className="section-tag">Contact</div>
               <h2 id="contact-title">Let’s talk.</h2>
               <p>
-                Hiring teams and people with a project can reach me directly. Choose a topic to open a prepared email, or message me on
-                LinkedIn or WhatsApp.
+                Tell me about your idea. Choose a topic to open an email with a short brief to fill in, or message me on LinkedIn or
+                WhatsApp. Hiring teams are welcome too.
               </p>
               <div className="contact-availability">
                 <span className="pulse-dot" />
-                <span>Available now for full-time, hybrid and remote roles in Kenya, and remote roles that hire in Kenya</span>
+                <span>Available now for freelance projects, and for roles in Kenya or remote</span>
               </div>
 
               <div className="inquiry-selector" style={{ marginTop: '2rem' }}>
@@ -635,7 +677,7 @@ function HomePage() {
                     Direct Email
                   </span>
                   <a
-                    href={`mailto:kibochas@gmail.com?subject=${selectedInquiry.subject}&body=Hi%20Samuel%2C%0A%0AI'm%20reaching%20out%20regarding%20...`}
+                    href={ideaHref(selectedInquiry.id)}
                     className="email-address"
                     style={{ textDecoration: 'underline', textUnderlineOffset: '3px' }}
                   >

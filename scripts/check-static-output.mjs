@@ -17,13 +17,15 @@ const css = await readFile(new URL(`../dist/client${stylesheetPath}`, import.met
 const expectedSections = [
   'A7Studio',
   'Samuel Gichu',
-  'How I work.',
+  'What I can build for you.',
+  'How I work with you.',
+  'Built to keep working.',
   'Selected work',
   'Where I have worked',
   'What I owned, and where.',
   'What I am learning.',
   'What I am building.',
-  'Work with me',
+  'Build with me',
   'Contact',
 ]
 
@@ -100,9 +102,11 @@ for (const banned of [/AI (?:expert|specialist|guru)/i, /\bAI Engineer\b/, /\b(?
 }
 assert.match(homeHtml, /application\/ld\+json/, 'Home page has no structured data')
 assert.match(homeHtml, /"jobTitle":"Full-Stack & Flutter Engineer"/, 'Structured data is missing the job title')
-assert.match(homeHtml, /Mobile app build/, 'Home page is missing the offers')
+assert.match(homeHtml, /An AI-powered first version/, 'Home page is missing the build types')
+assert.match(homeHtml, /Tell me about your idea/, 'Home page is missing the idea action (spec 0008)')
+assert.ok(!/\bAI agency\b/i.test(homeHtml), 'No agency claim until stage three')
 assert.ok(!/\$\s?\d|\bKES\s?\d|USD\s?\d|per hour/i.test(homeHtml.split('id="services"')[1]?.split('id="contact"')[0] ?? ''), 'Offers must not show prices')
-assert.match(homeHtml, /Freelance Project/, 'Contact topics are missing Freelance Project')
+assert.match(homeHtml, /AI-powered app/, 'Contact topics are missing the AI-powered app topic')
 assert.match(homeHtml, /Full-stack and Flutter engineer/i, 'Home page is missing the title')
 assert.ok(!/FastAPI/.test(homeHtml.split('id="products"')[0]), 'FastAPI is not claimed in the hero or stack line')
 // The CV changes by role, so it is requested by email and never downloaded.

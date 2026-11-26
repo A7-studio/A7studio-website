@@ -102,6 +102,13 @@ Retell the site around software that keeps working when the network does not: a 
 - [x] Build it: `/develop reliability story revamp` · code in `src/routes/index.tsx`, `src/content/principles.ts`, `src/content/work.ts`, `src/content/offers.ts`
 - [x] Verify it: closed without a full `/check verify` run; build, `check:static` and typecheck pass
 
+### 13. AI product studio pitch · in progress
+Turn the home page from a CV into a pitch for founders and teams: what I can build, jobmigo as the lead AI case study, how I work with clients, experience as proof, and an idea intake by email.
+**Done when:** a founder sees what Samuel can build, the proof and how to start, in the first scroll, with honest status and the "I" voice.
+- [x] Design it (spec): `/architect ai product studio pitch` → [0008](../specs/0008-ai-product-studio-pitch.md)
+- [x] Build it: `/develop ai product studio pitch` · code in `src/routes/index.tsx`, `src/content/offers.ts`, `src/content/process.ts`, `src/content/lab.ts`
+- [ ] Verify it: `/check verify ai product studio pitch`
+
 ## Journey 3: Receive and review leads
 
 ### 6. Lead capture and private lead dashboard · needs a decision · Beta
