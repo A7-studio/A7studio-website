@@ -622,7 +622,7 @@ button {
   width: 520px;
   height: 520px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(198, 255, 61, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(19, 91, 255, 0.16) 0%, transparent 70%);
   filter: blur(80px);
   pointer-events: none;
 }
@@ -634,7 +634,7 @@ button {
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(198, 255, 61, 0.10) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.10) 0%, transparent 70%);
   filter: blur(90px);
   pointer-events: none;
 }
@@ -884,7 +884,7 @@ button {
   width: 4.5rem;
   height: 4.5rem;
   border-radius: 50%;
-  background: linear-gradient(135deg, #c6ff3d, #7fb800);
+  background: linear-gradient(135deg, #135bff, #22d3ee);
   color: var(--color-on-accent);
   display: flex;
   align-items: center;
@@ -980,7 +980,7 @@ button {
 
 .pillar-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(198, 255, 61, 0.4);
+  border-color: rgba(34, 211, 238, 0.4);
   background: var(--color-surface-raised);
 }
 
@@ -1332,7 +1332,7 @@ button {
   text-transform: uppercase;
   color: var(--color-accent);
   background: var(--color-accent-dim);
-  border: 1px solid rgba(198, 255, 61, 0.2);
+  border: 1px solid rgba(34, 211, 238, 0.2);
   padding: 0.25rem 0.65rem;
   border-radius: var(--radius-xs);
 }
@@ -1400,7 +1400,7 @@ button {
 /* IN THE LAB SECTION */
 .lab-section {
   border-block: 1px solid var(--color-border);
-  background: radial-gradient(ellipse at 50% 0%, rgba(198, 255, 61, 0.04), transparent 60%), var(--color-surface);
+  background: radial-gradient(ellipse at 50% 0%, rgba(34, 211, 238, 0.04), transparent 60%), var(--color-surface);
 }
 
 .lab-grid {
@@ -1465,7 +1465,7 @@ button {
   width: 2.25rem;
   height: 2.25rem;
   border-radius: 50%;
-  background: linear-gradient(135deg, #c6ff3d, #7fb800);
+  background: linear-gradient(135deg, #135bff, #22d3ee);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1517,8 +1517,8 @@ button {
   justify-content: center;
   gap: 0.4rem;
   padding: 0.35rem;
-  background: rgba(198, 255, 61, 0.05);
-  border: 1px solid rgba(198, 255, 61, 0.15);
+  background: rgba(34, 211, 238, 0.05);
+  border: 1px solid rgba(34, 211, 238, 0.15);
   border-radius: var(--radius-xs);
   font-family: var(--font-mono);
   font-size: 0.625rem;
@@ -1765,7 +1765,7 @@ button {
 
 /* CONTACT & CV SECTION */
 .contact-container {
-  background: radial-gradient(ellipse at 10% 90%, rgba(198, 255, 61, 0.12), transparent 55%), var(--color-surface);
+  background: radial-gradient(ellipse at 10% 90%, rgba(19, 91, 255, 0.22), transparent 55%), radial-gradient(ellipse at 95% 10%, rgba(34, 211, 238, 0.10), transparent 50%), var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: clamp(2.5rem, 5vw, 4.5rem);
@@ -1806,8 +1806,8 @@ button {
   align-items: center;
   gap: 0.65rem;
   padding: 0.5rem 1rem;
-  background: rgba(198, 255, 61, 0.08);
-  border: 1px solid rgba(198, 255, 61, 0.25);
+  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid rgba(34, 211, 238, 0.25);
   border-radius: var(--radius-full);
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -2086,8 +2086,8 @@ button {
   font-size: 0.6875rem;
   font-weight: 500;
   color: var(--color-accent);
-  background: rgba(198, 255, 61, 0.08);
-  border: 1px solid rgba(198, 255, 61, 0.25);
+  background: rgba(34, 211, 238, 0.08);
+  border: 1px solid rgba(34, 211, 238, 0.25);
   padding: 0.25rem 0.6rem;
   border-radius: var(--radius-xs);
   margin-bottom: 1rem;
@@ -2097,7 +2097,7 @@ button {
 .work-lead-banner {
   margin-top: 3.5rem;
   padding: 2.5rem;
-  background: radial-gradient(ellipse at 80% 50%, rgba(198, 255, 61, 0.08), transparent 60%), var(--color-surface);
+  background: radial-gradient(ellipse at 80% 50%, rgba(34, 211, 238, 0.08), transparent 60%), var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   display: flex;
