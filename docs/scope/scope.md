@@ -121,6 +121,12 @@ Space dark canvas, huge thin headline, particle hero, build catalog, jobmigo pan
 - [x] Build it · code in `src/components/ParticleField.tsx`, `src/routes/index.tsx`, `src/content/offers.ts`, `src/styles.css`
 - [x] Verify it: contrast in both themes, 375, 768 and 1280 pixels, catalog filters
 
+### 16. Shine, code and collaboration · done
+Cyan accent, aurora and glass, a typing hero editor with founder and Samuel cursors, progress bars on the process, and an example commit ticker.
+- [x] Design it (spec): [0011](../specs/0011-shine-code-and-collaboration.md)
+- [x] Build it · code in `src/components/HeroEditor.tsx`, `src/routes/index.tsx`, `src/styles.css`
+- [x] Verify it: contrast in both themes, 375 and 1280 pixels
+
 ## Journey 3: Receive and review leads
 
 ### 6. Lead capture and private lead dashboard · needs a decision · Beta

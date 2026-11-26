@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, createFileRoute } from '@tanstack/react-router'
 
 import { usePageMotion, useRotatingIndex } from '#/components/Motion'
-import { ParticleField } from '#/components/ParticleField'
+import { HeroEditor } from '#/components/HeroEditor'
 import { useTheme } from '#/components/useTheme'
 import { WorkCover } from '#/components/WorkShell'
 import { employerStrip, experience } from '#/content/experience'
@@ -71,6 +71,17 @@ export const Route = createFileRoute('/')({
 })
 
 const caseStudy = publishedEntries.find((entry) => entry.slug === 'jobmigo') ?? publishedEntries[0]
+
+/** Example commit messages for the ticker (illustration, not a real log). */
+const COMMITS = [
+  'example log',
+  'feat: retrieval over the CV',
+  'test: evaluation suite for job matches',
+  'feat: M-PESA STK push with retries',
+  'fix: idempotent payment webhook',
+  'chore: deploy preview for the founder',
+  'feat: offline queue for patchy networks',
+]
 
 const HERO_WORDS = ['AI-powered apps', 'mobile apps', 'payment systems', 'web platforms']
 
@@ -267,7 +278,11 @@ function HomePage() {
           <div className="hero-grid" aria-hidden="true" />
           <div className="hero-glow-1" aria-hidden="true" />
           <div className="hero-glow-2" aria-hidden="true" />
-          <ParticleField />
+          <div className="aurora" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </div>
 
           <div className="section-wrap hero-content">
             <div className="hero-body">
@@ -325,6 +340,10 @@ function HomePage() {
                 </div>
               </div>
 
+              <div className="hero-right-editor">
+                <HeroEditor />
+              </div>
+
             </div>
           </div>
         </section>
@@ -345,6 +364,15 @@ function HomePage() {
                 <li key={name}>{name}</li>
               ))}
             </ul>
+          </div>
+          <div className="marquee commit-ticker" aria-hidden="true">
+            {[0, 1].map((copy) => (
+              <ul className={`marquee-track${copy ? ' marquee-copy' : ''}`} key={copy}>
+                {COMMITS.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            ))}
           </div>
           <p className="stack-line" style={{ marginTop: '1.5rem' }}>
             <strong>Stack I ship with:</strong> TypeScript, JavaScript, HTML, CSS, React, Next.js, Vue.js, Node.js, NestJS, SQL (PostgreSQL), MongoDB, Redis,
