@@ -11,7 +11,7 @@ Cyan replaces lime as the accent next to electric blue, and the hero now shows t
 
 - **AC-1 (Accent)**: accent text is cyan `#5ce1ff` on dark (11.9 to 1) and `#0b6a85` on cloud (5.7 to 1); fills and signals are `#22d3ee` with navy text; buttons stay electric blue `#135bff`.
 - **AC-2 (Hero editor)**: decorative and hidden from screen readers; shows the finished code without JavaScript or with reduced motion; shown from 1024 pixels wide, hidden below so phones keep both actions on the first screen.
-- **AC-3 (Honesty)**: the code is an illustration of how jobmigo works (retrieve, evaluate, test), not a claim about real results; the ticker starts with "example log".
+- **AC-3 (Honesty)**: the code is an illustration of a founder's AI idea (answer customers from their own docs: retrieve, answer, test that answers come from the docs), not a claim about real results; the ticker starts with "example log". Changed from a jobmigo snippet on 2026-11-27.
 - **AC-4 (Motion limits)**: aurora, cursors, caret, sheen and progress bars stop under reduced motion.
 - **AC-5 (Quality)**: every visible text element at least 4.5 to 1 in both themes; no horizontal scroll; no console errors.
 

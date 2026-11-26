@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react'
 
 /**
- * Decorative hero editor (spec 0011): a short AI app snippet types itself out,
+ * Decorative hero editor (spec 0011): a short snippet for a founder's AI idea types itself out,
  * a terminal shows the evaluation tests passing, and two cursors (a founder
  * and Samuel) collaborate on one line. Illustration only, hidden from screen
  * readers. Without JavaScript or with reduced motion, the finished state shows.
  */
 const CODE: { text: string; tone?: 'comment' }[] = [
-  { text: '// jobmigo: score a job against a CV', tone: 'comment' },
-  { text: 'const context = await retrieve(cv, job.posting)' },
-  { text: 'const match = await llm.evaluate(job, profile, context)' },
+  { text: "// your idea: answer customers from your own docs", tone: 'comment' },
+  { text: 'const context = await retrieve(yourDocs, question)' },
+  { text: 'const answer = await llm.answer(question, context)' },
   { text: '' },
-  { text: "test('the reason is grounded in the CV', () => {" },
-  { text: '  expect(match.reason).toBeGroundedIn(context)' },
+  { text: "test('every answer comes from your docs', () => {" },
+  { text: '  expect(answer.sources).toBeFoundIn(context)' },
   { text: '})' },
 ]
 
@@ -90,7 +90,7 @@ export function HeroEditor() {
           <path d="M1 1l5 12 2-5 5-2z" />
         </svg>
         <span className="collab-label">Founder</span>
-        <span className="collab-note">Can it explain why a job fits?</span>
+        <span className="collab-note">Can it answer from our own docs?</span>
       </span>
       <span className="collab-cursor is-samuel">
         <svg width="14" height="14" viewBox="0 0 14 14">
