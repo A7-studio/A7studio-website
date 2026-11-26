@@ -22,7 +22,8 @@
   --color-primary-hover: #2a6bff;
   --color-on-primary: #ffffff;
   --color-highlight: rgba(19, 91, 255, 0.35);
-  --color-accent-dim: rgba(184, 245, 90, 0.16);
+  --color-accent-dim: rgba(19, 91, 255, 0.18);
+  --color-signal-dim: rgba(184, 245, 90, 0.22);
   --color-accent-glow: rgba(19, 91, 255, 0.28);
   --color-on-accent: #0b1530;
 
@@ -56,7 +57,8 @@
   --color-primary-hover: #2a6bff;
   --color-on-primary: #ffffff;
   --color-highlight: rgba(19, 91, 255, 0.16);
-    --color-accent-dim: rgba(120, 170, 0, 0.18);
+    --color-accent-dim: rgba(13, 70, 219, 0.08);
+    --color-signal-dim: rgba(120, 170, 0, 0.22);
     --color-accent-glow: rgba(19, 91, 255, 0.16);
     --color-on-accent: #0b1530;
 
@@ -89,7 +91,8 @@
   --color-primary-hover: #2a6bff;
   --color-on-primary: #ffffff;
   --color-highlight: rgba(19, 91, 255, 0.16);
-  --color-accent-dim: rgba(120, 170, 0, 0.18);
+  --color-accent-dim: rgba(13, 70, 219, 0.08);
+  --color-signal-dim: rgba(120, 170, 0, 0.22);
   --color-accent-glow: rgba(19, 91, 255, 0.16);
   --color-on-accent: #0b1530;
 
@@ -569,13 +572,21 @@ button {
   height: 7px;
   border-radius: 50%;
   background: var(--color-accent-fill);
-  box-shadow: 0 0 10px var(--color-accent);
-  animation: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  box-shadow: 0 0 0 0 var(--color-signal-dim);
+  animation: pulse-ring 2.4s ease-out infinite;
 }
 
+/* A soft lime ring that grows and fades: steady dot, no blinking. */
 @keyframes pulse-ring {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
+  0% { box-shadow: 0 0 0 0 rgba(184, 245, 90, 0.55); }
+  70%, 100% { box-shadow: 0 0 0 7px rgba(184, 245, 90, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-dot {
+    animation: none;
+    box-shadow: 0 0 0 3px var(--color-signal-dim);
+  }
 }
 
 /* HERO SECTION */
@@ -3565,7 +3576,7 @@ button {
   height: 7px;
   border-radius: 50%;
   background: var(--color-accent-fill);
-  box-shadow: 0 0 0 3px var(--color-accent-dim);
+  box-shadow: 0 0 0 3px var(--color-signal-dim);
 }
 
 .catalog-status.is-building .catalog-dot {
