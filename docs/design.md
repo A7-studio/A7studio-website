@@ -93,3 +93,7 @@ Only display details and destinations confirmed by the portfolio spec and existi
 ## Colour: paper, ink and cornflower (2026-11-27)
 
 The palette is paper white and ink black with a cornflower blue accent. Ink theme (dark, the default): canvas `#0e0f12`, text `#e7e3da`, headings `#f7f5ef`, accent cornflower `#6495ed` with ink text on accent buttons. Paper theme (light): canvas `#f7f5ef`, text `#1f2024`, headings `#0e0f12`, accent `#3560bd` (a deeper cornflower, because `#6495ed` is only 2.7 to 1 on paper) with white text on accent buttons. Every text colour and accent pairing measures at least 4.5 to 1. WhatsApp keeps its own green.
+
+## Colour and motion: midnight, cloud and lime (spec 0009, replaces paper and cornflower)
+
+Navy theme (default): canvas `#0b1530`, headings `#f4f7fb`, text `#dfe6f1`, accent lime `#c6ff3d`. Cloud theme: canvas `#f4f7fb`, headings `#0b1530`, accent text `#3f6b00`. `--color-accent-fill` is lime in both themes and is used for button and highlight fills with navy text. Lime is never text on white. Motion lives in `src/components/Motion.tsx` and CSS under "MOTION AND MIDNIGHT POP": `.reveal`, `.spotlight`, `.tilt`, `.magnetic`, `.marquee`. All of it is off under `prefers-reduced-motion: reduce`.

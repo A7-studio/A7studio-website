@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, createFileRoute } from '@tanstack/react-router'
 
+import { usePageMotion, useRotatingIndex } from '#/components/Motion'
 import { WorkCover } from '#/components/WorkShell'
 import { employerStrip, experience } from '#/content/experience'
 import { LabCover } from '#/components/LabParts'
@@ -69,6 +70,8 @@ export const Route = createFileRoute('/')({
 
 const caseStudy = publishedEntries.find((entry) => entry.slug === 'jobmigo') ?? publishedEntries[0]
 
+const HERO_WORDS = ['AI-powered apps', 'mobile apps', 'payment systems', 'web platforms']
+
 const IDEA_BRIEF =
   'Hi%20Samuel%2C%0A%0AThe%20idea%3A%20%0AWho%20it%20is%20for%3A%20%0AWhat%20exists%20today%3A%20%0AWhen%20I%20need%20a%20first%20version%3A%20%0A'
 
@@ -88,6 +91,8 @@ function ideaHref(topicId: string) {
 
 function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const heroWord = useRotatingIndex(HERO_WORDS.length)
+  usePageMotion()
   const [copiedEmail, setCopiedEmail] = useState(false)
   const [selectedInquiry, setSelectedInquiry] = useState(inquiryTopics[0])
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
@@ -280,8 +285,18 @@ function HomePage() {
                 </div>
 
                 <h1 id="hero-title" className="hero-title">
-                  I build <span className="text-accent">AI-powered apps</span> for founders and teams, from the first idea to
-                  something people use.
+                  I build{' '}
+                  <span className="hero-rotator">
+                    <span className="sr-only">AI-powered apps</span>
+                    <span className="hero-rotator-words" aria-hidden="true">
+                      {HERO_WORDS.map((word, i) => (
+                        <span key={word} className={`hero-rotator-word text-accent${i === heroWord ? ' is-active' : ''}`}>
+                          {word}
+                        </span>
+                      ))}
+                    </span>
+                  </span>{' '}
+                  for founders and teams, from the first idea to something people use.
                 </h1>
 
                 <p className="hero-subhead">
@@ -291,7 +306,7 @@ function HomePage() {
                 </p>
 
                 <div className="hero-actions">
-                  <a id="hero-idea-btn" className="btn btn-primary" href={ideaHref('ai-app')}>
+                  <a id="hero-idea-btn" className="btn btn-primary magnetic" href={ideaHref('ai-app')}>
                     Tell me about your idea <span aria-hidden="true">→</span>
                   </a>
                   <a id="hero-explore-btn" className="btn btn-outline" href="#services">
@@ -338,11 +353,18 @@ function HomePage() {
           <p id="employers-title" className="employer-strip-label">
             Where I have worked
           </p>
-          <ul className="employer-strip">
-            {employerStrip.map((name) => (
-              <li key={name}>{name}</li>
-            ))}
-          </ul>
+          <div className="marquee">
+            <ul className="employer-strip marquee-track">
+              {employerStrip.map((name) => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
+            <ul className="employer-strip marquee-track marquee-copy" aria-hidden="true">
+              {employerStrip.map((name) => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
+          </div>
           <p className="stack-line" style={{ marginTop: '1.5rem' }}>
             <strong>Stack I ship with:</strong> TypeScript, JavaScript, HTML, CSS, React, Next.js, Vue.js, Node.js, NestJS, SQL (PostgreSQL), MongoDB, Redis,
             Flutter, Dart, Stripe Connect, M-PESA STK and USSD, Git, CI/CD and automated testing.
@@ -351,7 +373,7 @@ function HomePage() {
 
         {/* 3. WHAT I CAN BUILD (spec 0008) */}
         <section id="services" className="section-wrap section-spacing" aria-labelledby="services-title">
-          <div className="section-header">
+          <div className="section-header reveal">
             <span className="section-tag">Build with me</span>
             <h2 id="services-title" className="section-title">
               What I can build for you.
@@ -361,7 +383,7 @@ function HomePage() {
 
           <ul className="offer-grid">
             {offers.map((offer) => (
-              <li className="now-card offer-card" key={offer.id}>
+              <li className="now-card offer-card reveal spotlight" key={offer.id}>
                 <h3>
                   {offer.title}
                   {offer.label && <span className="work-status offer-label">{offer.label}</span>}
@@ -391,7 +413,7 @@ function HomePage() {
         {/* 4. JOBMIGO CASE STUDY (spec 0008) */}
         {caseStudy && (
           <section id="products" className="section-wrap section-spacing" aria-labelledby="products-title">
-            <div className="section-header">
+            <div className="section-header reveal">
               <span className="section-tag">Case study · {caseStudy.status}</span>
               <h2 id="products-title" className="section-title">
                 What I am building.
@@ -412,7 +434,7 @@ function HomePage() {
                     <h3>What it does</h3>
                     <ul className="case-study-list">
                       {caseStudy.features.map((feature) => (
-                        <li key={feature}>{feature}</li>
+                        <li className="reveal" key={feature}>{feature}</li>
                       ))}
                     </ul>
                   </>
@@ -433,7 +455,7 @@ function HomePage() {
 
         {/* 5. HOW I WORK WITH YOU (spec 0008) */}
         <section id="process" className="section-wrap section-spacing" aria-labelledby="process-title">
-          <div className="section-header">
+          <div className="section-header reveal">
             <span className="section-tag">Process</span>
             <h2 id="process-title" className="section-title">
               How I work with you.
@@ -442,7 +464,7 @@ function HomePage() {
           </div>
           <ol className="process-list">
             {processSteps.map((step, index) => (
-              <li className="now-card" key={step.id}>
+              <li className="now-card reveal spotlight" key={step.id}>
                 <span className="process-number">{String(index + 1).padStart(2, '0')}</span>
                 <h3>{step.title}</h3>
                 <p>{step.line}</p>
@@ -453,7 +475,7 @@ function HomePage() {
 
         {/* 6. SELECTED WORK (proof) */}
         <section id="work" className="section-wrap section-spacing" aria-labelledby="work-title">
-          <div className="section-header">
+          <div className="section-header reveal">
             <span className="section-tag">Proof</span>
             <h2 id="work-title" className="section-title">
               Selected work.
@@ -466,7 +488,7 @@ function HomePage() {
 
           <ul className="work-tiles work-teaser-grid work-teaser-four">
             {featuredStories.map((item) => (
-              <li className="work-tile" key={item.id}>
+              <li className="work-tile reveal tilt" key={item.id}>
                 <Link className="work-tile-link" to="/work/$slug" params={{ slug: item.id }}>
                   <WorkCover item={item} />
                   <div className="work-tile-body">
@@ -492,7 +514,7 @@ function HomePage() {
 
         {/* 7. BUILT TO KEEP WORKING (spec 0007) */}
         <section id="how-i-work" className="section-wrap section-spacing" aria-labelledby="how-title">
-          <div className="section-header">
+          <div className="section-header reveal">
             <span className="section-tag">Principles</span>
             <h2 id="how-title" className="section-title">
               Built to keep working.
@@ -502,7 +524,7 @@ function HomePage() {
 
           <ul className="principle-grid">
             {principles.map((p) => (
-              <li className="now-card" key={p.id}>
+              <li className="now-card reveal" key={p.id}>
                 <h3>{p.title}</h3>
                 <p>{p.line}</p>
                 <Link className="work-link" to={p.proof.href}>
@@ -515,7 +537,7 @@ function HomePage() {
 
         {/* 5. EXPERIENCE TIMELINE */}
         <section id="experience" className="section-wrap section-spacing" aria-labelledby="experience-title">
-          <div className="section-header">
+          <div className="section-header reveal">
             <span className="section-tag">Experience</span>
             <h2 id="experience-title" className="section-title">
               What I owned, and where.
@@ -588,7 +610,7 @@ function HomePage() {
 
         {/* 6. LEARNING (replaces Now, spec 0006) */}
         <section id="learning" className="section-wrap section-spacing" aria-labelledby="learning-title">
-          <div className="section-header">
+          <div className="section-header reveal">
             <span className="section-tag">Learning</span>
             <h2 id="learning-title" className="section-title">
               What I am learning.

@@ -1,90 +1,93 @@
 @import 'tailwindcss';
 
-/* ─── INK MODE (dark, default) ─────────────────────────────────────────── */
+/* ─── MIDNIGHT MODE (dark, default) ─────────────────────────────────────────── */
 :root,
 [data-theme="dark"] {
   color-scheme: dark;
-  --color-canvas: #0e0f12;
-  --color-surface: #15171b;
-  --color-surface-raised: #1b1e23;
-  --color-surface-hover: #22252b;
-  --color-border: #2a2d34;
-  --color-border-glow: #3a3e47;
+  --color-canvas: #0b1530;
+  --color-surface: #111d3d;
+  --color-surface-raised: #16244a;
+  --color-surface-hover: #1c2c56;
+  --color-border: #24345f;
+  --color-border-glow: #34477a;
 
   /* Header surface tokens */
-  --header-bg: rgba(14, 15, 18, 0.85);
-  --header-border: rgba(42, 45, 52, 0.85);
+  --header-bg: rgba(11, 21, 48, 0.85);
+  --header-border: rgba(36, 52, 95, 0.85);
 
-  /* Ink black, paper white, cornflower blue accent (2026-11-27) */
-  --color-accent: #6495ed;
-  --color-accent-dim: rgba(100, 149, 237, 0.12);
-  --color-accent-glow: rgba(100, 149, 237, 0.22);
-  --color-on-accent: #0e0f12;
+  /* Midnight navy, cloud white, electric lime (spec 0009). Lime is a fill or text on navy only: it is 1.1 to 1 on white. */
+  --color-accent: #c6ff3d;
+  --color-accent-fill: #c6ff3d;
+  --color-accent-dim: rgba(198, 255, 61, 0.12);
+  --color-accent-glow: rgba(198, 255, 61, 0.24);
+  --color-on-accent: #0b1530;
 
-  --color-ink: #f7f5ef;
-  --color-text: #e7e3da;
-  --color-muted: #a3a09a;
-  --color-dim: #8a8780;
+  --color-ink: #f4f7fb;
+  --color-text: #dfe6f1;
+  --color-muted: #a9b4c8;
+  --color-dim: #97a3b9;
 
   --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 40px rgba(100, 149, 237, 0.12);
+  --shadow-glow: 0 0 40px rgba(198, 255, 61, 0.14);
 }
 
-/* ─── PAPER MODE (light) ──────────────────────────────────────────────────── */
+/* ─── CLOUD MODE (light) ──────────────────────────────────────────────────── */
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
     color-scheme: light;
-    --color-canvas: #f7f5ef;
-    --color-surface: #fffdf8;
-    --color-surface-raised: #efece4;
-    --color-surface-hover: #e8e4da;
-    --color-border: #e2ded3;
-    --color-border-glow: #cfcabd;
+    --color-canvas: #f4f7fb;
+    --color-surface: #ffffff;
+    --color-surface-raised: #e9eef6;
+    --color-surface-hover: #e1e8f2;
+    --color-border: #d9e1ec;
+    --color-border-glow: #c3cede;
 
     /* Header surface tokens (crisp light glass) */
-    --header-bg: rgba(247, 245, 239, 0.88);
-    --header-border: rgba(226, 222, 211, 0.85);
+    --header-bg: rgba(244, 247, 251, 0.88);
+    --header-border: rgba(217, 225, 236, 0.85);
 
-    --color-accent: #3560bd;
-    --color-accent-dim: rgba(53, 96, 189, 0.08);
-    --color-accent-glow: rgba(53, 96, 189, 0.15);
-    --color-on-accent: #ffffff;
+    --color-accent: #3f6b00;
+  --color-accent-fill: #c6ff3d;
+    --color-accent-dim: rgba(198, 255, 61, 0.35);
+    --color-accent-glow: rgba(120, 170, 0, 0.22);
+    --color-on-accent: #0b1530;
 
-    --color-ink: #0e0f12;
-    --color-text: #1f2024;
-    --color-muted: #55565c;
-    --color-dim: #5f6066;
+    --color-ink: #0b1530;
+    --color-text: #1b2742;
+    --color-muted: #4a5670;
+    --color-dim: #5b6780;
 
     --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.08);
-    --shadow-glow: 0 0 30px rgba(53, 96, 189, 0.08);
+    --shadow-glow: 0 0 30px rgba(120, 170, 0, 0.12);
   }
 }
 
 [data-theme="light"] {
   color-scheme: light;
-  --color-canvas: #f7f5ef;
-  --color-surface: #fffdf8;
-  --color-surface-raised: #efece4;
-  --color-surface-hover: #e8e4da;
-  --color-border: #e2ded3;
-  --color-border-glow: #cfcabd;
+  --color-canvas: #f4f7fb;
+  --color-surface: #ffffff;
+  --color-surface-raised: #e9eef6;
+  --color-surface-hover: #e1e8f2;
+  --color-border: #d9e1ec;
+  --color-border-glow: #c3cede;
 
   /* Header surface tokens (crisp light glass) */
-  --header-bg: rgba(247, 245, 239, 0.88);
-  --header-border: rgba(226, 222, 211, 0.85);
+  --header-bg: rgba(244, 247, 251, 0.88);
+  --header-border: rgba(217, 225, 236, 0.85);
 
-  --color-accent: #3560bd;
-  --color-accent-dim: rgba(53, 96, 189, 0.08);
-  --color-accent-glow: rgba(53, 96, 189, 0.15);
-  --color-on-accent: #ffffff;
+  --color-accent: #3f6b00;
+  --color-accent-fill: #c6ff3d;
+  --color-accent-dim: rgba(198, 255, 61, 0.35);
+  --color-accent-glow: rgba(120, 170, 0, 0.22);
+  --color-on-accent: #0b1530;
 
-  --color-ink: #0e0f12;
-  --color-text: #1f2024;
-  --color-muted: #55565c;
-  --color-dim: #5f6066;
+  --color-ink: #0b1530;
+  --color-text: #1b2742;
+  --color-muted: #4a5670;
+  --color-dim: #5b6780;
 
   --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.08);
-  --shadow-glow: 0 0 30px rgba(53, 96, 189, 0.08);
+  --shadow-glow: 0 0 30px rgba(120, 170, 0, 0.12);
 }
 
 /* ─── SHARED TOKENS (theme-independent) ───────────────────────────── */
@@ -155,7 +158,7 @@ body::before {
 
 
 ::selection {
-  background: var(--color-accent);
+  background: var(--color-accent-fill);
   color: var(--color-on-accent);
 }
 
@@ -178,7 +181,7 @@ button {
   left: 1rem;
   z-index: 10001;
   padding: 0.75rem 1.25rem;
-  background: var(--color-accent);
+  background: var(--color-accent-fill);
   color: var(--color-on-accent);
   font-family: var(--font-mono);
   font-size: 0.8125rem;
@@ -229,7 +232,7 @@ button {
   content: '';
   width: 20px;
   height: 1px;
-  background: var(--color-accent);
+  background: var(--color-accent-fill);
 }
 
 .section-title {
@@ -381,15 +384,16 @@ button {
 }
 
 .btn-primary {
-  background: var(--color-accent);
+  background: var(--color-accent-fill);
   color: var(--color-on-accent);
-  border: 1px solid var(--color-accent);
+  border: 1px solid var(--color-accent-fill);
   font-weight: 600;
 }
 
 .btn-primary:hover {
   background: var(--color-ink);
   border-color: var(--color-ink);
+  color: var(--color-canvas);
   transform: translateY(-2px);
   box-shadow: 0 6px 24px var(--color-accent-glow);
 }
@@ -552,7 +556,7 @@ button {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--color-accent);
+  background: var(--color-accent-fill);
   box-shadow: 0 0 10px var(--color-accent);
   animation: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
@@ -595,7 +599,7 @@ button {
   width: 520px;
   height: 520px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(100, 149, 237, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(198, 255, 61, 0.12) 0%, transparent 70%);
   filter: blur(80px);
   pointer-events: none;
 }
@@ -607,7 +611,7 @@ button {
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(100, 149, 237, 0.10) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(198, 255, 61, 0.10) 0%, transparent 70%);
   filter: blur(90px);
   pointer-events: none;
 }
@@ -814,7 +818,7 @@ button {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--color-accent);
+  background: var(--color-accent-fill);
   opacity: 0.7;
 }
 
@@ -857,7 +861,7 @@ button {
   width: 4.5rem;
   height: 4.5rem;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-accent), #3560bd);
+  background: linear-gradient(135deg, #c6ff3d, #7fb800);
   color: var(--color-on-accent);
   display: flex;
   align-items: center;
@@ -945,7 +949,7 @@ button {
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--color-accent);
+  background: var(--color-accent-fill);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--transition-normal);
@@ -953,7 +957,7 @@ button {
 
 .pillar-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(100, 149, 237, 0.4);
+  border-color: rgba(198, 255, 61, 0.4);
   background: var(--color-surface-raised);
 }
 
@@ -1249,7 +1253,7 @@ button {
 }
 
 .filter-tab.is-active {
-  background: var(--color-accent);
+  background: var(--color-accent-fill);
   color: var(--color-on-accent);
   border-color: var(--color-accent);
   font-weight: 600;
@@ -1305,7 +1309,7 @@ button {
   text-transform: uppercase;
   color: var(--color-accent);
   background: var(--color-accent-dim);
-  border: 1px solid rgba(100, 149, 237, 0.2);
+  border: 1px solid rgba(198, 255, 61, 0.2);
   padding: 0.25rem 0.65rem;
   border-radius: var(--radius-xs);
 }
@@ -1373,7 +1377,7 @@ button {
 /* IN THE LAB SECTION */
 .lab-section {
   border-block: 1px solid var(--color-border);
-  background: radial-gradient(ellipse at 50% 0%, rgba(100, 149, 237, 0.04), transparent 60%), var(--color-surface);
+  background: radial-gradient(ellipse at 50% 0%, rgba(198, 255, 61, 0.04), transparent 60%), var(--color-surface);
 }
 
 .lab-grid {
@@ -1438,7 +1442,7 @@ button {
   width: 2.25rem;
   height: 2.25rem;
   border-radius: 50%;
-  background: linear-gradient(135deg, #6495ed, #3560bd);
+  background: linear-gradient(135deg, #c6ff3d, #7fb800);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1490,8 +1494,8 @@ button {
   justify-content: center;
   gap: 0.4rem;
   padding: 0.35rem;
-  background: rgba(100, 149, 237, 0.05);
-  border: 1px solid rgba(100, 149, 237, 0.15);
+  background: rgba(198, 255, 61, 0.05);
+  border: 1px solid rgba(198, 255, 61, 0.15);
   border-radius: var(--radius-xs);
   font-family: var(--font-mono);
   font-size: 0.625rem;
@@ -1503,7 +1507,7 @@ button {
   width: 100%;
   padding: 0.55rem;
   border-radius: var(--radius-xs);
-  background: var(--color-accent);
+  background: var(--color-accent-fill);
   color: var(--color-on-accent);
   font-family: var(--font-mono);
   font-size: 0.6875rem;
@@ -1738,7 +1742,7 @@ button {
 
 /* CONTACT & CV SECTION */
 .contact-container {
-  background: radial-gradient(ellipse at 10% 90%, rgba(100, 149, 237, 0.12), transparent 55%), var(--color-surface);
+  background: radial-gradient(ellipse at 10% 90%, rgba(198, 255, 61, 0.12), transparent 55%), var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: clamp(2.5rem, 5vw, 4.5rem);
@@ -1779,8 +1783,8 @@ button {
   align-items: center;
   gap: 0.65rem;
   padding: 0.5rem 1rem;
-  background: rgba(100, 149, 237, 0.08);
-  border: 1px solid rgba(100, 149, 237, 0.25);
+  background: rgba(198, 255, 61, 0.08);
+  border: 1px solid rgba(198, 255, 61, 0.25);
   border-radius: var(--radius-full);
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -1836,7 +1840,7 @@ button {
 }
 
 .copy-btn:hover {
-  background: var(--color-accent);
+  background: var(--color-accent-fill);
   color: var(--color-on-accent);
 }
 
@@ -2059,8 +2063,8 @@ button {
   font-size: 0.6875rem;
   font-weight: 500;
   color: var(--color-accent);
-  background: rgba(100, 149, 237, 0.08);
-  border: 1px solid rgba(100, 149, 237, 0.25);
+  background: rgba(198, 255, 61, 0.08);
+  border: 1px solid rgba(198, 255, 61, 0.25);
   padding: 0.25rem 0.6rem;
   border-radius: var(--radius-xs);
   margin-bottom: 1rem;
@@ -2070,7 +2074,7 @@ button {
 .work-lead-banner {
   margin-top: 3.5rem;
   padding: 2.5rem;
-  background: radial-gradient(ellipse at 80% 50%, rgba(100, 149, 237, 0.08), transparent 60%), var(--color-surface);
+  background: radial-gradient(ellipse at 80% 50%, rgba(198, 255, 61, 0.08), transparent 60%), var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   display: flex;
@@ -3164,4 +3168,186 @@ button {
   color: var(--color-accent);
   font-size: 0.875rem;
   margin-bottom: 0.5rem;
+}
+
+/* ─── MOTION AND MIDNIGHT POP (spec 0009) ─────────────────────────── */
+
+/* Hero rotator: every word sits in one grid cell, so the line never shifts. */
+.hero-rotator {
+  display: inline-block;
+}
+
+.hero-rotator-words {
+  display: inline-grid;
+  vertical-align: bottom;
+}
+
+.hero-rotator-word {
+  grid-area: 1 / 1;
+  position: relative;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(0.35em);
+}
+
+.hero-rotator-word.is-active {
+  opacity: 1;
+  transform: none;
+}
+
+.hero-rotator-word::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.02em;
+  height: 0.12em;
+  border-radius: 999px;
+  background: var(--color-accent-fill);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.hero-rotator-word.is-active::after {
+  transform: scaleX(1);
+}
+
+/* Cloud theme: lime is a highlighter behind navy text, never lime text on white. */
+[data-theme="light"] .hero-title .text-accent {
+  color: var(--color-ink);
+  background: linear-gradient(transparent 62%, var(--color-accent-fill) 62%);
+}
+
+[data-theme="light"] .hero-rotator-word::after {
+  display: none;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .hero-title .text-accent {
+    color: var(--color-ink);
+    background: linear-gradient(transparent 62%, var(--color-accent-fill) 62%);
+  }
+}
+
+/* Employer marquee: static and wrapped until motion is allowed. */
+.marquee {
+  overflow: hidden;
+}
+
+.marquee-copy {
+  display: none;
+}
+
+.motion-ready .marquee {
+  display: flex;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.motion-ready .marquee-track {
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  padding-right: 2rem;
+  animation: marquee 28s linear infinite;
+}
+
+.motion-ready .marquee-copy {
+  display: flex;
+}
+
+.motion-ready .marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Cursor spotlight on cards. */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+
+.spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), var(--color-accent-glow), transparent 70%);
+  transition: opacity 200ms ease;
+}
+
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+.spotlight:hover {
+  border-color: var(--color-accent-fill);
+}
+
+/* Tilt and magnetic elements ease back when the pointer leaves. */
+.tilt,
+.magnetic {
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.tilt:hover .work-cover,
+.tilt:hover .lab-cover {
+  box-shadow: 0 18px 40px var(--color-accent-glow);
+}
+
+/* Scroll reveals, with a short stagger inside a list. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-rotator-word {
+    transition: opacity 280ms ease, transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .hero-rotator-word::after {
+    transition: transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1) 120ms;
+  }
+
+  .motion-ready .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 260ms ease, transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .motion-ready .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .motion-ready .reveal:nth-child(2) { transition-delay: 60ms; }
+  .motion-ready .reveal:nth-child(3) { transition-delay: 120ms; }
+  .motion-ready .reveal:nth-child(4) { transition-delay: 180ms; }
+  .motion-ready .reveal:nth-child(5) { transition-delay: 240ms; }
+  .motion-ready .reveal:nth-child(6) { transition-delay: 280ms; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rotator-word:not(:first-child) {
+    display: none;
+  }
+
+  .hero-rotator-word {
+    opacity: 1;
+    transform: none;
+  }
+
+  .tilt,
+  .magnetic {
+    transform: none !important;
+  }
+}
+
+/* Lime focus ring that stays visible in both themes. */
+:focus-visible {
+  outline: 3px solid var(--color-accent-fill);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px var(--color-canvas);
 }
