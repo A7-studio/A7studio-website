@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react'
 import { Link, createFileRoute } from '@tanstack/react-router'
 
 import { usePageMotion, useRotatingIndex } from '#/components/Motion'
+import { ParticleField } from '#/components/ParticleField'
 import { useTheme } from '#/components/useTheme'
 import { WorkCover } from '#/components/WorkShell'
 import { employerStrip, experience } from '#/content/experience'
-import { LabCover } from '#/components/LabParts'
 import { entryHref, formatLabDate, hasLab, publishedEntries, sortedNotes } from '#/content/lab'
-import { hiring, offers } from '#/content/offers'
+import { hiring, offerFilters, offers } from '#/content/offers'
+import type { OfferKind } from '#/content/offers'
 import { principles } from '#/content/principles'
 import { processSteps } from '#/content/process'
 import { featuredStories, workItems } from '#/content/work'
@@ -93,6 +94,8 @@ function ideaHref(topicId: string) {
 function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false)
   const heroWord = useRotatingIndex(HERO_WORDS.length)
+  const [offerFilter, setOfferFilter] = useState<OfferKind | 'all'>('all')
+  const visibleOffers = offerFilter === 'all' ? offers : offers.filter((offer) => offer.kinds.includes(offerFilter))
   usePageMotion()
   const [copiedEmail, setCopiedEmail] = useState(false)
   const [selectedInquiry, setSelectedInquiry] = useState(inquiryTopics[0])
@@ -264,6 +267,7 @@ function HomePage() {
           <div className="hero-grid" aria-hidden="true" />
           <div className="hero-glow-1" aria-hidden="true" />
           <div className="hero-glow-2" aria-hidden="true" />
+          <ParticleField />
 
           <div className="section-wrap hero-content">
             <div className="hero-body">
@@ -275,7 +279,11 @@ function HomePage() {
                   </span>
                 </div>
 
-                <h1 id="hero-title" className="hero-title">
+                <h1 id="hero-title" className="hero-title hero-display">
+                  AI-powered apps. <span className="hero-display-accent">Built.</span>
+                </h1>
+
+                <p className="hero-pitch">
                   I build{' '}
                   <span className="hero-rotator">
                     <span className="sr-only">AI-powered apps</span>
@@ -288,7 +296,7 @@ function HomePage() {
                     </span>
                   </span>{' '}
                   for founders and teams, from the first idea to something people use.
-                </h1>
+                </p>
 
                 <p className="hero-subhead">
                   I'm Samuel Gichu, a full-stack and Flutter engineer. For 6+ years I have shipped payments, mobile and web
@@ -317,24 +325,6 @@ function HomePage() {
                 </div>
               </div>
 
-              <div className="hero-right" aria-label="Quick Highlights">
-                <div className="hero-stat-card">
-                  <span className="hero-stat-value">6+</span>
-                  <span className="hero-stat-label">Years in software engineering</span>
-                </div>
-                <div className="hero-stat-card">
-                  <span className="hero-stat-value">Mobile</span>
-                  <span className="hero-stat-label">Flutter and React Native apps</span>
-                </div>
-                <div className="hero-stat-card">
-                  <span className="hero-stat-value">Web</span>
-                  <span className="hero-stat-label">React and TypeScript products</span>
-                </div>
-                <div className="hero-stat-card">
-                  <span className="hero-stat-value">AI apps</span>
-                  <span className="hero-stat-label">LLM features, retrieval and evaluation tests</span>
-                </div>
-              </div>
             </div>
           </div>
         </section>
@@ -372,9 +362,33 @@ function HomePage() {
             <p className="section-lead">Each one links to work I have shipped or am building. I scope and quote after we talk.</p>
           </div>
 
-          <ul className="offer-grid">
-            {offers.map((offer) => (
-              <li className="now-card offer-card reveal spotlight" key={offer.id}>
+          <div className="catalog">
+            <div className="catalog-bar">
+              <span className="catalog-title">Build catalog</span>
+              <div className="catalog-filters" role="group" aria-label="Filter what I can build">
+                {offerFilters.map((filter) => (
+                  <button
+                    key={filter.id}
+                    type="button"
+                    className={`catalog-filter${offerFilter === filter.id ? ' is-active' : ''}`}
+                    aria-pressed={offerFilter === filter.id}
+                    onClick={() => setOfferFilter(filter.id)}
+                  >
+                    {filter.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          <ul className="offer-grid catalog-grid">
+            {visibleOffers.map((offer) => (
+              <li className="offer-card catalog-card spotlight" key={offer.id}>
+                <span className="catalog-meta">
+                  <span>[{String(offers.indexOf(offer) + 1).padStart(2, '0')}] {offer.kinds.join(' · ')}</span>
+                  <span className={`catalog-status${offer.status === 'Building' ? ' is-building' : ''}`}>
+                    <span className="catalog-dot" aria-hidden="true" />
+                    {offer.status}
+                  </span>
+                </span>
                 <h3>
                   {offer.title}
                   {offer.label && <span className="work-status offer-label">{offer.label}</span>}
@@ -393,6 +407,7 @@ function HomePage() {
               </li>
             ))}
           </ul>
+          </div>
 
           <p className="work-teaser-more">
             <a className="btn btn-primary" href={ideaHref('ai-app')}>
@@ -437,9 +452,31 @@ function HomePage() {
                   </a>
                 </p>
               </div>
-              <a className="case-study-cover" href={entryHref(caseStudy)} tabIndex={-1} aria-hidden="true">
-                <LabCover entry={caseStudy} />
-              </a>
+              <div className="mock-panel" role="img" aria-label={`A drawing of what ${caseStudy.name} does today: each step is marked working or next.`}>
+                <div className="mock-panel-bar" aria-hidden="true">
+                  <span className="mock-dots">
+                    <span />
+                    <span />
+                    <span />
+                  </span>
+                  <span>{caseStudy.name} · evaluation run</span>
+                </div>
+                <ul className="mock-rows" aria-hidden="true">
+                  {(caseStudy.features ?? []).map((feature, i) => (
+                    <li className="mock-row reveal" key={feature}>
+                      <span className="mock-index">{String(i + 1).padStart(2, '0')}</span>
+                      <span className="mock-text">{feature.replace(/\.$/, '')}</span>
+                      <span className="mock-state">working</span>
+                    </li>
+                  ))}
+                  <li className="mock-row is-next reveal">
+                    <span className="mock-index">{String((caseStudy.features?.length ?? 0) + 1).padStart(2, '0')}</span>
+                    <span className="mock-text">Production deploy</span>
+                    <span className="mock-state">next</span>
+                  </li>
+                </ul>
+                <p className="mock-caption" aria-hidden="true">Illustration of what runs today, not a screenshot.</p>
+              </div>
             </div>
           </section>
         )}

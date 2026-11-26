@@ -115,6 +115,12 @@ Navy and cloud palette with an electric lime accent, and light motion on the hom
 - [x] Build it · code in `src/styles.css`, `src/components/Motion.tsx`, `src/routes/index.tsx`
 - [x] Verify it: contrast in both themes, 375, 768 and 1280 pixels
 
+### 15. Control room look · done
+Space dark canvas, huge thin headline, particle hero, build catalog, jobmigo panel, lime accent.
+- [x] Design it (spec): [0010](../specs/0010-control-room-look.md)
+- [x] Build it · code in `src/components/ParticleField.tsx`, `src/routes/index.tsx`, `src/content/offers.ts`, `src/styles.css`
+- [x] Verify it: contrast in both themes, 375, 768 and 1280 pixels, catalog filters
+
 ## Journey 3: Receive and review leads
 
 ### 6. Lead capture and private lead dashboard · needs a decision · Beta

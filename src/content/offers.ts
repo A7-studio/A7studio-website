@@ -12,7 +12,21 @@ export interface Offer {
   proof: OfferProof[]
   /** For example "New" for an offer backed by work in progress. */
   label?: string
+  /** Catalog filters this card appears under (spec 0010). */
+  kinds: OfferKind[]
+  /** Honest status of the proof: shipped work, or a product still being built. */
+  status: 'Shipped' | 'Building'
 }
+
+export type OfferKind = 'ai' | 'mobile' | 'payments' | 'web'
+
+export const offerFilters: { id: OfferKind | 'all'; label: string }[] = [
+  { id: 'all', label: 'All' },
+  { id: 'ai', label: 'AI apps' },
+  { id: 'mobile', label: 'Mobile' },
+  { id: 'payments', label: 'Payments' },
+  { id: 'web', label: 'Web' },
+]
 
 /** For recruiters: shown lower on the page, next to the experience timeline. */
 export const hiring = {
@@ -23,6 +37,8 @@ export const hiring = {
 export const offers: Offer[] = [
   {
     id: 'ai-app',
+    kinds: ['ai'],
+    status: 'Building',
     title: 'An AI-powered first version',
     label: 'New',
     lines: [
@@ -33,6 +49,8 @@ export const offers: Offer[] = [
   },
   {
     id: 'ai-features',
+    kinds: ['ai'],
+    status: 'Shipped',
     title: 'AI features in your product',
     lines: [
       'AI added to a product you already run: review, reconciliation, matching or an assistant, built into your current stack.',
@@ -45,6 +63,8 @@ export const offers: Offer[] = [
   },
   {
     id: 'mobile-payments',
+    kinds: ['mobile', 'payments'],
+    status: 'Shipped',
     title: 'Mobile and payments apps',
     lines: [
       'Flutter and React Native apps from design to store release, with M-PESA or Stripe payments, wallets and ledgers that stay correct through retries and failures.',
@@ -57,6 +77,8 @@ export const offers: Offer[] = [
   },
   {
     id: 'web',
+    kinds: ['web', 'payments'],
+    status: 'Shipped',
     title: 'Web apps and dashboards',
     lines: ['React, Next.js and TypeScript products, finance dashboards and embeddable mini apps, on REST and NestJS APIs.'],
     proof: [
