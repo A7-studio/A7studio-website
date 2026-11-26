@@ -3,6 +3,7 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 
 import { usePageMotion, useRotatingIndex } from '#/components/Motion'
 import { HeroEditor } from '#/components/HeroEditor'
+import { SpaceBackground } from '#/components/SpaceBackground'
 import { useTheme } from '#/components/useTheme'
 import { WorkCover } from '#/components/WorkShell'
 import { employerStrip, experience } from '#/content/experience'
@@ -280,12 +281,20 @@ function HomePage() {
         </div>
       </div>
 
+      <SpaceBackground />
+
       <main id="main">
         {/* 1. HERO */}
         <section id="home" className="hero" aria-labelledby="hero-title">
           <div className="hero-grid" aria-hidden="true" />
           <div className="hero-glow-1" aria-hidden="true" />
           <div className="hero-glow-2" aria-hidden="true" />
+          <div className="grid-beams" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
           <div className="aurora" aria-hidden="true">
             <span />
             <span />
