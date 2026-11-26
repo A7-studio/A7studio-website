@@ -45,6 +45,8 @@ export interface LabEntry {
   url?: string
   /** A product with its own page (for example `/jobmigo`). It then has no `/lab/<slug>` page (spec 0006). */
   path?: string
+  /** What the product does, shown in the home case study (spec 0008). */
+  features?: string[]
   /** One honest line on what works today, shown under the tagline. */
   statusNote?: string
   /** A public code repository, shown as "View the code". */
@@ -74,6 +76,12 @@ export const entries: LabEntry[] = [
     status: 'Building',
     tagline: 'An AI powered job search and application assistant.',
     updated: '2026-11-24',
+    features: [
+      'Upload a CV and build a profile from it.',
+      'An LLM scores each job against that profile and explains why.',
+      'Retrieval (RAG) grounds each answer in the CV and the job posting.',
+      'Evaluation tests check the AI output before a change ships.',
+    ],
     statusNote: 'Working: CV upload, LLM job evaluation, retrieval (RAG) and evaluation tests. Not yet in production.',
     tags: ['AI', 'Job search', 'TanStack Start', 'FastAPI', 'PostgreSQL'],
     path: '/jobmigo',

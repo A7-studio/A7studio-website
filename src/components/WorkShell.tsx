@@ -49,7 +49,7 @@ export function WorkShell({ children }: { children: ReactNode }) {
               Experience
             </a>
             <a className="nav-link" href="/#services">
-              Work with me
+              Build with me
             </a>
             <a className="nav-link" href="/#contact">
               Contact

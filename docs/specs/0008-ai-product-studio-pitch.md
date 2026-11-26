@@ -1,7 +1,7 @@
 # 0008. AI product studio pitch
 
 **Date**: 2026-11-27
-**Status**: Proposed
+**Status**: Accepted
 
 ## Summary
 
@@ -89,6 +89,15 @@ Keep the home page for recruiters and add a sales page.
 **Positive**: the site sells what Samuel builds next, with real proof behind it; the consultancy stage gets a head start.
 **Negative**: recruiters scroll further; the pitch leans on jobmigo before it is in production, so its status must stay honest.
 **Neutral**: no backend, dependency or route change.
+
+## Decisions taken (2026-11-27)
+
+- Lead audience: founders first (Samuel).
+- Main action: email with a brief, since it works today (recommended default, no booking account yet).
+- Time frames: none until Samuel confirms them.
+- jobmigo screenshots: the existing cleared home page screenshot only.
+- No starter offer for now.
+- The spec 0007 principles section stays as "Built to keep working." below selected work; the hiring card moves to the experience section.
 
 ## References
 
