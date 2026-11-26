@@ -24,3 +24,7 @@ Plain canvas and CSS, no dependency. Lime replaces the reference site's blue so 
 ## Amendment, 2026-11-27: electric blue with a touch of lime
 
 Dark canvas is now deep blue `#041236` with blue panels (`#071b4a`, `#0a2259`). Primary buttons are electric blue `#135bff` with white text (5.3 to 1); lime stays as the accent for "Built.", the rotating phrase, status dots, filters and labels. Buttons, the copy button and contact topics use a 4px radius. Revert this commit to go back to space black with lime buttons.
+
+## Amendment, 2026-11-27: blue leads, lime is a signal
+
+Electric blue and a yellow lime vibrated side by side. Now blue owns the page: accent text is ice blue `#9cc3ff` on dark (10 to 1) and `#0d46db` on cloud (6.7 to 1); the rotator underline, spotlight borders and section rules are electric blue; highlights in the cloud theme are a soft blue. Lime is a cooler `#b8f55a` and marks only what is live or working: the availability dot, catalog status dots, the active filter and the "working" tags. The particle sphere is white and blue with a few lime sparks.

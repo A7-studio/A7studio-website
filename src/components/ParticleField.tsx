@@ -22,7 +22,7 @@ export function ParticleField() {
       const y = 1 - (i / (count - 1)) * 2
       const r = Math.sqrt(1 - y * y)
       const theta = i * 2.399963
-      return { x: Math.cos(theta) * r, y, z: Math.sin(theta) * r, lime: i % 9 === 0 }
+      return { x: Math.cos(theta) * r, y, z: Math.sin(theta) * r, lime: i % 28 === 0, blue: i % 5 === 0 }
     })
 
     let width = 0
@@ -58,7 +58,7 @@ export function ParticleField() {
         const depth = (z + 1) / 2
         const size = 0.6 + depth * 1.4
         ctx.globalAlpha = 0.12 + depth * 0.7
-        ctx.fillStyle = p.lime ? lime : `rgb(${base})`
+        ctx.fillStyle = p.lime ? lime : p.blue ? '#4d86ff' : `rgb(${base})`
         ctx.fillRect(cx + x * radius, cy + p.y * radius * 0.92, size, size)
       }
       ctx.globalAlpha = 1

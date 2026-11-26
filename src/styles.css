@@ -16,13 +16,14 @@
   --header-border: rgba(22, 52, 120, 0.85);
 
   /* Space black and navy panels, cloud white, electric lime (specs 0009, 0010). Lime is a fill or text on navy only: it is 1.1 to 1 on white. */
-  --color-accent: #c6ff3d;
-  --color-accent-fill: #c6ff3d;
+  --color-accent: #9cc3ff;
+  --color-accent-fill: #b8f55a;
   --color-primary: #135bff;
   --color-primary-hover: #2a6bff;
   --color-on-primary: #ffffff;
-  --color-accent-dim: rgba(198, 255, 61, 0.12);
-  --color-accent-glow: rgba(198, 255, 61, 0.24);
+  --color-highlight: rgba(19, 91, 255, 0.35);
+  --color-accent-dim: rgba(184, 245, 90, 0.16);
+  --color-accent-glow: rgba(19, 91, 255, 0.28);
   --color-on-accent: #0b1530;
 
   --color-ink: #f4f7fb;
@@ -31,7 +32,7 @@
   --color-dim: #97a3b9;
 
   --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 40px rgba(198, 255, 61, 0.14);
+  --shadow-glow: 0 0 40px rgba(19, 91, 255, 0.18);
 }
 
 /* ─── CLOUD MODE (light) ──────────────────────────────────────────────────── */
@@ -49,13 +50,14 @@
     --header-bg: rgba(244, 247, 251, 0.88);
     --header-border: rgba(217, 225, 236, 0.85);
 
-    --color-accent: #3f6b00;
-  --color-accent-fill: #c6ff3d;
+    --color-accent: #0d46db;
+  --color-accent-fill: #b8f55a;
   --color-primary: #135bff;
   --color-primary-hover: #2a6bff;
   --color-on-primary: #ffffff;
-    --color-accent-dim: rgba(198, 255, 61, 0.35);
-    --color-accent-glow: rgba(120, 170, 0, 0.22);
+  --color-highlight: rgba(19, 91, 255, 0.16);
+    --color-accent-dim: rgba(120, 170, 0, 0.18);
+    --color-accent-glow: rgba(19, 91, 255, 0.16);
     --color-on-accent: #0b1530;
 
     --color-ink: #0b1530;
@@ -64,7 +66,7 @@
     --color-dim: #5b6780;
 
     --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.08);
-    --shadow-glow: 0 0 30px rgba(120, 170, 0, 0.12);
+    --shadow-glow: 0 0 30px rgba(19, 91, 255, 0.10);
   }
 }
 
@@ -81,13 +83,14 @@
   --header-bg: rgba(244, 247, 251, 0.88);
   --header-border: rgba(217, 225, 236, 0.85);
 
-  --color-accent: #3f6b00;
-  --color-accent-fill: #c6ff3d;
+  --color-accent: #0d46db;
+  --color-accent-fill: #b8f55a;
   --color-primary: #135bff;
   --color-primary-hover: #2a6bff;
   --color-on-primary: #ffffff;
-  --color-accent-dim: rgba(198, 255, 61, 0.35);
-  --color-accent-glow: rgba(120, 170, 0, 0.22);
+  --color-highlight: rgba(19, 91, 255, 0.16);
+  --color-accent-dim: rgba(120, 170, 0, 0.18);
+  --color-accent-glow: rgba(19, 91, 255, 0.16);
   --color-on-accent: #0b1530;
 
   --color-ink: #0b1530;
@@ -96,7 +99,7 @@
   --color-dim: #5b6780;
 
   --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.08);
-  --shadow-glow: 0 0 30px rgba(120, 170, 0, 0.12);
+  --shadow-glow: 0 0 30px rgba(19, 91, 255, 0.10);
 }
 
 /* ─── SHARED TOKENS (theme-independent) ───────────────────────────── */
@@ -3212,7 +3215,7 @@ button {
   bottom: 0.02em;
   height: 0.12em;
   border-radius: 999px;
-  background: var(--color-accent-fill);
+  background: var(--color-primary);
   transform: scaleX(0);
   transform-origin: left;
 }
@@ -3224,7 +3227,7 @@ button {
 /* Cloud theme: lime is a highlighter behind navy text, never lime text on white. */
 [data-theme="light"] .hero-title .text-accent {
   color: var(--color-ink);
-  background: linear-gradient(transparent 62%, var(--color-accent-fill) 62%);
+  background: linear-gradient(transparent 62%, var(--color-highlight) 62%);
 }
 
 [data-theme="light"] .hero-rotator-word::after {
@@ -3234,7 +3237,7 @@ button {
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) .hero-title .text-accent {
     color: var(--color-ink);
-    background: linear-gradient(transparent 62%, var(--color-accent-fill) 62%);
+    background: linear-gradient(transparent 62%, var(--color-highlight) 62%);
   }
 }
 
@@ -3295,7 +3298,7 @@ button {
 }
 
 .spotlight:hover {
-  border-color: var(--color-accent-fill);
+  border-color: var(--color-primary);
 }
 
 /* Tilt and magnetic elements ease back when the pointer leaves. */
@@ -3419,7 +3422,7 @@ button {
 
 [data-theme="light"] .hero-display-accent {
   color: var(--color-ink);
-  background: linear-gradient(transparent 62%, var(--color-accent-fill) 62%);
+  background: linear-gradient(transparent 62%, var(--color-highlight) 62%);
 }
 
 .hero-pitch {
@@ -3437,7 +3440,7 @@ button {
 
 [data-theme="light"] .hero-pitch .text-accent {
   color: var(--color-ink);
-  background: linear-gradient(transparent 62%, var(--color-accent-fill) 62%);
+  background: linear-gradient(transparent 62%, var(--color-highlight) 62%);
 }
 
 /* Numbered mono labels on home sections: [01] BUILD WITH ME */
@@ -3685,4 +3688,9 @@ button {
 .copy-btn,
 .inquiry-pill {
   border-radius: 4px;
+}
+
+/* Blue leads, lime is a signal (2026-11-27): lime only marks what is live or working. */
+.section-tag::before {
+  background: var(--color-primary);
 }
