@@ -133,6 +133,12 @@ An interactive simulation of agents drafting, Samuel reviewing and a founder app
 - [x] Build it · code in `src/components/BuildRoom.tsx`, `src/content/buildRoom.ts`
 - [x] Verify it: both themes, 375 and 1280 pixels
 
+### 18. Ink, paper and one blue · done
+Calmer palette with paper as the default, and the build room following the AI Blueprint loop.
+- [x] Design it (spec): [0015](../specs/0015-ink-paper-and-one-blue.md)
+- [x] Build it · code in `src/styles.css`, `src/components/BuildRoom.tsx`
+- [x] Verify it: both themes, 375 and 1280 pixels
+
 ## Journey 3: Receive and review leads
 
 ### 6. Lead capture and private lead dashboard · needs a decision · Beta

@@ -1,29 +1,17 @@
-/** How I work with a founder or team (spec 0008, AC-4). No time frames until Samuel confirms them. */
+/**
+ * The loop each feature goes through (spec 0014), following the AI Blueprint
+ * workflow (https://ai-blueprint.dev/). No time frames until Samuel confirms them.
+ */
 export interface ProcessStep {
-  id: string
+  id: 'spec' | 'build' | 'prove' | 'land'
+  command: string
   title: string
   line: string
 }
 
 export const processSteps: ProcessStep[] = [
-  {
-    id: 'talk',
-    title: 'Talk it through',
-    line: 'You tell me the idea, who it is for and what has to work first. I tell you what I would build first and what I would leave out.',
-  },
-  {
-    id: 'plan',
-    title: 'A short plan',
-    line: 'I write down the first version, the stack, the risks, and how I will check that the AI parts give good answers.',
-  },
-  {
-    id: 'build',
-    title: 'Build in small steps',
-    line: 'I share a working link often, so you see progress in the product, not in reports.',
-  },
-  {
-    id: 'launch',
-    title: 'Launch and hand over',
-    line: 'I ship it with tests and a deploy pipeline, and you own the code and the accounts.',
-  },
+  { id: 'spec', command: '/feature', title: 'Spec', line: 'I write what the feature must do. You approve it before any code exists.' },
+  { id: 'build', command: '/implement', title: 'Build', line: 'AI writes small changes. I read and approve each one.' },
+  { id: 'prove', command: '/check', title: 'Prove', line: 'Every done-when is checked in the running app, not just claimed.' },
+  { id: 'land', command: '/complete', title: 'Land', line: 'You approve, it lands, and the history records what changed.' },
 ]

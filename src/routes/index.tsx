@@ -406,7 +406,7 @@ function HomePage() {
             <h2 id="process-title" className="section-title">
               How I work with you.
             </h2>
-            <p className="section-lead">Pick an idea and watch it move from your words to a preview: agents draft, I review, you approve.</p>
+            <p className="section-lead">Pick an idea and watch one feature go from spec to landed: AI writes, I review, you approve.</p>
           </div>
           <BuildRoom />
         </section>

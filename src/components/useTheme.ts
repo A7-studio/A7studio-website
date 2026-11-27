@@ -3,16 +3,16 @@ import { useEffect, useState } from 'react'
 export type Theme = 'dark' | 'light'
 
 /**
- * The theme toggle state. The first render is always 'dark' so the server and
+ * The theme toggle state. The first render is always 'light' so the server and
  * browser HTML match (no hydration error). After mount it reads the theme the
  * head script already applied, then saves every change.
  */
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>('dark')
+  const [theme, setTheme] = useState<Theme>('light')
   const [synced, setSynced] = useState(false)
 
   useEffect(() => {
-    setTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark')
+    setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light')
     setSynced(true)
   }, [])
 
