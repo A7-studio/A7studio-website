@@ -1,12 +1,14 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { Link, createFileRoute } from '@tanstack/react-router'
 
 import { usePageMotion, useRotatingIndex } from '#/components/Motion'
 import { BuildRoom } from '#/components/BuildRoom'
 import { HeroEditor } from '#/components/HeroEditor'
+import { MenuToggle, MobileDrawer, useMobileMenu } from '#/components/MobileMenu'
 import { SpaceBackground } from '#/components/SpaceBackground'
 import { useTheme } from '#/components/useTheme'
 import { WorkCover } from '#/components/WorkShell'
+import { CV_REQUEST_HREF, GITHUB, LINKEDIN } from '#/content/contact'
 import { employerStrip, experience } from '#/content/experience'
 import { entryHref, formatLabDate, hasLab, publishedEntries, sortedNotes } from '#/content/lab'
 import { hiring, offerFilters, offers } from '#/content/offers'
@@ -14,11 +16,6 @@ import type { OfferKind } from '#/content/offers'
 import { principles } from '#/content/principles'
 import { featuredStories, workItems } from '#/content/work'
 import type { WorkItem } from '#/content/work'
-
-const CV_REQUEST_HREF =
-  'mailto:kibochas@gmail.com?subject=CV%20request&body=Hi%20Samuel%2C%0A%0ACould%20you%20send%20me%20your%20CV%20for%20this%20role%3A%20...'
-const LINKEDIN = 'https://www.linkedin.com/in/samuel-gichu-a29695b9/'
-const GITHUB = 'https://github.com/kibzsam'
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -112,9 +109,7 @@ function ideaHref(topicId: string) {
 
 
 function HomePage() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const menuCloseRef = useRef<HTMLButtonElement>(null)
-  const returnFocus = useRef(false)
+  const menu = useMobileMenu()
   const heroWord = useRotatingIndex(HERO_WORDS.length)
   const [offerFilter, setOfferFilter] = useState<OfferKind | 'all'>('all')
   const visibleOffers = offerFilter === 'all' ? offers : offers.filter((offer) => offer.kinds.includes(offerFilter))
@@ -122,29 +117,6 @@ function HomePage() {
   const [copiedEmail, setCopiedEmail] = useState(false)
   const [selectedInquiry, setSelectedInquiry] = useState(inquiryTopics[0])
   const [theme, setTheme] = useTheme()
-
-  useEffect(() => {
-    function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape' && menuOpen) closeMenu()
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [menuOpen])
-
-  /** Closes the drawer and puts focus back on the menu button (not used by links, which move on). */
-  function closeMenu() {
-    returnFocus.current = true
-    setMenuOpen(false)
-  }
-
-  useEffect(() => {
-    if (menuOpen) {
-      menuCloseRef.current?.focus()
-    } else if (returnFocus.current) {
-      returnFocus.current = false
-      document.getElementById('mobile-menu-toggle')?.focus()
-    }
-  }, [menuOpen])
 
   function handleCopyEmail(address = 'kibochas@gmail.com') {
     navigator.clipboard.writeText(address).then(() => {
@@ -155,12 +127,12 @@ function HomePage() {
 
   return (
     <>
-      <a className="skip-link" href="#main" inert={menuOpen}>
+      <a className="skip-link" href="#main" inert={menu.open}>
         Skip to main content
       </a>
 
       {/* SITE HEADER */}
-      <header className="site-header" role="banner" inert={menuOpen}>
+      <header className="site-header" role="banner" inert={menu.open}>
         <div className="header-container">
           <a className="brand" href="#home" aria-label="A7Studio Home">
             <span className="brand-mark">
@@ -214,94 +186,17 @@ function HomePage() {
             <a id="header-cta-btn" className="btn btn-primary btn-sm" href="#contact">
               Get in touch
             </a>
-            <button
-              type="button"
-              id="mobile-menu-toggle"
-              className="menu-toggle"
-              onClick={() => setMenuOpen((prev) => !prev)}
-              aria-label={menuOpen ? 'Close mobile navigation' : 'Open mobile navigation'}
-              aria-expanded={menuOpen}
-              aria-controls="mobile-nav-drawer"
-            >
-              <span aria-hidden="true">{menuOpen ? '✕' : '☰'}</span>
-            </button>
+            <MenuToggle menu={menu} />
           </div>
         </div>
       </header>
 
       {/* MOBILE DRAWER */}
-      <div
-        className={`mobile-nav-backdrop${menuOpen ? ' is-open' : ''}`}
-        onClick={closeMenu}
-        aria-hidden="true"
-      />
-      <div
-        id="mobile-nav-drawer"
-        className={`mobile-nav-drawer${menuOpen ? ' is-open' : ''}`}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Mobile Navigation"
-        inert={!menuOpen}
-      >
-        <div className="mobile-drawer-header">
-          <span className="brand-mark">
-            A7<span className="brand-dot">.</span>Studio
-          </span>
-          <button ref={menuCloseRef} type="button" className="menu-toggle" onClick={closeMenu} aria-label="Close navigation">
-            ✕
-          </button>
-        </div>
-        <ul className="mobile-nav-links">
-          <li>
-            <Link to="/work" onClick={() => setMenuOpen(false)}>
-              Work <span>→</span>
-            </Link>
-          </li>
-          {hasLab && (
-            <li>
-              <Link to="/lab" onClick={() => setMenuOpen(false)}>
-                Lab <span>→</span>
-              </Link>
-            </li>
-          )}
-          <li>
-            <a href="#experience" onClick={() => setMenuOpen(false)}>
-              Experience <span>→</span>
-            </a>
-          </li>
-          <li>
-            <a href="#services" onClick={() => setMenuOpen(false)}>
-              Build with me <span>→</span>
-            </a>
-          </li>
-          <li>
-            <a href="#contact" onClick={() => setMenuOpen(false)}>
-              Contact &amp; Links <span>→</span>
-            </a>
-          </li>
-        </ul>
-        <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <a className="btn btn-outline" style={{ width: '100%' }} href={CV_REQUEST_HREF}>
-            Request a CV
-          </a>
-          <a
-            className="btn btn-whatsapp"
-            style={{ width: '100%' }}
-            href="https://wa.me/254728370802?text=Hi%20Samuel%2C%20I'd%20like%20to%20discuss%20a%20role."
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Chat on WhatsApp 💬
-          </a>
-          <a className="btn btn-primary" style={{ width: '100%' }} href={LINKEDIN} target="_blank" rel="noopener noreferrer">
-            Connect on LinkedIn ↗
-          </a>
-        </div>
-      </div>
+      <MobileDrawer menu={menu} />
 
       <SpaceBackground />
 
-      <main id="main" inert={menuOpen}>
+      <main id="main" inert={menu.open}>
         {/* 1. HERO */}
         <section id="home" className="hero" aria-labelledby="hero-title">
           <div className="hero-grid" aria-hidden="true" />
@@ -842,7 +737,7 @@ function HomePage() {
       </main>
 
       {/* FOOTER */}
-      <footer className="site-footer" role="contentinfo" inert={menuOpen}>
+      <footer className="site-footer" role="contentinfo" inert={menu.open}>
         <div className="footer-container">
           <div className="footer-left">
             <span className="brand-mark">

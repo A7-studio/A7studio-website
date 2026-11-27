@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Link } from '@tanstack/react-router'
 import { useTheme } from './useTheme'
+import { MenuToggle, MobileDrawer, useMobileMenu } from './MobileMenu'
 
 import type { StoryImage, WorkItem } from '#/content/work'
 import { visibleImage } from '#/content/work'
@@ -9,13 +10,14 @@ import { WorkIllustration } from '#/components/WorkIllustration'
 
 export function WorkShell({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useTheme()
+  const menu = useMobileMenu()
 
   return (
     <>
-      <a className="skip-link" href="#main">
+      <a className="skip-link" href="#main" inert={menu.open}>
         Skip to main content
       </a>
-      <header className="site-header" role="banner">
+      <header className="site-header" role="banner" inert={menu.open}>
         <div className="header-container">
           <Link className="brand" to="/" aria-label="A7Studio Home">
             <span className="brand-mark">
@@ -59,13 +61,18 @@ export function WorkShell({ children }: { children: ReactNode }) {
             <a id="header-cta-btn" className="btn btn-primary btn-sm" href="/#contact">
               Get in touch
             </a>
+            <MenuToggle menu={menu} />
           </div>
         </div>
       </header>
 
-      <main id="main">{children}</main>
+      <MobileDrawer menu={menu} root="/" />
 
-      <footer className="site-footer" role="contentinfo">
+      <main id="main" inert={menu.open}>
+        {children}
+      </main>
+
+      <footer className="site-footer" role="contentinfo" inert={menu.open}>
         <div className="footer-container">
           <div className="footer-left">
             <span className="brand-mark">

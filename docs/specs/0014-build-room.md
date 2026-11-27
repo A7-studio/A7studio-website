@@ -23,7 +23,7 @@ Reduced motion, 768 pixels and keyboard use were checked in headless Chrome. Fix
 
 ## Follow-up
 
-- [ ] Pages other than home have no navigation menu below desktop width (`WorkShell` has no menu button).
+- [x] Fixed 2026-11-27: every page shares one menu (`src/components/MobileMenu.tsx`) below desktop width, checked at 320, 375 and 768 pixels.
 
 - [x] Samuel confirmed on 2026-11-27 that the loop matches how they work.
 - [ ] Code in the panel is illustrative; swap in real snippets if wanted.
