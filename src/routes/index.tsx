@@ -27,13 +27,13 @@ export const Route = createFileRoute('/')({
       {
         name: 'description',
         content:
-          'Samuel Gichu builds AI-powered apps for founders and teams, from the first idea to something people use. Full-stack and Flutter engineer with 6+ years shipping payments, mobile and web products. Available for freelance projects and roles.',
+          'Samuel Gichu builds AI-powered apps for founders and teams, from the first idea to something people use. Full-stack engineer with 6+ years shipping payments, mobile and web products, now building in TypeScript and Python. Available for freelance projects and roles.',
       },
       { name: 'author', content: 'Samuel Gichu' },
       {
         name: 'keywords',
         content:
-          'Samuel Gichu, A7Studio, Full-Stack Engineer, Flutter Engineer, React, Next.js, TypeScript, NestJS, Mobile Engineer, Fintech, AI Products, Payments, Stripe Connect, M-Pesa, Nairobi Kenya, Remote Engineer',
+          'Samuel Gichu, A7Studio, Full-Stack Engineer, AI-powered apps, React Native, React, Next.js, TypeScript, Python, FastAPI, NestJS, Flutter, Mobile Engineer, Fintech, AI Products, Payments, Stripe Connect, M-Pesa, Nairobi Kenya, Remote Engineer',
       },
       { name: 'robots', content: 'index, follow' },
       { property: 'og:type', content: 'website' },
@@ -61,7 +61,7 @@ export const Route = createFileRoute('/')({
           '@context': 'https://schema.org',
           '@type': 'Person',
           name: 'Samuel Gichu',
-          jobTitle: 'Full-Stack & Flutter Engineer',
+          jobTitle: 'Full-Stack Engineer',
           url: 'https://a7studio.dev/',
           sameAs: [LINKEDIN, GITHUB],
         }),
@@ -331,9 +331,10 @@ function HomePage() {
                 </p>
 
                 <p className="hero-subhead">
-                  I'm Samuel Gichu, a full-stack and Flutter engineer. For 6+ years I have shipped payments, mobile and web
-                  products in TypeScript, React, Node.js, SQL and Flutter for companies like Boya, Alvin and BeatBnk. Now I
-                  build AI products like jobmigo, and I can build yours.
+                  I'm Samuel Gichu, a full-stack engineer building AI-powered apps. For 6+ years I have shipped payments,
+                  mobile and web products for companies like Boya, Alvin and BeatBnk. Now I build in TypeScript and Python,
+                  with React Native and React on the front and Python behind the AI, so I can reuse code and check what AI
+                  writes across the stack. I'm building jobmigo this way, and I can build your product too.
                 </p>
 
                 <div className="hero-actions">
@@ -349,9 +350,9 @@ function HomePage() {
                 </div>
 
                 <div className="hero-pills" aria-label="Core Competencies">
-                  <span className="tech-pill">Flutter &amp; Dart</span>
-                  <span className="tech-pill">TypeScript, React &amp; Next.js</span>
-                  <span className="tech-pill">Node.js &amp; NestJS</span>
+                  <span className="tech-pill">React Native &amp; React</span>
+                  <span className="tech-pill">TypeScript &amp; Next.js</span>
+                  <span className="tech-pill">Python &amp; FastAPI</span>
                   <span className="tech-pill">Payments &amp; Ledgers</span>
                   <span className="tech-pill">AI-powered products</span>
                 </div>
@@ -392,8 +393,9 @@ function HomePage() {
             ))}
           </div>
           <p className="stack-line" style={{ marginTop: '1.5rem' }}>
-            <strong>Stack I ship with:</strong> TypeScript, JavaScript, HTML, CSS, React, Next.js, Vue.js, Node.js, NestJS, SQL (PostgreSQL), MongoDB, Redis,
-            Flutter, Dart, Stripe Connect, M-PESA STK and USSD, Git, CI/CD and automated testing.
+            <strong>Stack I ship with:</strong> TypeScript, JavaScript, React Native, React, Next.js, Vue.js, Python (FastAPI,
+            Flask), Node.js, NestJS, SQL (PostgreSQL), MongoDB, Redis, Flutter, Dart, Stripe Connect, M-PESA STK and USSD,
+            Git, CI/CD and automated testing.
           </p>
         </section>
 
