@@ -23,13 +23,13 @@ export const Route = createFileRoute('/')({
       {
         name: 'description',
         content:
-          'Bring an idea or a slow manual task. Samuel Gichu turns it into an AI-powered app your customers or team can use, and you approve every step before it goes live. Available for freelance projects and roles.',
+          'Bring an idea or a slow manual task. Samuel Gichu turns it into an AI-powered app or SaaS product, and you approve every step before it goes live. Available for freelance projects and roles.',
       },
       { name: 'author', content: 'Samuel Gichu' },
       {
         name: 'keywords',
         content:
-          'Samuel Gichu, A7Studio, Full-Stack Engineer, AI-powered apps, React Native, React, Next.js, TypeScript, Python, FastAPI, NestJS, Flutter, Mobile Engineer, Fintech, AI Products, Payments, Stripe Connect, M-Pesa, Nairobi Kenya, Remote Engineer',
+          'Samuel Gichu, A7Studio, Full-Stack Engineer, AI-powered apps, SaaS applications, React Native, React, Next.js, TypeScript, Python, FastAPI, NestJS, Flutter, Mobile Engineer, Fintech, AI Products, Payments, Stripe Connect, M-Pesa, Nairobi Kenya, Remote Engineer',
       },
       { name: 'robots', content: 'index, follow' },
       { property: 'og:type', content: 'website' },
@@ -37,7 +37,7 @@ export const Route = createFileRoute('/')({
       { property: 'og:title', content: 'Samuel Gichu | AI-powered apps for founders and teams' },
       {
         property: 'og:description',
-        content: 'I build AI-powered apps for founders and teams, from the first idea to something people use.',
+        content: 'I build AI-powered apps and SaaS applications for founders and teams, from the first idea to something people use.',
       },
       { property: 'og:url', content: 'https://a7studio.dev/' },
       { property: 'og:locale', content: 'en_US' },
@@ -46,7 +46,7 @@ export const Route = createFileRoute('/')({
       { name: 'twitter:title', content: 'A7Studio.dev — Samuel Gichu' },
       {
         name: 'twitter:description',
-        content: 'I build AI-powered apps for founders and teams, from the first idea to something people use.',
+        content: 'I build AI-powered apps and SaaS applications for founders and teams, from the first idea to something people use.',
       },
     ],
     links: [{ rel: 'canonical', href: 'https://a7studio.dev/' }],
@@ -88,7 +88,7 @@ const BRIEF_DEMO = [
   { label: 'First version by:', value: 'end of next quarter' },
 ]
 
-const HERO_WORDS = ['AI-powered apps', 'mobile apps', 'payment systems', 'web platforms']
+const HERO_WORDS = ['AI-powered apps', 'SaaS applications', 'mobile apps', 'payment systems', 'web platforms']
 
 const IDEA_BRIEF =
   'Hi%20Samuel%2C%0A%0AThe%20idea%3A%20%0AWho%20it%20is%20for%3A%20%0AWhat%20exists%20today%3A%20%0AWhen%20I%20need%20a%20first%20version%3A%20%0A'
@@ -243,8 +243,8 @@ function HomePage() {
                 </p>
 
                 <p className="hero-subhead">
-                  Bring me an idea, or a slow manual task that costs you time. I turn it into an app your customers or team
-                  can use. You approve the plan before anything is built, you watch it come together, and nothing goes live
+                  Bring me an idea, or a slow manual task that costs you time. I turn it into an app or SaaS product your
+                  customers or team can use. You approve the plan before anything is built, you watch it come together, and nothing goes live
                   without your approval. I'm Samuel Gichu, and for 6+ years I have shipped payments, mobile and web products
                   for companies like Boya, Alvin, mb96 and SYNTAX.
                 </p>
@@ -616,7 +616,7 @@ function HomePage() {
             <span className="brand-mark">
               A7<span className="brand-dot">.</span>Studio
             </span>
-            <p className="footer-desc">Samuel Gichu. AI-powered apps for founders and teams.</p>
+            <p className="footer-desc">Samuel Gichu. AI-powered apps and SaaS for founders and teams.</p>
           </div>
 
           <div className="footer-right">

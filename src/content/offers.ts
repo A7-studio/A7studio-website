@@ -18,11 +18,12 @@ export interface Offer {
   status: 'Shipped' | 'Building'
 }
 
-export type OfferKind = 'ai' | 'mobile' | 'payments' | 'web'
+export type OfferKind = 'ai' | 'saas' | 'mobile' | 'payments' | 'web'
 
 export const offerFilters: { id: OfferKind | 'all'; label: string }[] = [
   { id: 'all', label: 'All' },
   { id: 'ai', label: 'AI apps' },
+  { id: 'saas', label: 'SaaS' },
   { id: 'mobile', label: 'Mobile' },
   { id: 'payments', label: 'Payments' },
   { id: 'web', label: 'Web' },
@@ -59,6 +60,20 @@ export const offers: Offer[] = [
     proof: [
       { label: 'Boya', href: '/work/boya' },
       { label: 'Giraffe Spotter', href: '/work/syntax' },
+    ],
+  },
+  {
+    id: 'saas',
+    kinds: ['saas', 'web'],
+    status: 'Shipped',
+    title: 'SaaS applications',
+    lines: [
+      'A product your customers sign in to and use online: accounts, payments, a dashboard and the work behind them, from the first version onwards.',
+      'I have built payment, wallet and dashboard features at Boya, and finance dashboards for business clients at Alvin.',
+    ],
+    proof: [
+      { label: 'Boya', href: '/work/boya' },
+      { label: 'Alvin', href: '/work/alvin' },
     ],
   },
   {

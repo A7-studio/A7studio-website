@@ -4710,3 +4710,8 @@ html { scroll-padding-top: 6rem; }
   font-weight: 600;
   color: var(--color-ink);
 }
+
+/* An odd card out fills the row, so the catalog never shows an empty cell. */
+.catalog-grid > li:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}

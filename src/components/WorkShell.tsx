@@ -79,7 +79,7 @@ export function WorkShell({ children }: { children: ReactNode }) {
               A7<span className="brand-dot">.</span>Studio
             </span>
             <p className="footer-desc">
-              Samuel Gichu. AI-powered apps for founders and teams.
+              Samuel Gichu. AI-powered apps and SaaS for founders and teams.
             </p>
           </div>
           <div className="footer-right">

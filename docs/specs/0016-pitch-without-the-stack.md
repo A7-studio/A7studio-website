@@ -16,6 +16,10 @@ The home page speaks to founders and employers about what Samuel can do for them
 - **AC-5**: no new figures, prices, time frames or clients.
 - **AC-6**: the hero intro names Boya, Alvin, mb96 and SYNTAX, not BeatBnk, which has closed. BeatBnk stays in the employer row, principles and experience.
 
+## Amendment, 2026-11-27: SaaS applications
+
+Samuel asked to add that they build SaaS applications. It is in the hero rotator and intro, a new build card with its own filter, the search and share text, and the footer. The card claims only features built at Boya and finance dashboards at Alvin; it does not claim a whole SaaS product built alone.
+
 ## Follow-up
 
 - [x] The experience timeline and learning section moved off the home page (spec 0017).
