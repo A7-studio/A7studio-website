@@ -145,6 +145,12 @@ The home page says what a founder or employer gets, in plain words.
 - [x] Build it · code in `src/routes/index.tsx`, `src/content/offers.ts`
 - [x] Verify it: `check:static`, 375, 768 and 1280 pixels
 
+### 20. Experience on its own page · done
+The timeline moves to `/experience` and learning to the Lab, so the home page stays a pitch.
+- [x] Design it (spec): [0017](../specs/0017-experience-page.md)
+- [x] Build it · code in `src/routes/experience.tsx`, `src/routes/lab.index.tsx`, `src/routes/index.tsx`
+- [x] Verify it: `check:static`, keyboard, 375, 768 and 1280 pixels
+
 ## Journey 3: Receive and review leads
 
 ### 6. Lead capture and private lead dashboard · needs a decision · Beta

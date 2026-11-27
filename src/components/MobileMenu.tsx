@@ -75,7 +75,6 @@ export function MenuToggle({ menu }: { menu: Menu }) {
 /** `root` is empty on the home page and "/" elsewhere, so section links lead home. */
 export function MobileDrawer({ menu, root = '' }: { menu: Menu; root?: '' | '/' }) {
   const sections = [
-    { hash: 'experience', label: 'Experience' },
     { hash: 'services', label: 'Build with me' },
     { hash: 'contact', label: 'Contact & Links' },
   ]
@@ -111,6 +110,11 @@ export function MobileDrawer({ menu, root = '' }: { menu: Menu; root?: '' | '/' 
               </Link>
             </li>
           )}
+          <li>
+            <Link to="/experience" onClick={menu.dismiss}>
+              Experience <span>→</span>
+            </Link>
+          </li>
           {sections.map((section) => (
             <li key={section.hash}>
               <a href={`${root}#${section.hash}`} onClick={menu.dismiss}>

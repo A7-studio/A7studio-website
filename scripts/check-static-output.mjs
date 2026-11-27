@@ -7,8 +7,11 @@ const storySlugs = ['boya', 'alvin', 'kakitoo', 'telkom', 'syntax', 'chupachap']
 const storyHtml = await Promise.all(
   storySlugs.map((slug) => readFile(new URL(`../dist/client/work/${slug}/index.html`, import.meta.url), 'utf8')),
 )
-// Project copy moved from the home page to /work and the story pages (spec 0003), so check them together.
-const html = [homeHtml, workIndexHtml, ...storyHtml].join('\n')
+// The experience timeline has its own page, and learning lives on the Lab (spec 0017).
+const experienceHtml = await readFile(new URL('../dist/client/experience/index.html', import.meta.url), 'utf8')
+const labPageHtml = await readFile(new URL('../dist/client/lab/index.html', import.meta.url), 'utf8')
+// Project copy moved from the home page to other pages (specs 0003, 0017), so check them together.
+const html = [homeHtml, workIndexHtml, experienceHtml, labPageHtml, ...storyHtml].join('\n')
 const stylesheetPath = homeHtml.match(/href="([^"]+\.css)"/)?.[1]
 assert.ok(stylesheetPath, 'Prerendered page does not include its stylesheet')
 const css = await readFile(new URL(`../dist/client${stylesheetPath}`, import.meta.url), 'utf8')
@@ -73,7 +76,7 @@ for (const phrase of expectedCareerCopy) {
 }
 
 // Spec 0004: retired claims must not return
-const homeText = [homeHtml, workIndexHtml, ...storyHtml].join('\n')
+const homeText = [homeHtml, workIndexHtml, experienceHtml, ...storyHtml].join('\n')
 // Samuel confirmed two BeatBnk figures on 2026-11-14 (amends spec 0004 AC-5); every other figure stays retired.
 // On 2026-11-24 Samuel confirmed the figures in his candidate profile; each is allowed only as its exact phrase.
 const allowedFigures = [
@@ -114,6 +117,11 @@ const pitchText = pitch.replace(/<div class="room".*?id="services"/s, 'id="servi
 for (const tool of [/Flutter/, /React/, /TypeScript/, /Python/, /FastAPI/, /NestJS/, /PostgreSQL/, /\bLLM\b/, /\bRAG\b/]) {
   assert.ok(!tool.test(pitchText.replace(/<[^>]+>/g, ' ')), `The pitch names a tool: ${tool}`)
 }
+// Home stays a pitch (spec 0017): the history and learning blocks live elsewhere, one link away.
+assert.ok(!/What I owned, and where\.|What I am learning\./.test(homeHtml), 'Home page must not carry the timeline or learning section')
+assert.match(homeHtml, /href="\/experience"/, 'Home page does not link the experience page')
+assert.match(experienceHtml, /rel="canonical" href="https:\/\/a7studio\.dev\/experience"/, 'Missing canonical for /experience')
+assert.match(labPageHtml, /What I am learning\./, 'The Lab is missing the learning block')
 // The CV changes by role, so it is requested by email and never downloaded.
 assert.ok(!/samuel-gichu-cv\.pdf/.test(homeHtml), 'Home page must not link a downloadable CV')
 assert.match(homeHtml, /Request a CV/, 'Home page is missing the Request a CV action')
@@ -159,7 +167,7 @@ for (const item of workItems) {
 
 // Every story must be prerendered and listed in the sitemap (AC-5, AC-6)
 const sitemap = await readFile(new URL('../dist/client/sitemap.xml', import.meta.url), 'utf8')
-for (const loc of ['', '/work', ...workItems.filter((item) => item.story).map((item) => `/work/${item.id}`)]) {
+for (const loc of ['', '/work', '/experience', ...workItems.filter((item) => item.story).map((item) => `/work/${item.id}`)]) {
   assert.ok(sitemap.includes(`<loc>https://a7studio.dev${loc}`), `Sitemap is missing ${loc || '/'}`)
 }
 assert.deepEqual(

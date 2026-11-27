@@ -37,9 +37,9 @@ export function WorkShell({ children }: { children: ReactNode }) {
                 Lab
               </Link>
             )}
-            <a className="nav-link" href="/#experience">
+            <Link className="nav-link" to="/experience">
               Experience
-            </a>
+            </Link>
             <a className="nav-link" href="/#services">
               Build with me
             </a>

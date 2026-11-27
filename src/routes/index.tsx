@@ -9,13 +9,12 @@ import { SpaceBackground } from '#/components/SpaceBackground'
 import { useTheme } from '#/components/useTheme'
 import { WorkCover } from '#/components/WorkShell'
 import { CV_REQUEST_HREF, GITHUB, LINKEDIN } from '#/content/contact'
-import { employerStrip, experience } from '#/content/experience'
-import { entryHref, formatLabDate, hasLab, publishedEntries, sortedNotes } from '#/content/lab'
-import { hiring, offerFilters, offers } from '#/content/offers'
+import { employerStrip } from '#/content/experience'
+import { entryHref, hasLab, publishedEntries } from '#/content/lab'
+import { offerFilters, offers } from '#/content/offers'
 import type { OfferKind } from '#/content/offers'
 import { principles } from '#/content/principles'
 import { featuredStories, workItems } from '#/content/work'
-import type { WorkItem } from '#/content/work'
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -152,9 +151,9 @@ function HomePage() {
                 Lab
               </Link>
             )}
-            <a className="nav-link" href="#experience">
+            <Link className="nav-link" to="/experience">
               Experience
-            </a>
+            </Link>
             <a className="nav-link" href="#services">
               Build with me
             </a>
@@ -279,7 +278,7 @@ function HomePage() {
         </section>
 
         {/* 2. EMPLOYERS */}
-        <section className="section-wrap" aria-labelledby="employers-title" style={{ paddingTop: '2.5rem' }}>
+        <section id="experience" className="section-wrap" aria-labelledby="employers-title" style={{ paddingTop: '2.5rem' }}>
           <p id="employers-title" className="employer-strip-label">
             Where I have worked
           </p>
@@ -304,6 +303,11 @@ function HomePage() {
               </ul>
             ))}
           </div>
+          <p className="work-teaser-more">
+            <Link className="btn btn-outline" to="/experience">
+              See my full experience <span aria-hidden="true">→</span>
+            </Link>
+          </p>
         </section>
 
         {/* 3. BUILD ROOM (spec 0014): how an idea gets built */}
@@ -507,131 +511,6 @@ function HomePage() {
               </li>
             ))}
           </ul>
-        </section>
-
-        {/* 5. EXPERIENCE TIMELINE */}
-        <section id="experience" className="section-wrap section-spacing" aria-labelledby="experience-title">
-          <div className="section-header reveal">
-            <span className="section-tag">Experience</span>
-            <h2 id="experience-title" className="section-title">
-              What I owned, and where.
-            </h2>
-            <p className="section-lead">The same history as my CV, newest first.</p>
-          </div>
-
-          <div className="now-card offer-hiring">
-            <h3>Hiring? {hiring.title}</h3>
-            <p>{hiring.body}</p>
-            <a className="btn btn-outline btn-sm" href={CV_REQUEST_HREF}>
-              Request a CV
-            </a>
-          </div>
-
-          <ol className="timeline">
-            {experience.map((role) => (
-              <li className="timeline-row" key={role.id}>
-                <div className="timeline-when">
-                  {role.dates ?? 'Co-founder'}
-                  <br />
-                  {role.location}
-                  {role.note && (
-                    <>
-                      <br />
-                      <span className="work-status" style={{ marginTop: '0.5rem' }}>
-                        {role.note}
-                      </span>
-                    </>
-                  )}
-                </div>
-                <div>
-                  <h3 className="timeline-company">
-                    {role.url ? (
-                      <a href={role.url} target="_blank" rel="noopener noreferrer">
-                        {role.company} <span aria-hidden="true">↗</span>
-                      </a>
-                    ) : (
-                      role.company
-                    )}
-                  </h3>
-                  <p className="timeline-title">{role.title}</p>
-                  <ul className="timeline-points">
-                    {role.summary.map((line) => (
-                      <li key={line}>{line}</li>
-                    ))}
-                  </ul>
-                  {role.workIds && role.workIds.length > 0 && (
-                    <p className="offer-proof">
-                      <span className="offer-proof-label">Projects</span>
-                      {role.workIds
-                        .map((id) => workItems.find((item) => item.id === id))
-                        .filter((item): item is WorkItem => Boolean(item))
-                        .map((item) => (
-                          <a
-                            key={item.id}
-                            href={item.story ? `/work/${item.id}` : item.url}
-                            {...(item.story ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
-                          >
-                            {item.shortName ?? item.projectTitle}
-                          </a>
-                        ))}
-                    </p>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        {/* 6. LEARNING (replaces Now, spec 0006) */}
-        <section id="learning" className="section-wrap section-spacing" aria-labelledby="learning-title">
-          <div className="section-header reveal">
-            <span className="section-tag">Learning</span>
-            <h2 id="learning-title" className="section-title">
-              What I am learning.
-            </h2>
-            <p className="section-lead">
-              I am applying for senior roles while I build jobmigo and sharpen the fundamentals.
-            </p>
-          </div>
-
-          <div className="now-grid now-grid-three">
-            <div className="now-card">
-              <h3>AI engineering</h3>
-              <p>Building jobmigo to learn how to design, ship and run an AI powered product end to end, and using AI tools in my daily work.</p>
-            </div>
-            <div className="now-card">
-              <h3>System design, data structures and algorithms</h3>
-              <p>Regular practice for interviews and for designing better systems at work.</p>
-            </div>
-            <div className="now-card">
-              <h3>Backend and Odoo</h3>
-              <p>Refreshing backend skills, and Odoo training, which started on 11 November 2026.</p>
-            </div>
-          </div>
-
-          {sortedNotes.length > 0 && (
-            <div className="learning-notes">
-              <h3 className="learning-notes-title">Latest notes</h3>
-              <ul className="learning-notes-list">
-                {sortedNotes.slice(0, 3).map((note) => (
-                  <li key={note.id}>
-                    <a href={`/lab#note-${note.id}`}>
-                      <span className="learning-note-date">{formatLabDate(note.date)}</span>
-                      <span className="learning-note-title">{note.title}</span>
-                      <span className="work-status">{note.topic}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <p className="work-teaser-more">
-                <a className="btn btn-outline" href="/lab#notes">
-                  All notes <span aria-hidden="true">→</span>
-                </a>
-              </p>
-            </div>
-          )}
-
-          <p className="now-paused">Paused while I focus on this: Kakitoo and Good Call, my own product projects.</p>
         </section>
 
         {/* 7. CONTACT */}

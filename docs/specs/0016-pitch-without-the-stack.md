@@ -18,5 +18,5 @@ The home page speaks to founders and employers about what Samuel can do for them
 
 ## Follow-up
 
-- [ ] Decide whether the experience timeline and learning section, which still read like a CV, move off the home page.
+- [x] The experience timeline and learning section moved off the home page (spec 0017).
 - [ ] Samuel to confirm "you own the code" is a promise they want to make.
