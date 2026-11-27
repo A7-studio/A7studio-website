@@ -19,7 +19,7 @@ An interactive IDE style simulation replaces the four "How I work with you" card
 
 ## Follow-up
 
-- [ ] Samuel to confirm the loop and wording match how they work.
+- [x] Samuel confirmed on 2026-11-27 that the loop matches how they work.
 - [ ] Code in the panel is illustrative; swap in real snippets if wanted.
 
 ## Placement
