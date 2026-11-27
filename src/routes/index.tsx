@@ -27,7 +27,7 @@ export const Route = createFileRoute('/')({
       {
         name: 'description',
         content:
-          'Samuel Gichu builds AI-powered apps for founders and teams, from the first idea to something people use. Full-stack engineer with 6+ years shipping payments, mobile and web products, now building in TypeScript and Python. Available for freelance projects and roles.',
+          'Samuel Gichu builds AI-powered apps for founders and teams, from the first idea to something people use. Full-stack and Flutter engineer with 6+ years shipping payments, mobile and web products, now building in TypeScript and Python. Available for freelance projects and roles.',
       },
       { name: 'author', content: 'Samuel Gichu' },
       {
@@ -61,7 +61,7 @@ export const Route = createFileRoute('/')({
           '@context': 'https://schema.org',
           '@type': 'Person',
           name: 'Samuel Gichu',
-          jobTitle: 'Full-Stack Engineer',
+          jobTitle: 'Full-Stack & Flutter Engineer',
           url: 'https://a7studio.dev/',
           sameAs: [LINKEDIN, GITHUB],
         }),
@@ -331,7 +331,7 @@ function HomePage() {
                 </p>
 
                 <p className="hero-subhead">
-                  I'm Samuel Gichu, a full-stack engineer building AI-powered apps. For 6+ years I have shipped payments,
+                  I'm Samuel Gichu, a full-stack and Flutter engineer building AI-powered apps. For 6+ years I have shipped payments,
                   mobile and web products for companies like Boya, Alvin and BeatBnk. Now I build in TypeScript and Python,
                   with React Native and React on the front and Python behind the AI, so I can reuse code and check what AI
                   writes across the stack. I'm building jobmigo this way, and I can build your product too.
@@ -350,7 +350,7 @@ function HomePage() {
                 </div>
 
                 <div className="hero-pills" aria-label="Core Competencies">
-                  <span className="tech-pill">React Native &amp; React</span>
+                  <span className="tech-pill">Flutter, React Native &amp; React</span>
                   <span className="tech-pill">TypeScript &amp; Next.js</span>
                   <span className="tech-pill">Python &amp; FastAPI</span>
                   <span className="tech-pill">Payments &amp; Ledgers</span>

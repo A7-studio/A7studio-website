@@ -101,13 +101,13 @@ for (const banned of [/AI (?:expert|specialist|guru)/i, /\bAI Engineer\b/, /\b(?
   assert.ok(!banned.test(wordingText), `Pages contain wording the spec forbids: ${banned}`)
 }
 assert.match(homeHtml, /application\/ld\+json/, 'Home page has no structured data')
-assert.match(homeHtml, /"jobTitle":"Full-Stack Engineer"/, 'Structured data is missing the job title')
+assert.match(homeHtml, /"jobTitle":"Full-Stack & Flutter Engineer"/, 'Structured data is missing the job title')
 assert.match(homeHtml, /An AI-powered first version/, 'Home page is missing the build types')
 assert.match(homeHtml, /Tell me about your idea/, 'Home page is missing the idea action (spec 0008)')
 assert.ok(!/\bAI agency\b/i.test(homeHtml), 'No agency claim until stage three')
 assert.ok(!/\$\s?\d|\bKES\s?\d|USD\s?\d|per hour/i.test(homeHtml.split('id="services"')[1]?.split('id="contact"')[0] ?? ''), 'Offers must not show prices')
 assert.match(homeHtml, /AI-powered app/, 'Contact topics are missing the AI-powered app topic')
-assert.match(homeHtml, /full-stack engineer building AI-powered apps/i, 'Home page is missing the title')
+assert.match(homeHtml, /full-stack and Flutter engineer building AI-powered apps/i, 'Home page is missing the title')
 // The CV changes by role, so it is requested by email and never downloaded.
 assert.ok(!/samuel-gichu-cv\.pdf/.test(homeHtml), 'Home page must not link a downloadable CV')
 assert.match(homeHtml, /Request a CV/, 'Home page is missing the Request a CV action')

@@ -67,7 +67,7 @@ export const offers: Offer[] = [
     status: 'Shipped',
     title: 'Mobile and payments apps',
     lines: [
-      'React Native apps (Flutter too) from design to store release, with M-PESA or Stripe payments, wallets and ledgers that stay correct through retries and failures.',
+      'Flutter and React Native apps from design to store release, with M-PESA or Stripe payments, wallets and ledgers that stay correct through retries and failures.',
     ],
     proof: [
       { label: 'Kakitoo', href: '/work/kakitoo' },
