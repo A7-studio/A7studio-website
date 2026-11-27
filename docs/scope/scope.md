@@ -151,6 +151,12 @@ The timeline moves to `/experience` and learning to the Lab, so the home page st
 - [x] Build it · code in `src/routes/experience.tsx`, `src/routes/lab.index.tsx`, `src/routes/index.tsx`
 - [x] Verify it: `check:static`, keyboard, 375, 768 and 1280 pixels
 
+### 21. Theme follows the time of day · done
+Light by day and dark by night on the visitor's own clock.
+- [x] Design it (spec): [0018](../specs/0018-theme-follows-time-of-day.md)
+- [x] Build it · code in `src/content/theme.ts`, `src/components/useTheme.ts`
+- [x] Verify it: boundary hours, time zones, toggle
+
 ## Journey 3: Receive and review leads
 
 ### 6. Lead capture and private lead dashboard · needs a decision · Beta
