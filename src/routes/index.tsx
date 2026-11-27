@@ -585,7 +585,9 @@ function HomePage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Chat on WhatsApp (+254 728 370 802) 💬
+                <span>
+                  Chat on WhatsApp <span className="nowrap">(+254 728 370 802)</span> 💬
+                </span>
               </a>
 
               <a id="contact-linkedin-btn" className="btn btn-primary" href={LINKEDIN} target="_blank" rel="noopener noreferrer">

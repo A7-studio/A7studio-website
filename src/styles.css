@@ -4715,3 +4715,42 @@ html { scroll-padding-top: 6rem; }
 .catalog-grid > li:last-child:nth-child(odd) {
   grid-column: 1 / -1;
 }
+
+/* Contact card on narrow screens (2026-11-27): the column may shrink and long labels wrap. */
+.contact-container { grid-template-columns: minmax(0, 1fr); }
+
+@media (min-width: 960px) {
+  .contact-container { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
+}
+
+.contact-info,
+.contact-actions-card,
+.email-copy-box > div { min-width: 0; }
+
+.contact-actions-card .btn {
+  white-space: normal;
+  text-align: center;
+  justify-content: center;
+}
+
+.email-address { overflow-wrap: anywhere; }
+
+@media (max-width: 640px) {
+  .contact-container { padding: 1.5rem 1rem; }
+  .contact-actions-card { padding: 1rem; }
+  .contact-actions-card .btn { padding-inline: 0.75rem; min-height: 48px; }
+  .contact-availability { align-items: flex-start; border-radius: var(--radius-md); }
+  .contact-availability .pulse-dot { flex-shrink: 0; margin-top: 0.35rem; }
+  .brief-demo { overflow-wrap: anywhere; }
+  .inquiry-pill { min-height: 44px; }
+  .copy-btn { min-height: 44px; }
+}
+
+@media (max-width: 359px) {
+  .header-actions { gap: 0.375rem; }
+  .header-actions .btn { padding-inline: 0.625rem; }
+}
+
+.nowrap { white-space: nowrap; }
+
+.contact-availability { margin-top: 0.75rem; }
