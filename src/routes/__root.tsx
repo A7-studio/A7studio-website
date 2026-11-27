@@ -1,13 +1,7 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 
+import { THEME_SCRIPT } from '#/content/theme'
 import appCss from '../styles.css?url'
-
-/**
- * Sets the saved theme (paper by default) before first paint, so a dark theme
- * visitor never sees a flash (spec 0009 follow-up). Transitions stay off until
- * after the first frame. Mirrors the theme logic in the page components.
- */
-const THEME_SCRIPT = `(function(){var d=document.documentElement;try{var t=localStorage.getItem('a7-theme');if(t!=='light'&&t!=='dark'){t='light'}d.setAttribute('data-theme',t)}catch(e){}d.classList.add('theme-init');requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.remove('theme-init')})})})()`
 
 export const Route = createRootRoute({
   head: () => ({

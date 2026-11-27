@@ -9,7 +9,7 @@ import { hasLab } from '#/content/lab'
 import { WorkIllustration } from '#/components/WorkIllustration'
 
 export function WorkShell({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useTheme()
+  const [theme, toggleTheme] = useTheme()
   const menu = useMobileMenu()
 
   return (
@@ -52,7 +52,7 @@ export function WorkShell({ children }: { children: ReactNode }) {
             <button
               type="button"
               className="btn-icon"
-              onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
+              onClick={toggleTheme}
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
               title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             >

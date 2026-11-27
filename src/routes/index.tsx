@@ -115,7 +115,7 @@ function HomePage() {
   usePageMotion()
   const [copiedEmail, setCopiedEmail] = useState(false)
   const [selectedInquiry, setSelectedInquiry] = useState(inquiryTopics[0])
-  const [theme, setTheme] = useTheme()
+  const [theme, toggleTheme] = useTheme()
 
   function handleCopyEmail(address = 'kibochas@gmail.com') {
     navigator.clipboard.writeText(address).then(() => {
@@ -167,7 +167,7 @@ function HomePage() {
               type="button"
               id="theme-toggle-btn"
               className="btn-icon"
-              onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
+              onClick={toggleTheme}
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
               title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             >
