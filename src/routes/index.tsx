@@ -24,7 +24,7 @@ export const Route = createFileRoute('/')({
       {
         name: 'description',
         content:
-          'Samuel Gichu builds AI-powered apps for founders and teams, from the first idea to something people use. Full-stack and Flutter engineer with 6+ years shipping payments, mobile and web products, now building in TypeScript and Python. Available for freelance projects and roles.',
+          'Bring an idea or a slow manual task. Samuel Gichu turns it into an AI-powered app your customers or team can use, and you approve every step before it goes live. Available for freelance projects and roles.',
       },
       { name: 'author', content: 'Samuel Gichu' },
       {
@@ -244,10 +244,10 @@ function HomePage() {
                 </p>
 
                 <p className="hero-subhead">
-                  I'm Samuel Gichu, a full-stack and Flutter engineer building AI-powered apps. For 6+ years I have shipped payments,
-                  mobile and web products for companies like Boya, Alvin and BeatBnk. Now I build in TypeScript and Python,
-                  with React Native and React on the front and Python behind the AI, so I can reuse code and check what AI
-                  writes across the stack. I'm building jobmigo this way, and I can build your product too.
+                  Bring me an idea, or a slow manual task that costs you time. I turn it into an app your customers or team
+                  can use. You approve the plan before anything is built, you watch it come together, and nothing goes live
+                  without your approval. I'm Samuel Gichu, and for 6+ years I have shipped payments, mobile and web products
+                  for companies like Boya, Alvin, mb96 and SYNTAX.
                 </p>
 
                 <div className="hero-actions">
@@ -262,12 +262,11 @@ function HomePage() {
                   </a>
                 </div>
 
-                <div className="hero-pills" aria-label="Core Competencies">
-                  <span className="tech-pill">Flutter, React Native &amp; React</span>
-                  <span className="tech-pill">TypeScript &amp; Next.js</span>
-                  <span className="tech-pill">Python &amp; FastAPI</span>
-                  <span className="tech-pill">Payments &amp; Ledgers</span>
-                  <span className="tech-pill">AI-powered products</span>
+                <div className="hero-pills" aria-label="What you get">
+                  <span className="tech-pill">A plan you approve first</span>
+                  <span className="tech-pill">Progress you can try</span>
+                  <span className="tech-pill">Checked before launch</span>
+                  <span className="tech-pill">You own the code</span>
                 </div>
               </div>
 
@@ -279,7 +278,7 @@ function HomePage() {
           </div>
         </section>
 
-        {/* 2. EMPLOYERS AND STACK */}
+        {/* 2. EMPLOYERS */}
         <section className="section-wrap" aria-labelledby="employers-title" style={{ paddingTop: '2.5rem' }}>
           <p id="employers-title" className="employer-strip-label">
             Where I have worked
@@ -305,11 +304,6 @@ function HomePage() {
               </ul>
             ))}
           </div>
-          <p className="stack-line" style={{ marginTop: '1.5rem' }}>
-            <strong>Stack I ship with:</strong> TypeScript, JavaScript, React Native, React, Next.js, Vue.js, Python (FastAPI,
-            Flask), Node.js, NestJS, SQL (PostgreSQL), MongoDB, Redis, Flutter, Dart, Stripe Connect, M-PESA STK and USSD,
-            Git, CI/CD and automated testing.
-          </p>
         </section>
 
         {/* 3. BUILD ROOM (spec 0014): how an idea gets built */}
@@ -743,7 +737,7 @@ function HomePage() {
             <span className="brand-mark">
               A7<span className="brand-dot">.</span>Studio
             </span>
-            <p className="footer-desc">Samuel Gichu, Senior Software Engineer. Mobile, web, fintech and AI.</p>
+            <p className="footer-desc">Samuel Gichu. AI-powered apps for founders and teams.</p>
           </div>
 
           <div className="footer-right">

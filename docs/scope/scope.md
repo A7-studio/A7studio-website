@@ -139,6 +139,12 @@ Calmer palette with paper as the default, and the build room following the AI Bl
 - [x] Build it · code in `src/styles.css`, `src/components/BuildRoom.tsx`
 - [x] Verify it: both themes, 375 and 1280 pixels
 
+### 19. A pitch without the tech stack · done
+The home page says what a founder or employer gets, in plain words.
+- [x] Design it (spec): [0016](../specs/0016-pitch-without-the-stack.md)
+- [x] Build it · code in `src/routes/index.tsx`, `src/content/offers.ts`
+- [x] Verify it: `check:static`, 375, 768 and 1280 pixels
+
 ## Journey 3: Receive and review leads
 
 ### 6. Lead capture and private lead dashboard · needs a decision · Beta

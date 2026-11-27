@@ -11,25 +11,25 @@ export const principles: Principle[] = [
   {
     id: 'no-smartphone',
     title: 'Reach people without smartphones',
-    line: 'Tips on Kakitoo arrive through M-Pesa STK Push, and anonymously over USSD for workers who have no smartphone.',
+    line: 'Tips on Kakitoo arrive by M-PESA, and workers without a smartphone can receive them anonymously.',
     proof: { label: 'Kakitoo', href: '/work/kakitoo' },
   },
   {
     id: 'ledger',
     title: 'Keep the money right when things fail',
-    line: 'At Boya I worked on double entry ledgers, retries and failure paths so balances stay correct.',
+    line: 'At Boya I worked on duplicate payments, retries and failure cases so balances stay correct.',
     proof: { label: 'Boya', href: '/work/boya' },
   },
   {
     id: 'embedded',
     title: 'Fit inside apps I do not control',
-    line: 'At Alvin, finance features ran as mini apps embedded in existing bank apps and web apps in Nigeria.',
+    line: 'At Alvin, finance features ran inside banks’ own apps and websites in Nigeria.',
     proof: { label: 'Alvin', href: '/work/alvin' },
   },
   {
     id: 'testing',
     title: 'Catch problems before users do',
-    line: 'At BeatBnk, automated testing and CI/CD raised velocity by 35% and cut production bugs by 60%.',
+    line: 'At BeatBnk, automated testing raised velocity by 35% and cut production bugs by 60%.',
     proof: { label: 'BeatBnk', href: '/work/beatbnk' },
   },
 ]

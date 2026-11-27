@@ -31,7 +31,7 @@ export const offerFilters: { id: OfferKind | 'all'; label: string }[] = [
 /** For recruiters: shown lower on the page, next to the experience timeline. */
 export const hiring = {
   title: 'Full-time, hybrid or remote role',
-  body: 'Full-stack, Flutter, payments or applied AI engineer, in Kenya or remote and open to Kenya.',
+  body: 'An engineer for payments, mobile, web or applied AI work, in Kenya or remote and open to Kenya.',
 }
 
 export const offers: Offer[] = [
@@ -42,8 +42,8 @@ export const offers: Offer[] = [
     title: 'An AI-powered first version',
     label: 'New',
     lines: [
-      'Your idea as a working app: LLM features, retrieval over your own data, and tests that check what the AI returns.',
-      'I am building jobmigo this way, from the first screen to the evaluation tests.',
+      'Your idea as a working app people can try. The AI answers from your own information, and its answers are tested before they reach anyone.',
+      'I am building jobmigo this way.',
     ],
     proof: [{ label: 'jobmigo', href: '/jobmigo' }],
   },
@@ -53,8 +53,8 @@ export const offers: Offer[] = [
     status: 'Shipped',
     title: 'AI features in your product',
     lines: [
-      'AI added to a product you already run: review, reconciliation, matching or an assistant, built into your current stack.',
-      'Claude-based code review and an AI reconciliation tool at Boya, and AI photo matching in Giraffe Spotter.',
+      'Hand slow work to AI inside the product you already run: reviewing, matching records or answering common questions, with a person still in charge.',
+      'I have worked on AI review and reconciliation tools at Boya, and added AI photo matching to Giraffe Spotter.',
     ],
     proof: [
       { label: 'Boya', href: '/work/boya' },
@@ -67,7 +67,7 @@ export const offers: Offer[] = [
     status: 'Shipped',
     title: 'Mobile and payments apps',
     lines: [
-      'Flutter and React Native apps from design to store release, with M-PESA or Stripe payments, wallets and ledgers that stay correct through retries and failures.',
+      'An app on your customers’ phones that takes M-PESA or card payments, and keeps the money records right when a network drops or someone taps twice.',
     ],
     proof: [
       { label: 'Kakitoo', href: '/work/kakitoo' },
@@ -80,7 +80,9 @@ export const offers: Offer[] = [
     kinds: ['web', 'payments'],
     status: 'Shipped',
     title: 'Web apps and dashboards',
-    lines: ['React, Next.js and TypeScript products, finance dashboards and embeddable mini apps, on REST and NestJS APIs.'],
+    lines: [
+      'A dashboard your team can read at a glance, or a new feature that fits inside a product your customers already use.',
+    ],
     proof: [
       { label: 'Alvin', href: '/work/alvin' },
       { label: 'Chupachap', href: '/work/chupachap' },

@@ -107,7 +107,13 @@ assert.match(homeHtml, /Tell me about your idea/, 'Home page is missing the idea
 assert.ok(!/\bAI agency\b/i.test(homeHtml), 'No agency claim until stage three')
 assert.ok(!/\$\s?\d|\bKES\s?\d|USD\s?\d|per hour/i.test(homeHtml.split('id="services"')[1]?.split('id="contact"')[0] ?? ''), 'Offers must not show prices')
 assert.match(homeHtml, /AI-powered app/, 'Contact topics are missing the AI-powered app topic')
-assert.match(homeHtml, /full-stack and Flutter engineer building AI-powered apps/i, 'Home page is missing the title')
+assert.match(homeHtml, /Bring me an idea/, 'Home page is missing the pitch')
+// The pitch speaks to founders and employers: no tool names above the proof sections (spec 0016).
+const pitch = homeHtml.split('<main')[1]?.split('id="work"')[0] ?? ''
+const pitchText = pitch.replace(/<div class="room".*?id="services"/s, 'id="services"').replace(/<div class="hero-right-editor">.*?<\/section>/s, '')
+for (const tool of [/Flutter/, /React/, /TypeScript/, /Python/, /FastAPI/, /NestJS/, /PostgreSQL/, /\bLLM\b/, /\bRAG\b/]) {
+  assert.ok(!tool.test(pitchText.replace(/<[^>]+>/g, ' ')), `The pitch names a tool: ${tool}`)
+}
 // The CV changes by role, so it is requested by email and never downloaded.
 assert.ok(!/samuel-gichu-cv\.pdf/.test(homeHtml), 'Home page must not link a downloadable CV')
 assert.match(homeHtml, /Request a CV/, 'Home page is missing the Request a CV action')
