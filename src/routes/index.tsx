@@ -1,24 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link, createFileRoute } from '@tanstack/react-router'
 
 import { usePageMotion, useRotatingIndex } from '#/components/Motion'
+import { BuildRoom } from '#/components/BuildRoom'
 import { HeroEditor } from '#/components/HeroEditor'
+import { MenuToggle, MobileDrawer, useMobileMenu } from '#/components/MobileMenu'
 import { SpaceBackground } from '#/components/SpaceBackground'
 import { useTheme } from '#/components/useTheme'
 import { WorkCover } from '#/components/WorkShell'
-import { employerStrip, experience } from '#/content/experience'
-import { entryHref, formatLabDate, hasLab, publishedEntries, sortedNotes } from '#/content/lab'
-import { hiring, offerFilters, offers } from '#/content/offers'
+import { CV_REQUEST_HREF, GITHUB, LINKEDIN } from '#/content/contact'
+import { employerStrip } from '#/content/experience'
+import { entryHref, hasLab, publishedEntries } from '#/content/lab'
+import { offerFilters, offers } from '#/content/offers'
 import type { OfferKind } from '#/content/offers'
 import { principles } from '#/content/principles'
-import { processSteps } from '#/content/process'
 import { featuredStories, workItems } from '#/content/work'
-import type { WorkItem } from '#/content/work'
-
-const CV_REQUEST_HREF =
-  'mailto:kibochas@gmail.com?subject=CV%20request&body=Hi%20Samuel%2C%0A%0ACould%20you%20send%20me%20your%20CV%20for%20this%20role%3A%20...'
-const LINKEDIN = 'https://www.linkedin.com/in/samuel-gichu-a29695b9/'
-const GITHUB = 'https://github.com/kibzsam'
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -27,13 +23,13 @@ export const Route = createFileRoute('/')({
       {
         name: 'description',
         content:
-          'Samuel Gichu builds AI-powered apps for founders and teams, from the first idea to something people use. Full-stack and Flutter engineer with 6+ years shipping payments, mobile and web products. Available for freelance projects and roles.',
+          'Bring an idea or a slow manual task. Samuel Gichu turns it into an AI-powered app or SaaS product, and you approve every step before it goes live. Available for freelance projects and roles.',
       },
       { name: 'author', content: 'Samuel Gichu' },
       {
         name: 'keywords',
         content:
-          'Samuel Gichu, A7Studio, Full-Stack Engineer, Flutter Engineer, React, Next.js, TypeScript, NestJS, Mobile Engineer, Fintech, AI Products, Payments, Stripe Connect, M-Pesa, Nairobi Kenya, Remote Engineer',
+          'Samuel Gichu, A7Studio, Full-Stack Engineer, AI-powered apps, SaaS applications, React Native, React, Next.js, TypeScript, Python, FastAPI, NestJS, Flutter, Mobile Engineer, Fintech, AI Products, Payments, Stripe Connect, M-Pesa, Nairobi Kenya, Remote Engineer',
       },
       { name: 'robots', content: 'index, follow' },
       { property: 'og:type', content: 'website' },
@@ -41,7 +37,7 @@ export const Route = createFileRoute('/')({
       { property: 'og:title', content: 'Samuel Gichu | AI-powered apps for founders and teams' },
       {
         property: 'og:description',
-        content: 'I build AI-powered apps for founders and teams, from the first idea to something people use.',
+        content: 'I build AI-powered apps and SaaS applications for founders and teams, from the first idea to something people use.',
       },
       { property: 'og:url', content: 'https://a7studio.dev/' },
       { property: 'og:locale', content: 'en_US' },
@@ -50,7 +46,7 @@ export const Route = createFileRoute('/')({
       { name: 'twitter:title', content: 'A7Studio.dev — Samuel Gichu' },
       {
         name: 'twitter:description',
-        content: 'I build AI-powered apps for founders and teams, from the first idea to something people use.',
+        content: 'I build AI-powered apps and SaaS applications for founders and teams, from the first idea to something people use.',
       },
     ],
     links: [{ rel: 'canonical', href: 'https://a7studio.dev/' }],
@@ -92,7 +88,7 @@ const BRIEF_DEMO = [
   { label: 'First version by:', value: 'end of next quarter' },
 ]
 
-const HERO_WORDS = ['AI-powered apps', 'mobile apps', 'payment systems', 'web platforms']
+const HERO_WORDS = ['AI-powered apps', 'SaaS applications', 'mobile apps', 'payment systems', 'web platforms']
 
 const IDEA_BRIEF =
   'Hi%20Samuel%2C%0A%0AThe%20idea%3A%20%0AWho%20it%20is%20for%3A%20%0AWhat%20exists%20today%3A%20%0AWhen%20I%20need%20a%20first%20version%3A%20%0A'
@@ -112,7 +108,7 @@ function ideaHref(topicId: string) {
 
 
 function HomePage() {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const menu = useMobileMenu()
   const heroWord = useRotatingIndex(HERO_WORDS.length)
   const [offerFilter, setOfferFilter] = useState<OfferKind | 'all'>('all')
   const visibleOffers = offerFilter === 'all' ? offers : offers.filter((offer) => offer.kinds.includes(offerFilter))
@@ -120,14 +116,6 @@ function HomePage() {
   const [copiedEmail, setCopiedEmail] = useState(false)
   const [selectedInquiry, setSelectedInquiry] = useState(inquiryTopics[0])
   const [theme, setTheme] = useTheme()
-
-  useEffect(() => {
-    function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape' && menuOpen) setMenuOpen(false)
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [menuOpen])
 
   function handleCopyEmail(address = 'kibochas@gmail.com') {
     navigator.clipboard.writeText(address).then(() => {
@@ -138,12 +126,12 @@ function HomePage() {
 
   return (
     <>
-      <a className="skip-link" href="#main">
+      <a className="skip-link" href="#main" inert={menu.open}>
         Skip to main content
       </a>
 
       {/* SITE HEADER */}
-      <header className="site-header" role="banner">
+      <header className="site-header" role="banner" inert={menu.open}>
         <div className="header-container">
           <a className="brand" href="#home" aria-label="A7Studio Home">
             <span className="brand-mark">
@@ -163,9 +151,9 @@ function HomePage() {
                 Lab
               </Link>
             )}
-            <a className="nav-link" href="#experience">
+            <Link className="nav-link" to="/experience">
               Experience
-            </a>
+            </Link>
             <a className="nav-link" href="#services">
               Build with me
             </a>
@@ -197,93 +185,17 @@ function HomePage() {
             <a id="header-cta-btn" className="btn btn-primary btn-sm" href="#contact">
               Get in touch
             </a>
-            <button
-              type="button"
-              id="mobile-menu-toggle"
-              className="menu-toggle"
-              onClick={() => setMenuOpen((prev) => !prev)}
-              aria-label={menuOpen ? 'Close mobile navigation' : 'Open mobile navigation'}
-              aria-expanded={menuOpen}
-              aria-controls="mobile-nav-drawer"
-            >
-              <span aria-hidden="true">{menuOpen ? '✕' : '☰'}</span>
-            </button>
+            <MenuToggle menu={menu} />
           </div>
         </div>
       </header>
 
       {/* MOBILE DRAWER */}
-      <div
-        className={`mobile-nav-backdrop${menuOpen ? ' is-open' : ''}`}
-        onClick={() => setMenuOpen(false)}
-        aria-hidden="true"
-      />
-      <div
-        id="mobile-nav-drawer"
-        className={`mobile-nav-drawer${menuOpen ? ' is-open' : ''}`}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Mobile Navigation"
-      >
-        <div className="mobile-drawer-header">
-          <span className="brand-mark">
-            A7<span className="brand-dot">.</span>Studio
-          </span>
-          <button type="button" className="menu-toggle" onClick={() => setMenuOpen(false)} aria-label="Close navigation">
-            ✕
-          </button>
-        </div>
-        <ul className="mobile-nav-links">
-          <li>
-            <Link to="/work" onClick={() => setMenuOpen(false)}>
-              Work <span>→</span>
-            </Link>
-          </li>
-          {hasLab && (
-            <li>
-              <Link to="/lab" onClick={() => setMenuOpen(false)}>
-                Lab <span>→</span>
-              </Link>
-            </li>
-          )}
-          <li>
-            <a href="#experience" onClick={() => setMenuOpen(false)}>
-              Experience <span>→</span>
-            </a>
-          </li>
-          <li>
-            <a href="#services" onClick={() => setMenuOpen(false)}>
-              Build with me <span>→</span>
-            </a>
-          </li>
-          <li>
-            <a href="#contact" onClick={() => setMenuOpen(false)}>
-              Contact &amp; Links <span>→</span>
-            </a>
-          </li>
-        </ul>
-        <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          <a className="btn btn-outline" style={{ width: '100%' }} href={CV_REQUEST_HREF}>
-            Request a CV
-          </a>
-          <a
-            className="btn btn-whatsapp"
-            style={{ width: '100%' }}
-            href="https://wa.me/254728370802?text=Hi%20Samuel%2C%20I'd%20like%20to%20discuss%20a%20role."
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Chat on WhatsApp 💬
-          </a>
-          <a className="btn btn-primary" style={{ width: '100%' }} href={LINKEDIN} target="_blank" rel="noopener noreferrer">
-            Connect on LinkedIn ↗
-          </a>
-        </div>
-      </div>
+      <MobileDrawer menu={menu} />
 
       <SpaceBackground />
 
-      <main id="main">
+      <main id="main" inert={menu.open}>
         {/* 1. HERO */}
         <section id="home" className="hero" aria-labelledby="hero-title">
           <div className="hero-grid" aria-hidden="true" />
@@ -331,9 +243,10 @@ function HomePage() {
                 </p>
 
                 <p className="hero-subhead">
-                  I'm Samuel Gichu, a full-stack and Flutter engineer. For 6+ years I have shipped payments, mobile and web
-                  products in TypeScript, React, Node.js, SQL and Flutter for companies like Boya, Alvin and BeatBnk. Now I
-                  build AI products like jobmigo, and I can build yours.
+                  Bring me an idea, or a slow manual task that costs you time. I turn it into an app or SaaS product your
+                  customers or team can use. You approve the plan before anything is built, you watch it come together, and nothing goes live
+                  without your approval. I'm Samuel Gichu, and for 6+ years I have shipped payments, mobile and web products
+                  for companies like Boya, Alvin, mb96 and SYNTAX.
                 </p>
 
                 <div className="hero-actions">
@@ -348,12 +261,11 @@ function HomePage() {
                   </a>
                 </div>
 
-                <div className="hero-pills" aria-label="Core Competencies">
-                  <span className="tech-pill">Flutter &amp; Dart</span>
-                  <span className="tech-pill">TypeScript, React &amp; Next.js</span>
-                  <span className="tech-pill">Node.js &amp; NestJS</span>
-                  <span className="tech-pill">Payments &amp; Ledgers</span>
-                  <span className="tech-pill">AI-powered products</span>
+                <div className="hero-pills" aria-label="What you get">
+                  <span className="tech-pill">A plan you approve first</span>
+                  <span className="tech-pill">Progress you can try</span>
+                  <span className="tech-pill">Checked before launch</span>
+                  <span className="tech-pill">You own the code</span>
                 </div>
               </div>
 
@@ -365,8 +277,8 @@ function HomePage() {
           </div>
         </section>
 
-        {/* 2. EMPLOYERS AND STACK */}
-        <section className="section-wrap" aria-labelledby="employers-title" style={{ paddingTop: '2.5rem' }}>
+        {/* 2. EMPLOYERS */}
+        <section id="experience" className="section-wrap" aria-labelledby="employers-title" style={{ paddingTop: '2.5rem' }}>
           <p id="employers-title" className="employer-strip-label">
             Where I have worked
           </p>
@@ -391,16 +303,29 @@ function HomePage() {
               </ul>
             ))}
           </div>
-          <p className="stack-line" style={{ marginTop: '1.5rem' }}>
-            <strong>Stack I ship with:</strong> TypeScript, JavaScript, HTML, CSS, React, Next.js, Vue.js, Node.js, NestJS, SQL (PostgreSQL), MongoDB, Redis,
-            Flutter, Dart, Stripe Connect, M-PESA STK and USSD, Git, CI/CD and automated testing.
+          <p className="work-teaser-more">
+            <Link className="btn btn-outline" to="/experience">
+              See my full experience <span aria-hidden="true">→</span>
+            </Link>
           </p>
+        </section>
+
+        {/* 3. BUILD ROOM (spec 0014): how an idea gets built */}
+        <section id="process" className="section-wrap section-spacing" aria-labelledby="process-title">
+          <div className="section-header reveal">
+            <span className="section-tag">The build</span>
+            <h2 id="process-title" className="section-title">
+              How I work with you.
+            </h2>
+            <p className="section-lead">Pick an idea and watch one feature go from spec to landed: AI writes, I review, you approve.</p>
+          </div>
+          <BuildRoom />
         </section>
 
         {/* 3. WHAT I CAN BUILD (spec 0008) */}
         <section id="services" className="section-wrap section-spacing" aria-labelledby="services-title">
           <div className="section-header reveal">
-            <span className="section-tag">Build with me</span>
+            <span className="section-tag">Your kind of build</span>
             <h2 id="services-title" className="section-title">
               What I can build for you.
             </h2>
@@ -526,37 +451,10 @@ function HomePage() {
           </section>
         )}
 
-        {/* 5. HOW I WORK WITH YOU (spec 0008) */}
-        <section id="process" className="section-wrap section-spacing" aria-labelledby="process-title">
-          <div className="section-header reveal">
-            <span className="section-tag">Process</span>
-            <h2 id="process-title" className="section-title">
-              How I work with you.
-            </h2>
-            <p className="section-lead">Four steps from your idea to something people use.</p>
-          </div>
-          <ol className="process-list">
-            {processSteps.map((step, index) => (
-              <li className="now-card reveal spotlight" key={step.id}>
-                <span className="process-number">{String(index + 1).padStart(2, '0')}</span>
-                <h3>{step.title}</h3>
-                <p>{step.line}</p>
-                <div className="step-demo" aria-hidden="true">
-                  {step.demo.map((line, i) => (
-                    <span key={line.text} className={`demo-line is-${line.kind}`} style={{ '--d': i } as React.CSSProperties}>
-                      {line.text}
-                    </span>
-                  ))}
-                </div>
-              </li>
-            ))}
-          </ol>
-        </section>
-
         {/* 6. SELECTED WORK (proof) */}
         <section id="work" className="section-wrap section-spacing" aria-labelledby="work-title">
           <div className="section-header reveal">
-            <span className="section-tag">Proof</span>
+            <span className="section-tag">The proof</span>
             <h2 id="work-title" className="section-title">
               Selected work.
             </h2>
@@ -615,136 +513,11 @@ function HomePage() {
           </ul>
         </section>
 
-        {/* 5. EXPERIENCE TIMELINE */}
-        <section id="experience" className="section-wrap section-spacing" aria-labelledby="experience-title">
-          <div className="section-header reveal">
-            <span className="section-tag">Experience</span>
-            <h2 id="experience-title" className="section-title">
-              What I owned, and where.
-            </h2>
-            <p className="section-lead">The same history as my CV, newest first.</p>
-          </div>
-
-          <div className="now-card offer-hiring">
-            <h3>Hiring? {hiring.title}</h3>
-            <p>{hiring.body}</p>
-            <a className="btn btn-outline btn-sm" href={CV_REQUEST_HREF}>
-              Request a CV
-            </a>
-          </div>
-
-          <ol className="timeline">
-            {experience.map((role) => (
-              <li className="timeline-row" key={role.id}>
-                <div className="timeline-when">
-                  {role.dates ?? 'Co-founder'}
-                  <br />
-                  {role.location}
-                  {role.note && (
-                    <>
-                      <br />
-                      <span className="work-status" style={{ marginTop: '0.5rem' }}>
-                        {role.note}
-                      </span>
-                    </>
-                  )}
-                </div>
-                <div>
-                  <h3 className="timeline-company">
-                    {role.url ? (
-                      <a href={role.url} target="_blank" rel="noopener noreferrer">
-                        {role.company} <span aria-hidden="true">↗</span>
-                      </a>
-                    ) : (
-                      role.company
-                    )}
-                  </h3>
-                  <p className="timeline-title">{role.title}</p>
-                  <ul className="timeline-points">
-                    {role.summary.map((line) => (
-                      <li key={line}>{line}</li>
-                    ))}
-                  </ul>
-                  {role.workIds && role.workIds.length > 0 && (
-                    <p className="offer-proof">
-                      <span className="offer-proof-label">Projects</span>
-                      {role.workIds
-                        .map((id) => workItems.find((item) => item.id === id))
-                        .filter((item): item is WorkItem => Boolean(item))
-                        .map((item) => (
-                          <a
-                            key={item.id}
-                            href={item.story ? `/work/${item.id}` : item.url}
-                            {...(item.story ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
-                          >
-                            {item.shortName ?? item.projectTitle}
-                          </a>
-                        ))}
-                    </p>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        {/* 6. LEARNING (replaces Now, spec 0006) */}
-        <section id="learning" className="section-wrap section-spacing" aria-labelledby="learning-title">
-          <div className="section-header reveal">
-            <span className="section-tag">Learning</span>
-            <h2 id="learning-title" className="section-title">
-              What I am learning.
-            </h2>
-            <p className="section-lead">
-              I am applying for senior roles while I build jobmigo and sharpen the fundamentals.
-            </p>
-          </div>
-
-          <div className="now-grid now-grid-three">
-            <div className="now-card">
-              <h3>AI engineering</h3>
-              <p>Building jobmigo to learn how to design, ship and run an AI powered product end to end, and using AI tools in my daily work.</p>
-            </div>
-            <div className="now-card">
-              <h3>System design, data structures and algorithms</h3>
-              <p>Regular practice for interviews and for designing better systems at work.</p>
-            </div>
-            <div className="now-card">
-              <h3>Backend and Odoo</h3>
-              <p>Refreshing backend skills, and Odoo training, which started on 11 November 2026.</p>
-            </div>
-          </div>
-
-          {sortedNotes.length > 0 && (
-            <div className="learning-notes">
-              <h3 className="learning-notes-title">Latest notes</h3>
-              <ul className="learning-notes-list">
-                {sortedNotes.slice(0, 3).map((note) => (
-                  <li key={note.id}>
-                    <a href={`/lab#note-${note.id}`}>
-                      <span className="learning-note-date">{formatLabDate(note.date)}</span>
-                      <span className="learning-note-title">{note.title}</span>
-                      <span className="work-status">{note.topic}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <p className="work-teaser-more">
-                <a className="btn btn-outline" href="/lab#notes">
-                  All notes <span aria-hidden="true">→</span>
-                </a>
-              </p>
-            </div>
-          )}
-
-          <p className="now-paused">Paused while I focus on this: Kakitoo and Good Call, my own product projects.</p>
-        </section>
-
         {/* 7. CONTACT */}
         <section id="contact" className="section-wrap section-spacing" aria-labelledby="contact-title">
           <div className="contact-container">
             <div className="contact-info">
-              <div className="section-tag">Contact</div>
+              <div className="section-tag">Let's start</div>
               <h2 id="contact-title">Let’s talk.</h2>
               <p>
                 Tell me about your idea. Choose a topic to open an email with a short brief to fill in, or message me on LinkedIn or
@@ -837,13 +610,13 @@ function HomePage() {
       </main>
 
       {/* FOOTER */}
-      <footer className="site-footer" role="contentinfo">
+      <footer className="site-footer" role="contentinfo" inert={menu.open}>
         <div className="footer-container">
           <div className="footer-left">
             <span className="brand-mark">
               A7<span className="brand-dot">.</span>Studio
             </span>
-            <p className="footer-desc">Samuel Gichu, Senior Software Engineer. Mobile, web, fintech and AI.</p>
+            <p className="footer-desc">Samuel Gichu. AI-powered apps and SaaS for founders and teams.</p>
           </div>
 
           <div className="footer-right">

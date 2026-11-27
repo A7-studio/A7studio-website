@@ -15,6 +15,7 @@ const config = defineConfig({
     tanstackStart({
       pages: [
         { path: '/work' },
+        { path: '/experience' },
         ...storySlugs.map((slug) => ({ path: `/work/${slug}` })),
         // The Lab is prerendered only once an entry is published (spec 0005).
         ...(hasLab

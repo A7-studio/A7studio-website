@@ -39,6 +39,7 @@ function LabIndexPage() {
           </p>
         </div>
 
+        <h2 className="sr-only">Products</h2>
         <ul className="work-tiles">
           {publishedEntries.map((entry) => (
             <li className="work-tile" key={entry.slug}>
@@ -58,13 +59,35 @@ function LabIndexPage() {
           ))}
         </ul>
 
+        <div id="learning" className="lab-notes">
+          <div className="section-header">
+            <span className="section-tag">Learning</span>
+            <h2 className="section-title">What I am learning.</h2>
+            <p className="section-lead">I am applying for senior roles while I build jobmigo and sharpen the fundamentals.</p>
+          </div>
+
+          <div className="now-grid now-grid-three">
+            <div className="now-card">
+              <h3>AI engineering</h3>
+              <p>Building jobmigo to learn how to design, ship and run an AI powered product end to end, and using AI tools in my daily work.</p>
+            </div>
+            <div className="now-card">
+              <h3>System design, data structures and algorithms</h3>
+              <p>Regular practice for interviews and for designing better systems at work.</p>
+            </div>
+            <div className="now-card">
+              <h3>Backend and Odoo</h3>
+              <p>Refreshing backend skills, and Odoo training, which started on 11 November 2026.</p>
+            </div>
+          </div>
+
+          <p className="now-paused">Paused while I focus on this: Kakitoo and Good Call, my own product projects.</p>
+        </div>
+
         {sortedNotes.length > 0 && (
           <div id="notes" className="lab-notes">
-            <div className="section-header">
-              <span className="section-tag">Notes</span>
-              <h2 className="section-title">What I am learning.</h2>
-              <p className="section-lead">Short dated notes on AI engineering, system design and backend work.</p>
-            </div>
+            <h2 className="section-title">Notes.</h2>
+            <p className="section-lead">Short dated notes on AI engineering, system design and backend work.</p>
             <ol className="timeline">
               {sortedNotes.map((note) => (
                 <li className="timeline-row" id={`note-${note.id}`} key={note.id}>

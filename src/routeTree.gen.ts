@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as JobmigoRouteImport } from './routes/jobmigo'
 import { Route as LabIndexRouteImport } from './routes/lab.index'
 import { Route as LabSlugRouteImport } from './routes/lab.$slug'
@@ -19,6 +20,11 @@ import { Route as WorkSlugRouteImport } from './routes/work.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExperienceRoute = ExperienceRouteImport.update({
+  id: '/experience',
+  path: '/experience',
   getParentRoute: () => rootRouteImport,
 } as any)
 const JobmigoRoute = JobmigoRouteImport.update({
@@ -49,6 +55,7 @@ const WorkSlugRoute = WorkSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/experience': typeof ExperienceRoute
   '/jobmigo': typeof JobmigoRoute
   '/lab/$slug': typeof LabSlugRoute
   '/work/$slug': typeof WorkSlugRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/experience': typeof ExperienceRoute
   '/jobmigo': typeof JobmigoRoute
   '/lab/$slug': typeof LabSlugRoute
   '/work/$slug': typeof WorkSlugRoute
@@ -66,6 +74,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/experience': typeof ExperienceRoute
   '/jobmigo': typeof JobmigoRoute
   '/lab/$slug': typeof LabSlugRoute
   '/work/$slug': typeof WorkSlugRoute
@@ -75,12 +84,26 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/jobmigo' | '/lab/$slug' | '/work/$slug' | '/lab/' | '/work/'
+    | '/'
+    | '/experience'
+    | '/jobmigo'
+    | '/lab/$slug'
+    | '/work/$slug'
+    | '/lab/'
+    | '/work/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/jobmigo' | '/lab/$slug' | '/work/$slug' | '/lab' | '/work'
+  to:
+    | '/'
+    | '/experience'
+    | '/jobmigo'
+    | '/lab/$slug'
+    | '/work/$slug'
+    | '/lab'
+    | '/work'
   id:
     | '__root__'
     | '/'
+    | '/experience'
     | '/jobmigo'
     | '/lab/$slug'
     | '/work/$slug'
@@ -90,6 +113,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ExperienceRoute: typeof ExperienceRoute
   JobmigoRoute: typeof JobmigoRoute
   LabSlugRoute: typeof LabSlugRoute
   WorkSlugRoute: typeof WorkSlugRoute
@@ -104,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experience': {
+      id: '/experience'
+      path: '/experience'
+      fullPath: '/experience'
+      preLoaderRoute: typeof ExperienceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/jobmigo': {
@@ -146,6 +177,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ExperienceRoute: ExperienceRoute,
   JobmigoRoute: JobmigoRoute,
   LabSlugRoute: LabSlugRoute,
   WorkSlugRoute: WorkSlugRoute,

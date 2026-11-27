@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Link } from '@tanstack/react-router'
 import { useTheme } from './useTheme'
+import { MenuToggle, MobileDrawer, useMobileMenu } from './MobileMenu'
 
 import type { StoryImage, WorkItem } from '#/content/work'
 import { visibleImage } from '#/content/work'
@@ -9,13 +10,14 @@ import { WorkIllustration } from '#/components/WorkIllustration'
 
 export function WorkShell({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useTheme()
+  const menu = useMobileMenu()
 
   return (
     <>
-      <a className="skip-link" href="#main">
+      <a className="skip-link" href="#main" inert={menu.open}>
         Skip to main content
       </a>
-      <header className="site-header" role="banner">
+      <header className="site-header" role="banner" inert={menu.open}>
         <div className="header-container">
           <Link className="brand" to="/" aria-label="A7Studio Home">
             <span className="brand-mark">
@@ -35,9 +37,9 @@ export function WorkShell({ children }: { children: ReactNode }) {
                 Lab
               </Link>
             )}
-            <a className="nav-link" href="/#experience">
+            <Link className="nav-link" to="/experience">
               Experience
-            </a>
+            </Link>
             <a className="nav-link" href="/#services">
               Build with me
             </a>
@@ -59,20 +61,25 @@ export function WorkShell({ children }: { children: ReactNode }) {
             <a id="header-cta-btn" className="btn btn-primary btn-sm" href="/#contact">
               Get in touch
             </a>
+            <MenuToggle menu={menu} />
           </div>
         </div>
       </header>
 
-      <main id="main">{children}</main>
+      <MobileDrawer menu={menu} root="/" />
 
-      <footer className="site-footer" role="contentinfo">
+      <main id="main" inert={menu.open}>
+        {children}
+      </main>
+
+      <footer className="site-footer" role="contentinfo" inert={menu.open}>
         <div className="footer-container">
           <div className="footer-left">
             <span className="brand-mark">
               A7<span className="brand-dot">.</span>Studio
             </span>
             <p className="footer-desc">
-              Samuel Gichu, Senior Software Engineer. Mobile, web, fintech and AI.
+              Samuel Gichu. AI-powered apps and SaaS for founders and teams.
             </p>
           </div>
           <div className="footer-right">

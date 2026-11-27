@@ -127,6 +127,30 @@ Cyan accent, aurora and glass, a typing hero editor with founder and Samuel curs
 - [x] Build it · code in `src/components/HeroEditor.tsx`, `src/routes/index.tsx`, `src/styles.css`
 - [x] Verify it: contrast in both themes, 375 and 1280 pixels
 
+### 17. Build room · done
+An interactive simulation of agents drafting, Samuel reviewing and a founder approving, in place of the process cards.
+- [x] Design it (spec): [0014](../specs/0014-build-room.md)
+- [x] Build it · code in `src/components/BuildRoom.tsx`, `src/content/buildRoom.ts`
+- [x] Verify it: both themes, 375 and 1280 pixels
+
+### 18. Ink, paper and one blue · done
+Calmer palette with paper as the default, and the build room following the AI Blueprint loop.
+- [x] Design it (spec): [0015](../specs/0015-ink-paper-and-one-blue.md)
+- [x] Build it · code in `src/styles.css`, `src/components/BuildRoom.tsx`
+- [x] Verify it: both themes, 375 and 1280 pixels
+
+### 19. A pitch without the tech stack · done
+The home page says what a founder or employer gets, in plain words.
+- [x] Design it (spec): [0016](../specs/0016-pitch-without-the-stack.md)
+- [x] Build it · code in `src/routes/index.tsx`, `src/content/offers.ts`
+- [x] Verify it: `check:static`, 375, 768 and 1280 pixels
+
+### 20. Experience on its own page · done
+The timeline moves to `/experience` and learning to the Lab, so the home page stays a pitch.
+- [x] Design it (spec): [0017](../specs/0017-experience-page.md)
+- [x] Build it · code in `src/routes/experience.tsx`, `src/routes/lab.index.tsx`, `src/routes/index.tsx`
+- [x] Verify it: `check:static`, keyboard, 375, 768 and 1280 pixels
+
 ## Journey 3: Receive and review leads
 
 ### 6. Lead capture and private lead dashboard · needs a decision · Beta

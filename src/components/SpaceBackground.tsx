@@ -54,9 +54,9 @@ export function SpaceBackground() {
 
     const draw = () => {
       const light = document.documentElement.getAttribute('data-theme') === 'light'
-      const base = light ? '11, 21, 48' : '230, 240, 255'
-      const blue = light ? '19, 91, 255' : '77, 134, 255'
-      const cyan = light ? '11, 106, 133' : '92, 225, 255'
+      const base = light ? '18, 24, 23' : '245, 246, 243'
+      const blue = light ? '21, 94, 239' : '118, 168, 255'
+      const cyan = light ? '11, 67, 186' : '118, 168, 255'
       const scroll = window.scrollY
       ctx.clearRect(0, 0, width, height)
 
