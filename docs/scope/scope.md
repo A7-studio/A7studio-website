@@ -127,6 +127,12 @@ Cyan accent, aurora and glass, a typing hero editor with founder and Samuel curs
 - [x] Build it · code in `src/components/HeroEditor.tsx`, `src/routes/index.tsx`, `src/styles.css`
 - [x] Verify it: contrast in both themes, 375 and 1280 pixels
 
+### 17. Build room · done
+An interactive simulation of agents drafting, Samuel reviewing and a founder approving, in place of the process cards.
+- [x] Design it (spec): [0014](../specs/0014-build-room.md)
+- [x] Build it · code in `src/components/BuildRoom.tsx`, `src/content/buildRoom.ts`
+- [x] Verify it: both themes, 375 and 1280 pixels
+
 ## Journey 3: Receive and review leads
 
 ### 6. Lead capture and private lead dashboard · needs a decision · Beta

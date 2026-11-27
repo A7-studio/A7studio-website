@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, createFileRoute } from '@tanstack/react-router'
 
 import { usePageMotion, useRotatingIndex } from '#/components/Motion'
+import { BuildRoom } from '#/components/BuildRoom'
 import { HeroEditor } from '#/components/HeroEditor'
 import { SpaceBackground } from '#/components/SpaceBackground'
 import { useTheme } from '#/components/useTheme'
@@ -11,7 +12,6 @@ import { entryHref, formatLabDate, hasLab, publishedEntries, sortedNotes } from 
 import { hiring, offerFilters, offers } from '#/content/offers'
 import type { OfferKind } from '#/content/offers'
 import { principles } from '#/content/principles'
-import { processSteps } from '#/content/process'
 import { featuredStories, workItems } from '#/content/work'
 import type { WorkItem } from '#/content/work'
 
@@ -399,10 +399,22 @@ function HomePage() {
           </p>
         </section>
 
+        {/* 3. BUILD ROOM (spec 0014): how an idea gets built */}
+        <section id="process" className="section-wrap section-spacing" aria-labelledby="process-title">
+          <div className="section-header reveal">
+            <span className="section-tag">The build</span>
+            <h2 id="process-title" className="section-title">
+              How I work with you.
+            </h2>
+            <p className="section-lead">Pick an idea and watch it move from your words to a preview: agents draft, I review, you approve.</p>
+          </div>
+          <BuildRoom />
+        </section>
+
         {/* 3. WHAT I CAN BUILD (spec 0008) */}
         <section id="services" className="section-wrap section-spacing" aria-labelledby="services-title">
           <div className="section-header reveal">
-            <span className="section-tag">Build with me</span>
+            <span className="section-tag">Your kind of build</span>
             <h2 id="services-title" className="section-title">
               What I can build for you.
             </h2>
@@ -528,37 +540,10 @@ function HomePage() {
           </section>
         )}
 
-        {/* 5. HOW I WORK WITH YOU (spec 0008) */}
-        <section id="process" className="section-wrap section-spacing" aria-labelledby="process-title">
-          <div className="section-header reveal">
-            <span className="section-tag">Process</span>
-            <h2 id="process-title" className="section-title">
-              How I work with you.
-            </h2>
-            <p className="section-lead">Four steps from your idea to something people use.</p>
-          </div>
-          <ol className="process-list">
-            {processSteps.map((step, index) => (
-              <li className="now-card reveal spotlight" key={step.id}>
-                <span className="process-number">{String(index + 1).padStart(2, '0')}</span>
-                <h3>{step.title}</h3>
-                <p>{step.line}</p>
-                <div className="step-demo" aria-hidden="true">
-                  {step.demo.map((line, i) => (
-                    <span key={line.text} className={`demo-line is-${line.kind}`} style={{ '--d': i } as React.CSSProperties}>
-                      {line.text}
-                    </span>
-                  ))}
-                </div>
-              </li>
-            ))}
-          </ol>
-        </section>
-
         {/* 6. SELECTED WORK (proof) */}
         <section id="work" className="section-wrap section-spacing" aria-labelledby="work-title">
           <div className="section-header reveal">
-            <span className="section-tag">Proof</span>
+            <span className="section-tag">The proof</span>
             <h2 id="work-title" className="section-title">
               Selected work.
             </h2>
@@ -746,7 +731,7 @@ function HomePage() {
         <section id="contact" className="section-wrap section-spacing" aria-labelledby="contact-title">
           <div className="contact-container">
             <div className="contact-info">
-              <div className="section-tag">Contact</div>
+              <div className="section-tag">Let's start</div>
               <h2 id="contact-title">Let’s talk.</h2>
               <p>
                 Tell me about your idea. Choose a topic to open an email with a short brief to fill in, or message me on LinkedIn or
