@@ -9,12 +9,12 @@ An interactive IDE style simulation replaces the four "How I work with you" card
 
 ## Requirements
 
-- **AC-1**: three example ideas; picking one restarts the run; play, pause and replay work.
-- **AC-2**: the loop column shows `/feature`, `/implement`, `/check` and `/complete` with a plain line and a status each; setup (talk and plan) is shown as done once.
-- **AC-3**: the spec shows done-whens and can be approved by the visitor (it carries on by itself after a short wait); changes arrive one at a time and each is reviewed, one per idea sent back once; every done-when is checked off.
-- **AC-4**: nothing lands until the visitor clicks "Approve and land"; the idea action opens an email prefilled with the chosen idea.
-- **AC-5 (Honesty)**: labelled a simulation, "not a live system or a real client", with the workflow credited and linked; no counters, figures or time frames.
-- **AC-6**: runs only while on screen and the tab is visible; reduced motion shows the finished run waiting for approval; no JavaScript shows it landed.
+- **AC-1**: three AI app ideas (support assistant, invoice reader, voice booking agent); picking one restarts the run; play, pause, replay and a faster speed work.
+- **AC-2**: the loop column shows `/feature`, `/implement`, `/check` and `/complete` with a plain line and a status each; setup is shown as done once.
+- **AC-3**: "Watch" runs by itself; any review click switches to "You review", which waits at each gate. The visitor can add one extra requirement to the spec, approve it, then approve or send back each change.
+- **AC-4**: one change per idea has a gap. If it is approved as is, its check fails and the run returns to build for the fix. Nothing lands until the visitor clicks "Approve and land". After the checks pass, "Try it" shows example answers. The idea action opens an email prefilled with the chosen idea.
+- **AC-5 (Honesty)**: labelled a simulation, "not a live system or a real client", answers labelled as examples, with the workflow credited and linked; no counters, figures or time frames.
+- **AC-6**: runs only while on screen and the tab is visible; with reduced motion there is no timer and the run moves only when the visitor clicks; no JavaScript shows it landed.
 - **AC-7**: three columns from 1024 pixels, tabs below (workspace first); no horizontal scroll; text at least 4.5 to 1 in both themes.
 
 ## Follow-up
@@ -24,4 +24,4 @@ An interactive IDE style simulation replaces the four "How I work with you" card
 
 ## Placement
 
-Directly after the employer strip, before the build catalog. Content in `src/content/buildRoom.ts`, component in `src/components/BuildRoom.tsx`.
+Directly after the employer strip, before the build catalog. Content in `src/content/buildRoom.ts`, run logic in `src/components/useBuildRun.ts`, component in `src/components/BuildRoom.tsx`.
