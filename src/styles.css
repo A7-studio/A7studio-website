@@ -4684,3 +4684,20 @@ button {
 @media (max-width: 767px) {
   .room-screen pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 }
+
+/* Keyboard and touch fixes (2026-11-27). */
+/* A focused control is never left under the sticky header. */
+html { scroll-padding-top: 6rem; }
+
+/* Standalone links are at least 24 by 24 pixels (WCAG 2.2, target size). */
+.story-back,
+.social-link,
+.email-address,
+.work-tile a.work-link,
+.footer-container a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}
+
+.room-screen:focus-visible { outline-offset: -3px; box-shadow: none; }

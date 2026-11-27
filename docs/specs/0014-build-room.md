@@ -17,7 +17,13 @@ An interactive IDE style simulation replaces the four "How I work with you" card
 - **AC-6**: runs only while on screen and the tab is visible; with reduced motion there is no timer and the run moves only when the visitor clicks; no JavaScript shows it landed.
 - **AC-7**: three columns from 1024 pixels, tabs below (workspace first); no horizontal scroll; text at least 4.5 to 1 in both themes.
 
+## Checks, 2026-11-27
+
+Reduced motion, 768 pixels and keyboard use were checked in headless Chrome. Fixed: timer controls are hidden under reduced motion; keyboard focus stays in the workspace after a review button disappears; the closed phone menu can no longer be tabbed into and the open one keeps focus and returns it; focused controls clear the sticky header; standalone links are at least 24 pixels; `/work` and `/lab` no longer skip a heading level. Not tested: real devices, screen readers, speed.
+
 ## Follow-up
+
+- [ ] Pages other than home have no navigation menu below desktop width (`WorkShell` has no menu button).
 
 - [x] Samuel confirmed on 2026-11-27 that the loop matches how they work.
 - [ ] Code in the panel is illustrative; swap in real snippets if wanted.

@@ -102,6 +102,7 @@ function WorkIndexPage() {
 
         {items.length === 0 && <p className="section-lead">No projects match these filters.</p>}
 
+        <h2 className="sr-only">Projects</h2>
         <ul className="work-tiles">
           {items.map((item) => (
             <li className="work-tile" key={item.id} id={`work-${item.id}`}>

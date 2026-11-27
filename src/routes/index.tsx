@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, createFileRoute } from '@tanstack/react-router'
 
 import { usePageMotion, useRotatingIndex } from '#/components/Motion'
@@ -113,6 +113,8 @@ function ideaHref(topicId: string) {
 
 function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const menuCloseRef = useRef<HTMLButtonElement>(null)
+  const returnFocus = useRef(false)
   const heroWord = useRotatingIndex(HERO_WORDS.length)
   const [offerFilter, setOfferFilter] = useState<OfferKind | 'all'>('all')
   const visibleOffers = offerFilter === 'all' ? offers : offers.filter((offer) => offer.kinds.includes(offerFilter))
@@ -123,10 +125,25 @@ function HomePage() {
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape' && menuOpen) setMenuOpen(false)
+      if (e.key === 'Escape' && menuOpen) closeMenu()
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [menuOpen])
+
+  /** Closes the drawer and puts focus back on the menu button (not used by links, which move on). */
+  function closeMenu() {
+    returnFocus.current = true
+    setMenuOpen(false)
+  }
+
+  useEffect(() => {
+    if (menuOpen) {
+      menuCloseRef.current?.focus()
+    } else if (returnFocus.current) {
+      returnFocus.current = false
+      document.getElementById('mobile-menu-toggle')?.focus()
+    }
   }, [menuOpen])
 
   function handleCopyEmail(address = 'kibochas@gmail.com') {
@@ -138,12 +155,12 @@ function HomePage() {
 
   return (
     <>
-      <a className="skip-link" href="#main">
+      <a className="skip-link" href="#main" inert={menuOpen}>
         Skip to main content
       </a>
 
       {/* SITE HEADER */}
-      <header className="site-header" role="banner">
+      <header className="site-header" role="banner" inert={menuOpen}>
         <div className="header-container">
           <a className="brand" href="#home" aria-label="A7Studio Home">
             <span className="brand-mark">
@@ -215,7 +232,7 @@ function HomePage() {
       {/* MOBILE DRAWER */}
       <div
         className={`mobile-nav-backdrop${menuOpen ? ' is-open' : ''}`}
-        onClick={() => setMenuOpen(false)}
+        onClick={closeMenu}
         aria-hidden="true"
       />
       <div
@@ -224,12 +241,13 @@ function HomePage() {
         role="dialog"
         aria-modal="true"
         aria-label="Mobile Navigation"
+        inert={!menuOpen}
       >
         <div className="mobile-drawer-header">
           <span className="brand-mark">
             A7<span className="brand-dot">.</span>Studio
           </span>
-          <button type="button" className="menu-toggle" onClick={() => setMenuOpen(false)} aria-label="Close navigation">
+          <button ref={menuCloseRef} type="button" className="menu-toggle" onClick={closeMenu} aria-label="Close navigation">
             ✕
           </button>
         </div>
@@ -283,7 +301,7 @@ function HomePage() {
 
       <SpaceBackground />
 
-      <main id="main">
+      <main id="main" inert={menuOpen}>
         {/* 1. HERO */}
         <section id="home" className="hero" aria-labelledby="hero-title">
           <div className="hero-grid" aria-hidden="true" />
@@ -824,7 +842,7 @@ function HomePage() {
       </main>
 
       {/* FOOTER */}
-      <footer className="site-footer" role="contentinfo">
+      <footer className="site-footer" role="contentinfo" inert={menuOpen}>
         <div className="footer-container">
           <div className="footer-left">
             <span className="brand-mark">

@@ -19,6 +19,9 @@ export function BuildRoom() {
   const [typed, setTyped] = useState(0)
   const ref = useRef<HTMLDivElement>(null)
   const reduced = useRef(false)
+  const [still, setStill] = useState(false)
+  const screenRef = useRef<HTMLDivElement>(null)
+  const focused = useRef<Element | null>(null)
 
   function dispatch(action: Action) {
     setRun((current) => {
@@ -29,6 +32,7 @@ export function BuildRoom() {
 
   useEffect(() => {
     reduced.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    setStill(reduced.current)
     setRun(reduced.current ? settle(startRun(buildIdeas[0].id, false)) : startRun(buildIdeas[0].id, true))
     const node = ref.current
     if (!node) return
@@ -47,6 +51,14 @@ export function BuildRoom() {
     )
     return () => window.clearInterval(id)
   }, [playing, visible, fast, run.phase])
+
+  // A review button disappears once used. Keep keyboard focus in the workspace, not lost on the page.
+  useEffect(() => {
+    const last = focused.current
+    if (!last || last.isConnected) return
+    focused.current = null
+    if (document.activeElement === document.body) screenRef.current?.focus({ preventScroll: true })
+  }, [run])
 
   const idea = ideaFor(run)
   const answer = tried === null ? undefined : idea.tries[tried]
@@ -120,24 +132,30 @@ export function BuildRoom() {
       </div>
 
       <div className="room-controls">
-        <div className="room-group" role="group" aria-label="Who reviews">
-          <button type="button" className={`catalog-filter${run.auto ? ' is-active' : ''}`} aria-pressed={run.auto} onClick={() => dispatch({ type: 'auto', value: true })}>
-            Watch
-          </button>
-          <button type="button" className={`catalog-filter${run.auto ? '' : ' is-active'}`} aria-pressed={!run.auto} onClick={() => dispatch({ type: 'auto', value: false })}>
-            You review
-          </button>
-        </div>
+        {!still && (
+          <div className="room-group" role="group" aria-label="Who reviews">
+            <button type="button" className={`catalog-filter${run.auto ? ' is-active' : ''}`} aria-pressed={run.auto} onClick={() => dispatch({ type: 'auto', value: true })}>
+              Watch
+            </button>
+            <button type="button" className={`catalog-filter${run.auto ? '' : ' is-active'}`} aria-pressed={!run.auto} onClick={() => dispatch({ type: 'auto', value: false })}>
+              You review
+            </button>
+          </div>
+        )}
         <p className="room-turn" role="status">
-          {run.auto && run.phase !== 'land' && run.phase !== 'landed' ? 'Watching. Click any review button to take over.' : turn}
+          {run.auto && !still && run.phase !== 'land' && run.phase !== 'landed' ? 'Watching. Click any review button to take over.' : turn}
         </p>
         <div className="room-group">
-          <button type="button" className="catalog-filter" aria-pressed={fast} onClick={() => setFast((f) => !f)}>
-            {fast ? '2.5× speed' : '1× speed'}
-          </button>
-          <button type="button" className="catalog-filter room-play" onClick={() => (run.phase === 'landed' ? restart() : setPlaying((p) => !p))}>
-            {run.phase === 'landed' ? '↻ Replay' : playing ? '❚❚ Pause' : '▶ Play'}
-          </button>
+          {!still && (
+            <button type="button" className="catalog-filter" aria-pressed={fast} onClick={() => setFast((f) => !f)}>
+              {fast ? '2.5× speed' : '1× speed'}
+            </button>
+          )}
+          {(!still || run.phase === 'landed') && (
+            <button type="button" className="catalog-filter room-play" onClick={() => (run.phase === 'landed' ? restart() : setPlaying((p) => !p))}>
+              {run.phase === 'landed' ? '↻ Replay' : playing ? '❚❚ Pause' : '▶ Play'}
+            </button>
+          )}
         </div>
       </div>
 
@@ -173,7 +191,16 @@ export function BuildRoom() {
 
         <div className={`room-column${column === 1 ? ' is-shown' : ''}`}>
           <h3 className="room-heading">Workspace</h3>
-          <div className="room-screen">
+          <div
+            className="room-screen"
+            ref={screenRef}
+            tabIndex={-1}
+            role="group"
+            aria-label="Workspace"
+            onFocus={(event) => {
+              focused.current = event.target
+            }}
+          >
             <p className="room-prompt">
               <span aria-hidden="true">$ </span>
               {processSteps[stage].command}

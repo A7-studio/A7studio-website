@@ -39,6 +39,7 @@ function LabIndexPage() {
           </p>
         </div>
 
+        <h2 className="sr-only">Products</h2>
         <ul className="work-tiles">
           {publishedEntries.map((entry) => (
             <li className="work-tile" key={entry.slug}>
